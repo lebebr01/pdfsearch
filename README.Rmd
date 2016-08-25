@@ -1,3 +1,7 @@
+# pdfadd
+
+[![Build Status](https://travis-ci.org/lebebr01/pdfadd.svg?branch=master)](https://travis-ci.org/lebebr01/pdfadd)
+
 This package defines a few useful functions for keyword searching using the [pdftools](https://github.com/ropensci/pdftools)  package developed by [rOpenSci](https://ropensci.org/).
 
 To install use devtools:
