@@ -1,0 +1,16 @@
+Package: pdfadd
+Type: Package
+Authors@R: person("Brandon", "LeBeau", email = "lebebr01+pdftools@gmail.com",
+               role = c("aut", "cre"))
+Version: 0.1.0
+License: GPL-3
+Title: Add-ons for pdftools
+Description: Includes functions for keyword search of pdf files. There is
+    also a wrapper that includes searching of all files within a single
+    directory.
+Depends:
+    R (>= 3.3.0),
+    pdftools,
+    tibble
+VignetteBuilder: knitr
+RoxygenNote: 5.0.1
