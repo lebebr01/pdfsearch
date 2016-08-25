@@ -1,0 +1,11 @@
+This package defines a few useful functions for keyword searching using the [pdftools](https://github.com/ropensci/pdftools)  package developed by [rOpenSci](https://ropensci.org/).
+
+To install use devtools:
+```{r install, eval = FALSE}
+devtools::install_github('lebebr01/pdfadd')
+```
+
+## Basic Usage
+There are currently two functions in this package. The first `keyword_search` takes a single pdf and searches for keywords from the pdf. The second `directory_search` does the same search over a directory of pdfs.
+
+Examples to come.
