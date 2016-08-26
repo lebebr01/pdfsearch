@@ -23,34 +23,41 @@ keyword_search <- function(x, keyword, path = FALSE,
   if(path) {
     x <- pdftools::pdf_text(x)
   }
-  
-  x_lines <- unlist(strsplit(x, split = '\r\n'))
-  x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
-  
-  keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
-    grep(keyword[xx], x_lines, ignore.case))
-  keyword_line <- unlist(keyword_line_loc)
-  
-  if(surround_lines != FALSE) {
-    if(!is.numeric(surround_lines)) stop('surround_lines must be FALSE or numeric')
-    srd_line_loc <- t(sapply(keyword_line, function(xx) xx + c(-1, 1) * surround_lines))
-    srd_line_loc <- sapply(1:nrow(srd_line_loc), function(xx) paste(srd_line_loc[xx, ], 
-                                                                    collapse = ":"))
-    lines_sel <- lapply(seq_along(srd_line_loc), function(xx) 
-      x_lines[eval(parse(text = srd_line_loc[xx]))])
+  line_nums <- cumsum(sapply(strsplit(x, split = '\r\n'), length))
+  if(any(line_nums == 0)) {
+    warning('text not recognized in pdf')
+    text_out <- data.frame(keyword = NULL, 
+                               page_num = NULL,
+                               line_num = NULL,
+                               line_text = NULL)
   } else {
-    lines_sel <- lapply(seq_along(keyword_line), function(xx)
-      x_lines[keyword_line[xx]])
+    
+    x_lines <- unlist(strsplit(x, split = '\r\n'))
+    x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
+    
+    keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
+      grep(keyword[xx], x_lines, ignore.case))
+    keyword_line <- unlist(keyword_line_loc)
+    
+    if(surround_lines != FALSE) {
+      if(!is.numeric(surround_lines)) stop('surround_lines must be FALSE or numeric')
+      srd_line_loc <- t(sapply(keyword_line, function(xx) xx + c(-1, 1) * surround_lines))
+      srd_line_loc <- sapply(1:nrow(srd_line_loc), function(xx) paste(srd_line_loc[xx, ], 
+                                                                      collapse = ":"))
+      lines_sel <- lapply(seq_along(srd_line_loc), function(xx) 
+        x_lines[eval(parse(text = srd_line_loc[xx]))])
+    } else {
+      lines_sel <- lapply(seq_along(keyword_line), function(xx)
+        x_lines[keyword_line[xx]])
+    }
+    
+    pages <- findInterval(keyword_line, c(1, line_nums))
+    
+    text_out <- tibble::tibble(keyword = rep(keyword, sapply(keyword_line_loc, length)), 
+                               page_num = pages,
+                               line_num = keyword_line,
+                               line_text = lines_sel)
   }
   
-  #keyword_page_loc <- grep(keyword, x, ignore.case)
-  line_nums <- cumsum(sapply(strsplit(x, split = '\r\n'), length))
-  pages <- findInterval(keyword_line, c(1, line_nums))
-  
-  
-  text_out <- tibble::tibble(keyword = rep(keyword, sapply(keyword_line_loc, length)), 
-                     page_num = pages,
-                     line_num = keyword_line,
-                     line_text = lines_sel)
   return(text_out)
 }
