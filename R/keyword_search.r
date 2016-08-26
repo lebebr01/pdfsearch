@@ -15,6 +15,8 @@
 #'    surrounding lines that will be extracted.
 #' @param ignore.case TRUE/FALSE indicating whether the case of the keyword matters. 
 #'    Default is FALSE meaning that case of the keyword is literal.
+#' @importFrom pdftools pdf_text
+#' @importFrom tibble tibble
 #' @export
 keyword_search <- function(x, keyword, path = FALSE,
                            surround_lines = FALSE, ignore.case = FALSE) {

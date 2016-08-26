@@ -2,3 +2,5 @@
 
 export(keyword_directory)
 export(keyword_search)
+importFrom(pdftools,pdf_text)
+importFrom(tibble,tibble)

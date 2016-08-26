@@ -1,4 +1,4 @@
-Package: pdfadd
+Package: pdfsearch
 Type: Package
 Authors@R: person("Brandon", "LeBeau", email = "lebebr01+pdftools@gmail.com",
                role = c("aut", "cre"))
@@ -12,5 +12,4 @@ Depends:
     R (>= 3.3.0),
     pdftools,
     tibble
-VignetteBuilder: knitr
 RoxygenNote: 5.0.1
