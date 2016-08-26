@@ -1,9 +1,9 @@
 Package: pdfsearch
 Type: Package
-Authors@R: person("Brandon", "LeBeau", email = "lebebr01+pdftools@gmail.com",
+Authors@R: person("Brandon", "LeBeau", email = "lebebr01+pdfsearch@gmail.com",
                role = c("aut", "cre"))
 Version: 0.1.0
-License: GPL-3
+License: MIT + file LICENSE
 Title: Add-ons for pdftools
 Description: Includes functions for keyword search of pdf files. There is
     also a wrapper that includes searching of all files within a single
@@ -12,4 +12,6 @@ Depends:
     R (>= 3.3.0),
     pdftools,
     tibble
+Author: Brandon LeBeau
+Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
 RoxygenNote: 5.0.1
