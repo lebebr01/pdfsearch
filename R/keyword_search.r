@@ -36,7 +36,7 @@ keyword_search <- function(x, keyword, path = FALSE,
     x_lines <- unlist(strsplit(x, split = '\r\n'))
     x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
     
-    if(length(ignore.case > 1)) {
+    if(length(ignore.case) > 1) {
       if(length(keyword) != length(ignore.case)) stop('keyword and ignore.case must be same length')
       keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
         grep(keyword[xx], x_lines, ignore.case[xx]))
