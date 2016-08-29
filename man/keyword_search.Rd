@@ -22,8 +22,9 @@ surrouding lines of text in addition to the matching line. Default is FALSE, if
 not false, include a numeric number that indicates the additional number of 
 surrounding lines that will be extracted.}
 
-\item{ignore.case}{TRUE/FALSE indicating whether the case of the keyword matters. 
-Default is FALSE meaning that case of the keyword is literal.}
+\item{ignore.case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
+Default is FALSE meaning that case of the keyword is literal. If a vector, 
+must be same length as the keyword vector.}
 }
 \description{
 This function is able to return keyword locations indicating the line of the text
