@@ -5,7 +5,8 @@
 \title{Wrapper for keyword search function}
 \usage{
 keyword_directory(directory, keyword, surround_lines = FALSE,
-  ignore.case = FALSE, full_names = FALSE, recursive = FALSE)
+  ignore.case = FALSE, full_names = FALSE, recursive = FALSE,
+  max_search = NULL)
 }
 \arguments{
 \item{directory}{The directory to perform the search for pdf files to search.}
@@ -18,14 +19,18 @@ surrouding lines of text in addition to the matching line. Default is FALSE, if
 not false, include a numeric number that indicates the additional number of 
 surrounding lines that will be extracted.}
 
-\item{ignore.case}{TRUE/FALSE indicating whether the case of the keyword matters. 
-Default is FALSE meaning that case of the keyword is literal.}
+\item{ignore.case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
+Default is FALSE meaning that case of the keyword is literal. If a vector, 
+must be same length as the keyword vector.}
 
 \item{full_names}{TRUE/FALSE indicating if the full file path should be used.
 Default is FALSE, see \code{\link{list.files}} for more details.}
 
 \item{recursive}{TRUE/FALSE indicating if subdirectories should be searched as well.
 Default is FALSE, see \code{\link{list.files}} for more details.}
+
+\item{max_search}{An optional numeric vector indicating the maximum number
+of pdfs to search. Will only search the first n cases.}
 }
 \description{
 This function allows one to loop over pdf files within a single directory
