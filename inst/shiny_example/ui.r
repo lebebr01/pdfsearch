@@ -40,7 +40,7 @@ ui <- dashboardPage(skin = "green",
                     uiOutput('key_vals'),
                     hr(),
                     radioButtons('ignore_case', 'Ignore Case in Search?',
-                                 choices = c('No' = 1, 'Yes' = 2, 'Vector' = 3),
+                                 choices = c('No' = FALSE, 'Yes' = TRUE, 'Vector' = 3),
                                  selected = 1),
                     conditionalPanel(
                       condition = 'input.ignore_case == 3',

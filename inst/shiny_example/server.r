@@ -18,8 +18,32 @@ server <- function(input, output, session) {
     lapply(1:num_keys, function(i)
       div(style = 'display:inline-block',
           radioButtons(paste0('ig_case', i), label = paste0('Ignore Case', i), 
-                    choices = c('No' = 1, 'Yes' = 2),
+                    choices = c('No' = FALSE, 'Yes' = TRUE),
                     selected = 1))
+    )
+  })
+  
+  keyword_result <- reactive({
+    num_files <- nrow(input$path)
+    keywords <- do.call('c', lapply(1:input$num_key, function(xx) 
+      eval(parse(text = paste0('key', xx)))))
+    if(input$surround == 1) {
+      srd <- FALSE
+    } else {
+      srd <- input$num_surround
+    }
+    if(input$ignore_case == 3) {
+      ign_cs <- do.call('c', lapply(1:input$num_key, function(xx) 
+        eval(parse(text = paste0('ig_case', xx)))))
+    } else {
+      ign_cs <- input$ignore_case
+    }
+    do.call('rbind', lapply(seq_along(num_files), function(xx) 
+      keyword_search(input$path[[xx, 'datapath']], 
+                     keyword = keywords,
+                     path = TRUE,
+                     surround_lines = srd,
+                     ignore.case = ign_cs))
     )
   })
   
