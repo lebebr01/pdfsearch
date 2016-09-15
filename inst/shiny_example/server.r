@@ -9,7 +9,7 @@ server <- function(input, output, session) {
     lapply(1:num_keys, function(i)
       div(style = 'display:inline-block',
           textInput(paste0('key', i), label = paste0('Keyword', i), 
-                    value = 'Keyword', width = '75px'))
+                    value = '', width = '75px'))
     )
   })
   
@@ -25,8 +25,9 @@ server <- function(input, output, session) {
   
   keyword_result <- reactive({
     num_files <- nrow(input$path)
-    keywords <- do.call('c', lapply(1:input$num_key, function(xx) 
-      eval(parse(text = paste0('key', xx)))))
+    num_keys <- input$num_key
+    keywords <- do.call('c', lapply(1:num_keys, function(xx) 
+      eval(parse(text = paste0('input$key', xx)))))
     if(input$surround == 1) {
       srd <- FALSE
     } else {
@@ -45,6 +46,10 @@ server <- function(input, output, session) {
                      surround_lines = srd,
                      ignore.case = ign_cs))
     )
+  })
+  
+  output$search_results <- renderDataTable({
+    keyword_result()
   })
   
 }

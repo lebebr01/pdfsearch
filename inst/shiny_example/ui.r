@@ -48,7 +48,18 @@ ui <- dashboardPage(skin = "green",
                     )
                 )
                 )
-              )
+              ),
+            tabItem(tabName = 'results',
+                    h2('View search results'),
+                    fluidRow(
+                      box(title = 'Table of Search Results',
+                          status = 'primary',
+                          width = 12,
+                          dataTableOutput('search_results')
+                      )
+                    )
+              
+            )
          )
         )
 )
