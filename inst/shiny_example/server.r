@@ -52,4 +52,13 @@ server <- function(input, output, session) {
     keyword_result()
   })
   
+  output$down_results <- downloadHandler(
+    filename = function() { 
+      'keyword_results.csv'
+    },
+    content = function(file) {
+      write.csv(keyword_result(), file)
+    }
+  )
+  
 }

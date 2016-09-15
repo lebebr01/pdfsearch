@@ -57,6 +57,12 @@ ui <- dashboardPage(skin = "green",
                           width = 12,
                           dataTableOutput('search_results')
                       )
+                    ),
+                    fluidRow(
+                      box(title = 'Download Results',
+                          status = 'info',
+                          width = 2,
+                          downloadButton('down_results', 'Download'))
                     )
               
             )
