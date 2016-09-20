@@ -47,7 +47,13 @@ ui <- dashboardPage(skin = "green",
                       uiOutput('vec_ignore')
                     )
                 )
+                ),
+              fluidRow(
+                box(title = 'Run Search', status = 'warning',
+                    width = 12,
+                    actionButton('run_search', 'Run Search on PDFs uploaded')
                 )
+              )
               ),
             tabItem(tabName = 'results',
                     h2('View search results'),

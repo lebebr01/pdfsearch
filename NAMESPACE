@@ -3,6 +3,7 @@
 export(heading_search)
 export(keyword_directory)
 export(keyword_search)
+export(run_shiny)
 importFrom(pdftools,pdf_text)
 importFrom(pdftools,pdf_toc)
 importFrom(tibble,tibble)

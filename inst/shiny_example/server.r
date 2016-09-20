@@ -23,7 +23,7 @@ server <- function(input, output, session) {
     )
   })
   
-  keyword_result <- reactive({
+  keyword_result <- eventReactive(input$run_search, {
     num_files <- nrow(input$path)
     num_keys <- input$num_key
     keywords <- do.call('c', lapply(1:num_keys, function(xx) 
