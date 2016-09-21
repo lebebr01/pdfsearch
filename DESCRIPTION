@@ -12,6 +12,8 @@ Depends:
     R (>= 3.3.0),
     pdftools,
     tibble
+Suggests:
+    shiny
 Author: Brandon LeBeau
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
 RoxygenNote: 5.0.1
