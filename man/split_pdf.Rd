@@ -4,12 +4,10 @@
 \alias{split_pdf}
 \title{Split multicolumn pdfs}
 \usage{
-split_pdf(x, numcols = 2, delim = " {2,}")
+split_pdf(x, delim = " {2,}(?=\\\\w)")
 }
 \arguments{
 \item{x}{A list object already processed via pdf_text.}
-
-\item{numcols}{Number of columns in the pdf, default is 2.}
 
 \item{delim}{The delimiter to split multicolumns. The default is three spaces, 
 changing this delimiter can be useful if pdf has not been split correctly.}

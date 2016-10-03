@@ -4,8 +4,8 @@
 \alias{keyword_search}
 \title{Function to search pdf for keywords}
 \usage{
-keyword_search(x, keyword, path = FALSE, surround_lines = FALSE,
-  ignore.case = FALSE)
+keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
+  surround_lines = FALSE, ignore.case = FALSE)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a path
@@ -16,6 +16,10 @@ keywords can be specified with a character vector.}
 
 \item{path}{An optional path designation for the location of the pdf to be converted 
 to text. The pdftools package is used for this conversion.}
+
+\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white space.
+This would be most useful with multicolumn pdf files. The split_pdf function
+attempts to recreate the column layout of the text.}
 
 \item{surround_lines}{numeric/FALSE indicating whether the output should extract the 
 surrouding lines of text in addition to the matching line. Default is FALSE, if 

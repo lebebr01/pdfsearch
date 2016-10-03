@@ -9,6 +9,9 @@
 #'    keywords can be specified with a character vector.
 #' @param path An optional path designation for the location of the pdf to be converted 
 #'    to text. The pdftools package is used for this conversion.
+#' @param split_pdf TRUE/FALSE indicating whether to split the pdf using white space.
+#'    This would be most useful with multicolumn pdf files. The split_pdf function
+#'    attempts to recreate the column layout of the text.
 #' @param surround_lines numeric/FALSE indicating whether the output should extract the 
 #'    surrouding lines of text in addition to the matching line. Default is FALSE, if 
 #'    not false, include a numeric number that indicates the additional number of 
@@ -19,7 +22,7 @@
 #' @importFrom pdftools pdf_text
 #' @importFrom tibble tibble
 #' @export
-keyword_search <- function(x, keyword, path = FALSE,
+keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            surround_lines = FALSE, ignore.case = FALSE) {
   if(path) {
     x <- pdftools::pdf_text(x)
@@ -33,8 +36,13 @@ keyword_search <- function(x, keyword, path = FALSE,
                                line_text = NULL)
   } else {
     
-    x_lines <- unlist(strsplit(x, split = '\r\n'))
-    x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
+    if(split_pdf) {
+      x_lines <- split_pdf(x)
+    } else {
+      x_lines <- unlist(strsplit(x, split = '\r\n'))
+      x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
+    }
+    
     
     if(length(ignore.case) > 1) {
       if(length(keyword) != length(ignore.case)) stop('keyword and ignore.case must be same length')
