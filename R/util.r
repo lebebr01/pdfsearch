@@ -8,6 +8,13 @@ remove_indent <- function(x, sel_element) {
   return(x)
 }
 
-collapse_columns <- function(x) {
-  
+collapse_columns <- function(x_list, lengths) {
+  do.call('c', 
+          do.call('c',
+                  lapply(1:max(lengths), function(ii)
+                    lapply(seq_along(x_list), function(xx) 
+                      x_list[[xx]][ii]
+                    ))
+          )
+  )
 }

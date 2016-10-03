@@ -19,9 +19,18 @@ split_pdf <- function(x, delim = ' {2,}(?=\\w)') {
   x_lines <- sapply(seq_along(x_lines), function(xx) {
     if(any(length_lines[[xx]] == 3)) {
       remove_indent(x_lines[[xx]], length_lines[[xx]])
+    } else {
+      x_lines[[xx]]
     }
   })
   
+  length_lines <- sapply(seq_along(x_lines), function(xx) sapply(x_lines[[xx]], length))
+  
+  x_lines <- do.call('c', 
+                     lapply(seq_along(x_lines), function(xx) {
+                       collapse_columns(x_lines[[xx]], length_lines[[xx]])
+                     })
+  )
   
   return(x_lines)
   
