@@ -26,12 +26,13 @@ split_pdf <- function(x, delim = ' {2,}(?=\\w)') {
   
   length_lines <- sapply(seq_along(x_lines), function(xx) sapply(x_lines[[xx]], length))
   
-  x_lines <- do.call('c', 
-                     lapply(seq_along(x_lines), function(xx) {
-                       collapse_columns(x_lines[[xx]], length_lines[[xx]])
-                     })
-  )
+  x_lines <- lapply(seq_along(x_lines), function(xx) {
+    collapse_columns(x_lines[[xx]], length_lines[[xx]])
+  })
   
-  return(x_lines)
+  length_lines <- sapply(x_lines, length)
+  x_lines <- do.call('c', x_lines)
+  
+  return(list(x_lines, length_lines))
   
 }

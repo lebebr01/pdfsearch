@@ -37,7 +37,9 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   } else {
     
     if(split_pdf) {
-      x_lines <- split_pdf(x)
+      x_list <- split_pdf(x)
+      line_nums <- cumsum(x_list[[2]])
+      x_lines <- x_list[[1]]
     } else {
       x_lines <- unlist(strsplit(x, split = '\r\n'))
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
