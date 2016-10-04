@@ -22,3 +22,11 @@ addons:
       - libwebp-dev
       - libpoppler-cpp-dev
       - valgrind
+
+cran: https://cran.rstudio.com/
+r_packages:
+   - covr
+      
+after_success:
+   - Rscript -e 'library(covr); codecov()'      
+      

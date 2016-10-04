@@ -13,7 +13,8 @@ Depends:
     pdftools,
     tibble
 Suggests:
-    shiny
+    shiny,
+    testthat
 Author: Brandon LeBeau
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
 RoxygenNote: 5.0.1
