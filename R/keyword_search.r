@@ -19,11 +19,15 @@
 #' @param ignore.case TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
 #'    Default is FALSE meaning that case of the keyword is literal. If a vector, 
 #'    must be same length as the keyword vector.
+#' @param heading_search TRUE/FALSE indicating whether to search for headings in the pdf.
+#' @param heading_args A list of arguments to pass on to the \code{\link{heading_search}} function.
+#'    See \code{\link{heading_search}} for more details on arguments needed.
 #' @importFrom pdftools pdf_text
 #' @importFrom tibble tibble
 #' @export
 keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
-                           surround_lines = FALSE, ignore.case = FALSE) {
+                           surround_lines = FALSE, ignore.case = FALSE,
+                           heading_search = FALSE, heading_args = NULL) {
   if(path) {
     x <- pdftools::pdf_text(x)
   }
@@ -74,6 +78,12 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                                page_num = pages,
                                line_num = keyword_line,
                                line_text = lines_sel)
+    
+    if(heading_search) {
+      heading <- do.call(heading_search, heading_args)
+    }
+    
+    
   }
   
   return(text_out)

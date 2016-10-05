@@ -5,7 +5,8 @@
 \title{Function to search pdf for keywords}
 \usage{
 keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
-  surround_lines = FALSE, ignore.case = FALSE)
+  surround_lines = FALSE, ignore.case = FALSE, heading_search = FALSE,
+  heading_args = NULL)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a path
@@ -29,6 +30,11 @@ surrounding lines that will be extracted.}
 \item{ignore.case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
 Default is FALSE meaning that case of the keyword is literal. If a vector, 
 must be same length as the keyword vector.}
+
+\item{heading_search}{TRUE/FALSE indicating whether to search for headings in the pdf.}
+
+\item{heading_args}{A list of arguments to pass on to the \code{\link{heading_search}} function.
+See \code{\link{heading_search}} for more details on arguments needed.}
 }
 \description{
 This function is able to return keyword locations indicating the line of the text
