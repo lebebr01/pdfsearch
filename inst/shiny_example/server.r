@@ -52,12 +52,24 @@ server <- function(input, output, session) {
     keyword_result()
   })
   
+  keyword_flatten <- reactive({
+    text_lines <- data.frame(do.call('rbind', keyword_result()[['line_text']]))
+    if(input$surround == 1) {
+      srd <- 0
+    } else {
+      srd <- input$num_surround
+    }
+    names(text_lines) <- paste0('line_text_', 1:ncol(text_lines))
+    key_flat <- keyword_result()[c('keyword', 'page_num', 'line_num')]
+    cbind(key_flat, text_lines)
+  })
+  
   output$down_results <- downloadHandler(
     filename = function() { 
-      'keyword_results.csv'
+      paste0('results', '.csv')
     },
     content = function(file) {
-      write.csv(keyword_result(), file)
+      write.csv(keyword_flatten(), file)
     }
   )
   
