@@ -1,4 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .yml
-.Rmd
+^README\.Rmd$
+^docs$

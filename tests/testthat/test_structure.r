@@ -8,7 +8,7 @@ test_that("correct structure", {
 test_that('surround_lines returns multiple lines', {
   path <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
   expect_true(is.list(keyword_search(x = path, keyword = 'measurement', path = TRUE,
-                            ignore.case = TRUE, surround_lines = 1)$line_text))
+                            ignore_case = TRUE, surround_lines = 1)$line_text))
 })
 
 test_that('directory search', {

@@ -5,7 +5,7 @@
 \title{Function to search pdf for keywords}
 \usage{
 keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
-  surround_lines = FALSE, ignore.case = FALSE, heading_search = FALSE,
+  surround_lines = FALSE, ignore_case = FALSE, heading_search = FALSE,
   heading_args = NULL)
 }
 \arguments{
@@ -27,7 +27,7 @@ surrouding lines of text in addition to the matching line. Default is FALSE, if
 not false, include a numeric number that indicates the additional number of 
 surrounding lines that will be extracted.}
 
-\item{ignore.case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
+\item{ignore_case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
 Default is FALSE meaning that case of the keyword is literal. If a vector, 
 must be same length as the keyword vector.}
 

@@ -39,12 +39,12 @@ server <- function(input, output, session) {
     } else {
       ign_cs <- input$ignore_case
     }
-    do.call('rbind', lapply(seq_along(num_files), function(xx) 
-      keyword_search(input$path[[xx, 'datapath']], 
+    do.call('rbind', lapply(1:num_files, function(xx) 
+      data.frame(ID = xx, keyword_search(input$path[[xx, 'datapath']], 
                      keyword = keywords,
                      path = TRUE,
                      surround_lines = srd,
-                     ignore.case = ign_cs))
+                     ignore_case = ign_cs)))
     )
   })
   

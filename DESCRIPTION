@@ -2,7 +2,7 @@ Package: pdfsearch
 Type: Package
 Authors@R: person("Brandon", "LeBeau", email = "lebebr01+pdfsearch@gmail.com",
                role = c("aut", "cre"))
-Version: 0.1.0
+Version: 0.1.1
 License: MIT + file LICENSE
 Title: Add-ons for pdftools
 Description: Includes functions for keyword search of pdf files. There is
@@ -18,3 +18,5 @@ Suggests:
 Author: Brandon LeBeau
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
 RoxygenNote: 5.0.1
+URL: https://github.com/lebebr01/pdfsearch
+BugReports: https://github.com/lebebr01/pdfsearch/issues

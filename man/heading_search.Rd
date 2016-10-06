@@ -5,7 +5,7 @@
 \title{Function to locate sections of pdf}
 \usage{
 heading_search(x, headings, path = FALSE, pdf_toc = FALSE,
-  full_line = FALSE, ignore.case = FALSE)
+  full_line = FALSE, ignore_case = FALSE, split_pdf = FALSE)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a path
@@ -24,9 +24,11 @@ Must specify path = TRUE if pdf_toc = TRUE.}
 \item{full_line}{TRUE/FALSE indicating whether the headings should reside on
 their own line. This can create problems with multiple column pdfs.}
 
-\item{ignore.case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
+\item{ignore_case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
 Default is FALSE meaning that case of the headings keywords are literal. 
 If a vector, must be same length as the headings vector.}
+
+\item{split_pdf}{TRUE/FALSE indicating whether}
 }
 \description{
 The ability to extract the location of the text and separate by sections. 

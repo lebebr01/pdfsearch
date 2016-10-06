@@ -16,7 +16,7 @@
 #'    surrouding lines of text in addition to the matching line. Default is FALSE, if 
 #'    not false, include a numeric number that indicates the additional number of 
 #'    surrounding lines that will be extracted.
-#' @param ignore.case TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
+#' @param ignore_case TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
 #'    Default is FALSE meaning that case of the keyword is literal. If a vector, 
 #'    must be same length as the keyword vector.
 #' @param heading_search TRUE/FALSE indicating whether to search for headings in the pdf.
@@ -26,7 +26,7 @@
 #' @importFrom tibble tibble
 #' @export
 keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
-                           surround_lines = FALSE, ignore.case = FALSE,
+                           surround_lines = FALSE, ignore_case = FALSE,
                            heading_search = FALSE, heading_args = NULL) {
   if(path) {
     x <- pdftools::pdf_text(x)
@@ -50,13 +50,13 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     }
     
     
-    if(length(ignore.case) > 1) {
-      if(length(keyword) != length(ignore.case)) stop('keyword and ignore.case must be same length')
+    if(length(ignore_case) > 1) {
+      if(length(keyword) != length(ignore_case)) stop('keyword and ignore.case must be same length')
       keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
-        grep(keyword[xx], x_lines, ignore.case[xx]))
+        grep(keyword[xx], x_lines, ignore_case[xx]))
     } else {
       keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
-        grep(keyword[xx], x_lines, ignore.case))
+        grep(keyword[xx], x_lines, ignore_case))
     }
     keyword_line <- unlist(keyword_line_loc)
     
@@ -82,8 +82,6 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     if(heading_search) {
       heading <- do.call(heading_search, heading_args)
     }
-    
-    
   }
   
   return(text_out)
