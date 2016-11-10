@@ -2,42 +2,63 @@
 % Please edit documentation in R/keyword_search.r
 \name{keyword_search}
 \alias{keyword_search}
-\title{Function to search pdf for keywords}
+\title{Search a pdf file for keywords}
 \usage{
 keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
   surround_lines = FALSE, ignore_case = FALSE, heading_search = FALSE,
   heading_args = NULL)
 }
 \arguments{
-\item{x}{Either the text of the pdf read in with the pdftools package or a path
-for the location of the pdf file.}
+\item{x}{Either the text of the pdf read in with the pdftools package or a 
+path for the location of the pdf file.}
 
 \item{keyword}{The keyword(s) to be used to search in the text. Multiple 
 keywords can be specified with a character vector.}
 
-\item{path}{An optional path designation for the location of the pdf to be converted 
-to text. The pdftools package is used for this conversion.}
+\item{path}{An optional path designation for the location of the pdf to be 
+converted to text. The pdftools package is used for this conversion.}
 
-\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white space.
-This would be most useful with multicolumn pdf files. The split_pdf function
-attempts to recreate the column layout of the text.}
+\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white 
+space. This would be most useful with multicolumn pdf files. 
+The split_pdf function attempts to recreate the column layout of the text 
+into a single column starting with the left column and proceeding to the 
+right.}
 
-\item{surround_lines}{numeric/FALSE indicating whether the output should extract the 
-surrouding lines of text in addition to the matching line. Default is FALSE, if 
-not false, include a numeric number that indicates the additional number of 
-surrounding lines that will be extracted.}
+\item{surround_lines}{numeric/FALSE indicating whether the output should 
+extract the surrouding lines of text in addition to the matching line. 
+Default is FALSE, if not false, include a numeric number that indicates 
+the additional number of surrounding lines that will be extracted.}
 
-\item{ignore_case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
-Default is FALSE meaning that case of the keyword is literal. If a vector, 
-must be same length as the keyword vector.}
+\item{ignore_case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the 
+case of the keyword matters. Default is FALSE meaning that case of the 
+keyword is literal. If a vector, must be same length as the keyword 
+vector.}
 
-\item{heading_search}{TRUE/FALSE indicating whether to search for headings in the pdf.}
+\item{heading_search}{TRUE/FALSE indicating whether to search for headings 
+in the pdf.}
 
-\item{heading_args}{A list of arguments to pass on to the \code{\link{heading_search}} function.
-See \code{\link{heading_search}} for more details on arguments needed.}
+\item{heading_args}{A list of arguments to pass on to the 
+\code{\link{heading_search}} function. See \code{\link{heading_search}} 
+ for more details on arguments needed.}
 }
 \description{
-This function is able to return keyword locations indicating the line of the text
-as well as the page number that the keyword is found in.
+This uses the pdf_text from the pdftools package to perform keyword searches. 
+Keyword locations indicating the line of the text as well as the page number 
+that the keyword is found are returned.
+}
+\examples{
+file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+
+keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
+  path = TRUE)
+  
+# Add surrounding text
+keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
+  path = TRUE, surround_lines = 2)
+  
+# split pdf
+keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
+  path = TRUE, split_pdf = TRUE)
+
 }
 

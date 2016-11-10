@@ -8,30 +8,43 @@ heading_search(x, headings, path = FALSE, pdf_toc = FALSE,
   full_line = FALSE, ignore_case = FALSE, split_pdf = FALSE)
 }
 \arguments{
-\item{x}{Either the text of the pdf read in with the pdftools package or a path
-for the location of the pdf file.}
+\item{x}{Either the text of the pdf read in with the pdftools package or a 
+path for the location of the pdf file.}
 
 \item{headings}{A character vector representing the headings to search for.
 Can be NULL if pdf_toc = TRUE.}
 
-\item{path}{An optional path designation for the location of the pdf to be converted 
-to text. The pdftools package is used for this conversion.}
+\item{path}{An optional path designation for the location of the pdf to be 
+converted to text. The pdftools package is used for this conversion.}
 
 \item{pdf_toc}{TRUE/FALSE whether the pdf_toc function should be used. This
-is most useful if the pdf has the table of contents embedded within the pdf.
+is most useful if the pdf has the table of contents embedded within the 
+pdf.
 Must specify path = TRUE if pdf_toc = TRUE.}
 
 \item{full_line}{TRUE/FALSE indicating whether the headings should reside on
 their own line. This can create problems with multiple column pdfs.}
 
-\item{ignore_case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the case of the keyword matters. 
+\item{ignore_case}{TRUE/FALSE/vector of TRUE/FALSE, indicating whether the 
+case of the keyword matters. 
 Default is FALSE meaning that case of the headings keywords are literal. 
 If a vector, must be same length as the headings vector.}
 
-\item{split_pdf}{TRUE/FALSE indicating whether}
+\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white 
+space. This would be most useful with multicolumn pdf files. 
+The split_pdf function attempts to recreate the column layout of the text 
+into a single column starting with the left column and proceeding to the 
+right.}
 }
 \description{
 The ability to extract the location of the text and separate by sections. 
 The function will return the headings with their location in the pdf.
+}
+\examples{
+file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+
+heading_search(file, headings = c('abstract', 'introduction'),
+  path = TRUE)#' 
+
 }
 

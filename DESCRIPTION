@@ -15,7 +15,6 @@ Depends:
 Suggests:
     shiny,
     testthat
-Author: Brandon LeBeau
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
 RoxygenNote: 5.0.1
 URL: https://github.com/lebebr01/pdfsearch
