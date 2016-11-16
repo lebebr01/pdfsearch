@@ -37,8 +37,8 @@
 #'   path = TRUE)
 #'   
 #' # Add surrounding text
-#' keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
-#'   path = TRUE, surround_lines = 2)
+#' keyword_search(file, keyword = c('variance', 'mixed effects'),
+#'   path = TRUE, surround_lines = 1)
 #'   
 #' # split pdf
 #' keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
