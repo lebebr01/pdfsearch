@@ -63,6 +63,8 @@ head(result$line_text)
 ## [1] "values and the absence in a specific time window can still          It is common to analyze data from repeated measures design"
 ```
 
+The location of the keyword match, including page number and line number, and the actual line of text are returned by default.
+
 ### Surrounding lines of text 
 It may be useful to extract not just the line of text that the keyword is found in, but also surrounding text to have additional context when looking at the keyword results. This can be added by using the argument `surround_lines` as follows:
 
@@ -85,5 +87,21 @@ head(result)
 ## 4 repeated measures        2      110 <chr [3]>
 ## 5 repeated measures        2      125 <chr [3]>
 ## 6 repeated measures        6      444 <chr [3]>
+```
+
+```r
+head(result$line_text, n = 2)
+```
+
+```
+## [[1]]
+## [1] "introduce more sophisticated experimental designs, specifi-           only would we miss potentially beneficial effects, we may also"  
+## [2] "cally the repeated measures design, including the crossover           get false confidence about lack of negative effects. Statistical"
+## [3] "design and related variants, to increase KPI sensitivity with         power increases with larger effect size, and smaller variances." 
+## 
+## [[2]]
+## [1] "a limitation to any online experimentation platform, where       within-subject variation. We also discuss practical consid-"   
+## [2] "fast iterations and testing many ideas can reap the most         erations to repeated measures design, with variants to the"    
+## [3] "rewards.                                                         crossover design to study the carry over effect, including the"
 ```
 

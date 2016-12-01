@@ -26,6 +26,8 @@ head(result)
 head(result$line_text)
 ```
 
+The location of the keyword match, including page number and line number, and the actual line of text are returned by default.
+
 ### Surrounding lines of text 
 It may be useful to extract not just the line of text that the keyword is found in, but also surrounding text to have additional context when looking at the keyword results. This can be added by using the argument `surround_lines` as follows:
 ```{r surround}
@@ -35,5 +37,6 @@ result <- keyword_search(file,
             keyword = c('repeated measures', 'mixed effects'),
             path = TRUE, surround_lines = 1)
 head(result)
+head(result$line_text, n = 2)
 ```
 
