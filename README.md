@@ -39,6 +39,30 @@ head(result)
 ## 6 repeated measures        6      444 <chr [1]>
 ```
 
+```r
+head(result$line_text)
+```
+
+```
+## [[1]]
+## [1] "cally the repeated measures design, including the crossover           get false confidence about lack of negative effects. Statistical"
+## 
+## [[2]]
+## [1] "fast iterations and testing many ideas can reap the most         erations to repeated measures design, with variants to the"
+## 
+## [[3]]
+## [1] "repeated measures design in different stages of treatment        in this section we assume all users appear in all periods,"
+## 
+## [[4]]
+## [1] "ing the repeated measures analysis, reporting a <U+0093>per week<U+0094>       to metrics that are defined as simple average and assume"
+## 
+## [[5]]
+## [1] "In fact, the crossover design is a type of repeated measures     designs considered can be examined in the same framework"
+## 
+## [[6]]
+## [1] "values and the absence in a specific time window can still          It is common to analyze data from repeated measures design"
+```
+
 ### Surrounding lines of text 
 It may be useful to extract not just the line of text that the keyword is found in, but also surrounding text to have additional context when looking at the keyword results. This can be added by using the argument `surround_lines` as follows:
 

@@ -23,6 +23,7 @@ result <- keyword_search(file,
             keyword = c('repeated measures', 'mixed effects'),
             path = TRUE)
 head(result)
+head(result$line_text)
 ```
 
 ### Surrounding lines of text 
