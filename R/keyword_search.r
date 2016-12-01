@@ -106,7 +106,13 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                                line_text = lines_sel)
     
     if(heading_search) {
-      heading <- do.call(heading_search, heading_args)
+      head_res <- do.call('heading_search', heading_args)
+      
+      row_nums <- findInterval(text_out$line_num, head_res$line_num)
+      col <- data.frame(do.call('rbind', lapply(seq_along(row_nums), 
+                  function(xx) head_res[row_nums[xx], 'keyword'])))
+      names(col) <- 'heading'
+      text_out <- cbind(text_out, col)
     }
   }
   

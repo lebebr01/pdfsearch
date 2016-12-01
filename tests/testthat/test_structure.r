@@ -35,3 +35,16 @@ test_that("heading search", {
                                   headings = c('abstract', 'introduction'),
                  path = TRUE)))
 })
+
+test_that("heading search within keyword search", {
+  file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+  head_args <- list(x = file, 
+                    headings = c('INTRODUCTION', 'Motivation', 'RESULTS'),
+                    path = TRUE)
+  
+  key_res <- keyword_search(file, 
+                            keyword = c('repeated measures', 'mixed effects'),
+                            path = TRUE, heading_search = TRUE, 
+                            heading_args = head_args)
+  expect_true('heading' %in% names(key_res))
+})
