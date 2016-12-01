@@ -17,9 +17,9 @@ Can be NULL if pdf_toc = TRUE.}
 \item{path}{An optional path designation for the location of the pdf to be 
 converted to text. The pdftools package is used for this conversion.}
 
-\item{pdf_toc}{TRUE/FALSE whether the pdf_toc function should be used. This
-is most useful if the pdf has the table of contents embedded within the 
-pdf.
+\item{pdf_toc}{TRUE/FALSE whether the pdf_toc function should be used from
+the \code{\link{pdftools}} package. This is most useful if the pdf has 
+the table of contents embedded within the pdf.
 Must specify path = TRUE if pdf_toc = TRUE.}
 
 \item{full_line}{TRUE/FALSE indicating whether the headings should reside on
@@ -44,7 +44,7 @@ The function will return the headings with their location in the pdf.
 file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
 
 heading_search(file, headings = c('abstract', 'introduction'),
-  path = TRUE)#' 
+  path = TRUE)
 
 }
 
