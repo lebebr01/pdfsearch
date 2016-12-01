@@ -105,3 +105,11 @@ head(result$line_text, n = 2)
 ## [3] "rewards.                                                         crossover design to study the carry over effect, including the"
 ```
 
+### Shiny App
+The package also has a simple Shiny app that can be called using the following command
+
+```r
+run_shiny()
+```
+
+

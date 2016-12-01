@@ -40,3 +40,10 @@ head(result)
 head(result$line_text, n = 2)
 ```
 
+### Shiny App
+The package also has a simple Shiny app that can be called using the following command
+```{r shiny, eval = FALSE}
+run_shiny()
+```
+
+

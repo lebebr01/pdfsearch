@@ -3,8 +3,13 @@
 #' Function runs Shiny Application Demo
 #' 
 #' This function does not take any arguments and will run the Shiny Application.
-#' If running from RStudio, will open the application in the viewer, otherwise will
-#' use the default internet browser.
+#' If running from RStudio, will open the application in the viewer, 
+#' otherwise will use the default internet browser.
+#' 
+#' @examples 
+#' \donttest{
+#' run_shiny()
+#' }
 #' 
 #' @export
 run_shiny <- function() {

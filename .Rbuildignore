@@ -3,3 +3,4 @@
 .yml
 ^README\.Rmd$
 ^docs$
+^cran-comments\.md$

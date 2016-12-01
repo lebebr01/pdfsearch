@@ -8,7 +8,7 @@ matrix:
       dist: precise
       sudo: false
     - os: osx
-      osx_image: beta-xcode6.2
+      osx_image: beta-xcode6.4
       disable_homebrew: true
       latex: false
   
