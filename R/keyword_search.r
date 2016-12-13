@@ -111,6 +111,9 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
       row_nums <- findInterval(text_out$line_num, head_res$line_num)
       col <- data.frame(do.call('rbind', lapply(seq_along(row_nums), 
                   function(xx) head_res[row_nums[xx], 'keyword'])))
+      if(any(row_nums == 0)) {
+        col <- data.frame(c(rep('NA', table(row_nums)[1]), col$keyword))
+      }
       names(col) <- 'heading'
       text_out <- cbind(text_out, col)
     }
