@@ -5,7 +5,7 @@
 * OS X 10.9.5 (travis CI) R 3.3.2
 
 ## R CMD check results
-No Notes, Warnings, or Errors
+One Note: New Submission
 
 ## Downstream Dependencies
 There are currently no downstream dependencies.

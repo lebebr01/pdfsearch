@@ -23,7 +23,7 @@ result <- keyword_search(file,
             keyword = c('repeated measures', 'mixed effects'),
             path = TRUE)
 head(result)
-head(result$line_text)
+head(result$line_text, n = 2)
 ```
 
 The location of the keyword match, including page number and line number, and the actual line of text are returned by default.
