@@ -28,7 +28,7 @@ head(result)
 ```
 
 ```
-## # A tibble: 6 × 4
+## # A tibble: 6 x 4
 ##             keyword page_num line_num line_text
 ##               <chr>    <int>    <int>    <list>
 ## 1 repeated measures        1       24 <chr [1]>
@@ -66,7 +66,7 @@ head(result)
 ```
 
 ```
-## # A tibble: 6 × 4
+## # A tibble: 6 x 4
 ##             keyword page_num line_num line_text
 ##               <chr>    <int>    <int>    <list>
 ## 1 repeated measures        1       24 <chr [3]>
