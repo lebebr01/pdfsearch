@@ -14,8 +14,11 @@ Depends:
     tibble
 Suggests:
     shiny,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 URL: https://github.com/lebebr01/pdfsearch
 BugReports: https://github.com/lebebr01/pdfsearch/issues
+VignetteBuilder: knitr

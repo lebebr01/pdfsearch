@@ -61,4 +61,3 @@ keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
   path = TRUE, split_pdf = TRUE)
 
 }
-

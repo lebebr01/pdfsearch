@@ -1,0 +1,80 @@
+---
+title: "Getting Started with pdfsearch"
+author: "Brandon LeBeau"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This package defines a few useful functions for keyword searching using the [pdftools](https://github.com/ropensci/pdftools)  package developed by [rOpenSci](https://ropensci.org/).
+
+# Basic Usage
+There are currently two functions in this package of use to users. The first `keyword_search` takes a single pdf and searches for keywords from the pdf. The second `keyword_directory` does the same search over a directory of pdfs.
+
+# `keyword_search` Example
+The package comes with two pdf files from [arXiv](https://arxiv.org/) to use as test cases. Below is an example of using the `keyword_search` function.
+```{r search1, message = FALSE}
+library(pdfsearch)
+file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+
+result <- keyword_search(file, 
+            keyword = c('repeated measures', 'mixed effects'),
+            path = TRUE)
+head(result)
+head(result$line_text, n = 2)
+```
+
+The location of the keyword match, including page number and line number, and the actual line of text are returned by default.
+
+## Surrounding lines of text 
+It may be useful to extract not just the line of text that the keyword is found in, but also surrounding text to have additional context when looking at the keyword results. This can be added by using the argument `surround_lines` as follows:
+```{r surround}
+file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+
+result <- keyword_search(file, 
+            keyword = c('repeated measures', 'mixed effects'),
+            path = TRUE, surround_lines = 1)
+head(result)
+head(result$line_text, n = 2)
+```
+
+# `keyword_directory` Example
+The `keyword_directory` function is useful when you have a directory of many pdf files that you want to search a series of keywords in a single function call. This can be particularly useful in the context of a research synthesis or to screen studies for characteristics to include in a meta-analysis.
+
+There are two files that come with the package from ArXiv in a single directory that will be used as an example use case for the package.
+
+```{r directory}
+directory <- system.file('pdf', package = 'pdfsearch')
+
+result <- keyword_directory(directory,
+                           keyword = c('repeated measures', 'mixed effects',
+                                       'error'),
+                           surround_lines = 1, full_names = TRUE)
+head(result)
+```
+
+The `full_names` argument is needed here to specify that the full file path needs to be used to access the pdf files. If the search is done from the directly from the repository, then `full_names` could be set to FALSE.
+
+# Limitations
+Currently there are a handful of limitations, mostly around how pdfs are read into R using the pdftools R package. When pdfs are created in a multiple column layout, a line in the pdf consists of the entire line across both columns. This can lead to fragmented text that may not give the full contents, even with using the `surround_lines` argument. 
+
+A second limitation is due to how the document is typeset and whether words wrap from one line to the next with a hyphen. When a word is truncated with a hyphen and continued on a subsequent line, the pdfsearch package is unable to search and find this word in the search procedure. 
+
+
+
+# Shiny App
+The package also has a simple Shiny app that can be called using the following command
+```{r shiny, eval = FALSE}
+run_shiny()
+```
+

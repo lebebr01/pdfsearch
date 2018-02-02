@@ -47,4 +47,3 @@ heading_search(file, headings = c('abstract', 'introduction'),
   path = TRUE)
 
 }
-
