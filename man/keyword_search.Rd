@@ -5,8 +5,8 @@
 \title{Search a pdf file for keywords}
 \usage{
 keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
-  surround_lines = FALSE, ignore_case = FALSE, heading_search = FALSE,
-  heading_args = NULL)
+  surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
+  heading_search = FALSE, heading_args = NULL)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a 
@@ -34,6 +34,9 @@ case of the keyword matters. Default is FALSE meaning that case of the
 keyword is literal. If a vector, must be same length as the keyword 
 vector.}
 
+\item{remove_hyphen}{TRUE/FALSE indicating whether hyphenated words should
+be adjusted to combine onto a single line. Default is TRUE.}
+
 \item{heading_search}{TRUE/FALSE indicating whether to search for headings 
 in the pdf.}
 
@@ -58,6 +61,6 @@ keyword_search(file, keyword = c('variance', 'mixed effects'),
   
 # split pdf
 keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
-  path = TRUE, split_pdf = TRUE)
+  path = TRUE, split_pdf = TRUE, remove_hyphen = FALSE)
 
 }

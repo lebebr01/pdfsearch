@@ -4,3 +4,5 @@
 ^README\.Rmd$
 ^docs$
 ^cran-comments\.md$
+^contributing\.md$
+^conduct\.md$

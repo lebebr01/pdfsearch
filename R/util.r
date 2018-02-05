@@ -18,3 +18,23 @@ collapse_columns <- function(x_list, lengths) {
           )
   )
 }
+
+remove_hyphen <- function(text_lines) {
+  
+  hyphen_location <- grep("-$", text_lines)
+  
+  hyphen_wrap_text <- text_lines[hyphen_location + 1]
+  hyphen_wrap_text <- strsplit(hyphen_wrap_text, split = ' ')
+  hyphen_wrap_text <- unlist(lapply(seq_along(hyphen_wrap_text), function(xx) 
+    hyphen_wrap_text[[xx]][1]))
+  
+  for(xx in seq_along(hyphen_location)) {
+    text_lines[hyphen_location[xx]] <- gsub("-$", hyphen_wrap_text[xx], 
+                                            text_lines[hyphen_location[xx]])
+    text_lines[hyphen_location[xx] + 1] <- gsub(hyphen_wrap_text[xx], "", 
+                                            text_lines[hyphen_location[xx] + 1],
+                                            fixed = TRUE)
+  }
+  text_lines <- gsub("^\\s+|\\s+$", '', text_lines)
+  text_lines
+}

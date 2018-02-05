@@ -19,6 +19,8 @@
 #'    case of the keyword matters. 
 #'    Default is FALSE meaning that case of the keyword is literal. If a vector, 
 #'    must be same length as the keyword vector.
+#' @param remove_hyphen TRUE/FALSE indicating whether hyphenated words should
+#'    be adjusted to combine onto a single line. Default is TRUE.
 #' @param full_names TRUE/FALSE indicating if the full file path should be used.
 #'    Default is FALSE, see \code{\link{list.files}} for more details.
 #' @param recursive TRUE/FALSE indicating if subdirectories should be searched 
@@ -38,14 +40,15 @@
 #' # can also split pdfs
 #' keyword_directory(directory, 
 #'        keyword = c('repeated measures', 'measurement error'),
-#'        split_pdf = TRUE,
+#'        split_pdf = TRUE, remove_hyphen = FALSE,
 #'        surround_lines = 1, full_names = TRUE)
 #' 
 #' 
 #' @export
 keyword_directory <- function(directory, keyword, split_pdf = FALSE, 
                               surround_lines = FALSE,
-                              ignore_case = FALSE, full_names = FALSE, 
+                              ignore_case = FALSE, remove_hyphen = TRUE,
+                              full_names = FALSE, 
                               recursive = FALSE, max_search = NULL) {
   files_dir <- list.files(path = directory, pattern = ".pdf", 
                           full.names = full_names, recursive = recursive)
@@ -56,14 +59,14 @@ keyword_directory <- function(directory, keyword, split_pdf = FALSE,
     extract_table <- lapply(seq_along(files_dir), function(xx) 
       keyword_search(files_dir[xx], keyword = keyword, path = TRUE,
                      split_pdf = split_pdf, surround_lines = surround_lines, 
-                     ignore_case = ignore_case))
+                     ignore_case = ignore_case, remove_hyphen = remove_hyphen))
   } else {
     files_dir <- files_dir[1:max_search]
     file_name <- file_name[1:max_search]
     extract_table <- lapply(seq_along(files_dir), function(xx) 
       keyword_search(files_dir[xx], keyword = keyword, path = TRUE,
                      split_pdf = split_pdf, surround_lines = surround_lines, 
-                     ignore_case = ignore_case))
+                     ignore_case = ignore_case, remove_hyphen = remove_hyphen))
   }
   
   num_rows <- unlist(lapply(extract_table, nrow))

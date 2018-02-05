@@ -23,6 +23,8 @@
 #'    case of the keyword matters. Default is FALSE meaning that case of the 
 #'    keyword is literal. If a vector, must be same length as the keyword 
 #'    vector.
+#' @param remove_hyphen TRUE/FALSE indicating whether hyphenated words should
+#'    be adjusted to combine onto a single line. Default is TRUE.
 #' @param heading_search TRUE/FALSE indicating whether to search for headings 
 #'    in the pdf.
 #' @param heading_args A list of arguments to pass on to the 
@@ -42,11 +44,12 @@
 #'   
 #' # split pdf
 #' keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
-#'   path = TRUE, split_pdf = TRUE)
+#'   path = TRUE, split_pdf = TRUE, remove_hyphen = FALSE)
 #' 
 #' @export
 keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            surround_lines = FALSE, ignore_case = FALSE,
+                           remove_hyphen = TRUE,
                            heading_search = FALSE, heading_args = NULL) {
   if(path) {
     x <- pdftools::pdf_text(x)
@@ -67,6 +70,10 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     } else {
       x_lines <- unlist(strsplit(x, split = '\r\n'))
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
+    }
+    
+    if(remove_hyphen) {
+      x_lines <- remove_hyphen(x_lines)
     }
     
     

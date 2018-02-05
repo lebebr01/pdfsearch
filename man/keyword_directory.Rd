@@ -5,8 +5,8 @@
 \title{Wrapper for keyword search function}
 \usage{
 keyword_directory(directory, keyword, split_pdf = FALSE,
-  surround_lines = FALSE, ignore_case = FALSE, full_names = FALSE,
-  recursive = FALSE, max_search = NULL)
+  surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
+  full_names = FALSE, recursive = FALSE, max_search = NULL)
 }
 \arguments{
 \item{directory}{The directory to perform the search for pdf files to search.}
@@ -29,6 +29,9 @@ the additional number of surrounding lines that will be extracted.}
 case of the keyword matters. 
 Default is FALSE meaning that case of the keyword is literal. If a vector, 
 must be same length as the keyword vector.}
+
+\item{remove_hyphen}{TRUE/FALSE indicating whether hyphenated words should
+be adjusted to combine onto a single line. Default is TRUE.}
 
 \item{full_names}{TRUE/FALSE indicating if the full file path should be used.
 Default is FALSE, see \code{\link{list.files}} for more details.}
@@ -56,7 +59,7 @@ keyword_directory(directory,
 # can also split pdfs
 keyword_directory(directory, 
        keyword = c('repeated measures', 'measurement error'),
-       split_pdf = TRUE,
+       split_pdf = TRUE, remove_hyphen = FALSE,
        surround_lines = 1, full_names = TRUE)
 
 
