@@ -1,15 +1,25 @@
 language: r
-cache: packages
 warnings_are_errors: true
+sudo: false
+cache: packages
 
 matrix:
   include:
     - os: linux
-      dist: precise
-      sudo: false
+      dist: trusty
+      env: R_CODECOV=true
+      r: oldrel
+    - os: linux
+      dist: trusty
+      env: R_CODECOV=true
+      r: release
+    - os: linux
+      dist: trusty
+      env: R_CODECOV=true
+      r: devel
     - os: osx
-      osx_image: beta-xcode6.4
-      disable_homebrew: true
+      osx_image: xcode8
+      brew_packages: poppler
       latex: false
   
 addons:
@@ -24,5 +34,10 @@ r_packages:
    - covr
       
 after_success:
-   - Rscript -e 'library(covr); codecov()'      
+   - Rscript -e 'library(covr); codecov()'
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change  
       
