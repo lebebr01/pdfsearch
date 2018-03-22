@@ -2,7 +2,7 @@ split_pdf <- function(x, delim = ' {2,}(?=\\w)') {
   
   x_lines <- strsplit(x, split = '\r\n')
   
-  x_lines <- lapply(x_lines, strsplit, split = ' {2,}(?=\\w)', perl = TRUE)
+  x_lines <- lapply(x_lines, strsplit, split = ' {2,}(?=\\b)', perl = TRUE)
   
   length_lines <- sapply(seq_along(x_lines), function(xx) sapply(x_lines[[xx]], length))
   

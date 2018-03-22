@@ -61,3 +61,20 @@ test_that("heading search returns NA", {
                             heading_args = head_args)
   expect_true(any(key_res$heading == 'NA'))
 })
+
+test_that('ignore_case functionality', {
+  path <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
+  r_ignore_case <- keyword_search(x = path, 
+                 keyword = c('measurement error', 'R'),
+                 ignore_case = c(TRUE, TRUE),
+                 path = TRUE)
+  
+  R_case <- keyword_search(x = path, 
+                           keyword = c('measurement error', 'R'),
+                           ignore_case = c(FALSE, FALSE),
+                           path = TRUE)
+  
+  expect_false(isTRUE(all.equal(nrow(r_ignore_case), 
+                                nrow(R_case))))
+})
+
