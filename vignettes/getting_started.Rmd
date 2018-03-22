@@ -48,6 +48,32 @@ head(result)
 head(result$line_text, n = 2)
 ```
 
+## Combine hyphenated words
+Typeset PDF files commonly contain words that wrap from one line to the next and are hyphenated. An example of this is shown in the following image.
+
+![hyphenated example](hyphenated.png)
+
+Any hyphenated words are treated as two words and the keyword search may not perform as desired if a matching word would be returned if it is not hyphenated. Fortunately, there is a `remove_hyphen` argument within the `keyword_search` function that removes the hyphenated words at the end of a line and combines them with the word on the next line in the document. Below is an example of this working, showing the results before and after using the `remove_hyphen` argument. By default this argument is set to TRUE. 
+
+```{r remove_hyphen}
+file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
+
+result_hyphen <- keyword_search(file, 
+            keyword = c('measurement'),
+            path = TRUE, remove_hyphen = FALSE)
+
+result_remove_hyphen <- keyword_search(file, 
+            keyword = c('measurement'),
+            path = TRUE, remove_hyphen = TRUE)
+
+nrow(result_hyphen)
+nrow(result_remove_hyphen)
+```
+
+You'll notice that the removal of the hyphen added a few additional keyword matches to the results. These were cases where the word "measurement" wrapped across two lines and was hyphenated (see the image above that has an example of this). 
+
+One specific note about removing hyphens in multiple column PDF files. The ability of the function to perform this action is still experimental and many times does not work the best as of yet. Use the `remove_hyphen` argument with caution with multiple column PDF files.
+
 # `keyword_directory` Example
 The `keyword_directory` function is useful when you have a directory of many pdf files that you want to search a series of keywords in a single function call. This can be particularly useful in the context of a research synthesis or to screen studies for characteristics to include in a meta-analysis.
 
@@ -66,10 +92,9 @@ head(result)
 The `full_names` argument is needed here to specify that the full file path needs to be used to access the pdf files. If the search is done from the directly from the repository, then `full_names` could be set to FALSE.
 
 # Limitations
-Currently there are a handful of limitations, mostly around how pdfs are read into R using the pdftools R package. When pdfs are created in a multiple column layout, a line in the pdf consists of the entire line across both columns. This can lead to fragmented text that may not give the full contents, even with using the `surround_lines` argument. 
+Currently there are a handful of limitations, mostly around how pdfs are read into R using the pdftools R package. When pdfs are created in a multiple column layout, a line in the pdf consists of the entire line across both columns. This can lead to fragmented text that may not give the full contents, even with using the `surround_lines` argument.
 
-A second limitation is due to how the document is typeset and whether words wrap from one line to the next with a hyphen. When a word is truncated with a hyphen and continued on a subsequent line, the pdfsearch package is unable to search and find this word in the search procedure. 
-
+Another limitation is when performing keyword searching with multiple words or phrases. If the match is on a single line, the match would be returned. However, if the words or phrase spans multiple lines, the current implementation will not return a result that spans multiple lines in the PDF file.
 
 
 # Shiny App
