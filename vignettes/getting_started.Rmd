@@ -79,7 +79,8 @@ One specific note about removing hyphens in multiple column PDF files. The abili
 Using the `tokenizers` R package, it is also possible to split the document into individual words. This may be most useful when the interest is in performing a text analysis rather than a keyword search. Below is an example showing the first page line of the text converted to words. By default, hyphenated words at the end of the lines are removed (see previous section for description of this). 
 
 ```{r convert_tokens_text}
-convert_tokens(file, path = TRUE)[[1]] %>% head(10)
+token_result <- convert_tokens(file, path = TRUE)[[1]]
+head(token_result)
 ```
 
 Another implementation of the `convert_tokens` function, is to convert the result text to tokens. This could be interesting when used in tandem with the surround_lines argument. These tokens are included by default when calling the `keyword_search` function.
