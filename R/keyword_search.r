@@ -25,11 +25,21 @@
 #'    vector.
 #' @param remove_hyphen TRUE/FALSE indicating whether hyphenated words should
 #'    be adjusted to combine onto a single line. Default is TRUE.
+#' @param token_results TRUE/FALSE indicating whether the results text returned
+#'    should be split into tokens. See the tokenizers package and 
+#'    \code{\link{convert_tokens}} for more details. Defaults to TRUE.
 #' @param heading_search TRUE/FALSE indicating whether to search for headings 
 #'    in the pdf.
 #' @param heading_args A list of arguments to pass on to the 
 #'    \code{\link{heading_search}} function. See \code{\link{heading_search}} 
 #'     for more details on arguments needed.
+#' @param ... token_function to pass to \code{\link{convert_tokens}} 
+#'   function. 
+#'   
+#' @return A tibble data frame that contains the keyword, location of match, 
+#'   the line of text match, and optionally the tokens associated with the line
+#'   of text match. 
+#'   
 #' @importFrom pdftools pdf_text
 #' @importFrom tibble tibble
 #' @examples 
@@ -49,8 +59,9 @@
 #' @export
 keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            surround_lines = FALSE, ignore_case = FALSE,
-                           remove_hyphen = TRUE,
-                           heading_search = FALSE, heading_args = NULL) {
+                           remove_hyphen = TRUE, token_results = TRUE,
+                           heading_search = FALSE, heading_args = NULL,
+                           ...) {
   if(path) {
     x <- pdftools::pdf_text(x)
   }
@@ -104,13 +115,21 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
         x_lines[keyword_line[xx]])
     }
     
+    if(token_results) {
+      token_results_text <- convert_tokens_keyword(lines_sel, ...)
+    } else {
+      token_results_text <- NULL
+    }
+    
     pages <- findInterval(keyword_line, c(1, line_nums))
     
     text_out <- tibble::tibble(keyword = rep(keyword, 
-                        sapply(keyword_line_loc, length)), 
+                                             sapply(keyword_line_loc, length)), 
                                page_num = pages,
                                line_num = keyword_line,
-                               line_text = lines_sel)
+                               line_text = lines_sel,
+                               token_text = token_results_text
+    )
     
     if(heading_search) {
       head_res <- do.call('heading_search', heading_args)
