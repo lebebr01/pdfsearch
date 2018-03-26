@@ -11,7 +11,8 @@ Description: Includes functions for keyword search of pdf files. There is
 Depends:
     R (>= 3.3.0),
     pdftools,
-    tibble
+    tibble,
+    tokenizers
 Suggests:
     shiny,
     testthat,
