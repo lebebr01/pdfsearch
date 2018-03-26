@@ -74,6 +74,26 @@ You'll notice that the removal of the hyphen added a few additional keyword matc
 
 One specific note about removing hyphens in multiple column PDF files. The ability of the function to perform this action is still experimental and many times does not work the best as of yet. Use the `remove_hyphen` argument with caution with multiple column PDF files.
 
+## Split document into words
+
+Using the `tokenizers` R package, it is also possible to split the document into individual words. This may be most useful when the interest is in performing a text analysis rather than a keyword search. Below is an example showing the first page line of the text converted to words. By default, hyphenated words at the end of the lines are removed (see previous section for description of this). 
+
+```{r convert_tokens_text}
+convert_tokens(file, path = TRUE)[[1]] %>% head(10)
+```
+
+Another implementation of the `convert_tokens` function, is to convert the result text to tokens. This could be interesting when used in tandem with the surround_lines argument. These tokens are included by default when calling the `keyword_search` function.
+
+```{r convert_tokens_result}
+file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+
+result <- keyword_search(file, 
+            keyword = c('repeated measures', 'mixed effects'),
+            path = TRUE, surround_lines = 1)
+```
+
+
+
 # `keyword_directory` Example
 The `keyword_directory` function is useful when you have a directory of many pdf files that you want to search a series of keywords in a single function call. This can be particularly useful in the context of a research synthesis or to screen studies for characteristics to include in a meta-analysis.
 
