@@ -32,6 +32,8 @@ addons:
 cran: https://cran.rstudio.com/
 r_packages:
    - covr
+   
+r_check_args: "--no-vignettes"
       
 after_success:
    - Rscript -e 'library(covr); codecov()'
