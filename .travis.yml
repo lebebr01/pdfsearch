@@ -24,7 +24,7 @@ matrix:
   
 addons:
   apt:
-    packages:
+    package:
       - libwebp-dev
       - libpoppler-cpp-dev
       - valgrind
@@ -33,7 +33,8 @@ cran: https://cran.rstudio.com/
 r_packages:
    - covr
    
-r_check_args: "--no-vignettes"
+r_build_args: "--no-build-vignettes --no-manual"
+r_check_args: "--no-vignettes --no-manual --as-cran"
       
 after_success:
    - Rscript -e 'library(covr); codecov()'
