@@ -1,5 +1,7 @@
 language: r
 warnings_are_errors: true
+latex: false
+fortran: false
 sudo: false
 cache: packages
 
@@ -18,15 +20,24 @@ matrix:
       env: R_CODECOV=true
       r: devel
     - os: osx
-      osx_image: xcode8
+      osx_image: xcode9.3beta
       brew_packages: poppler
-      latex: false
+    - os: osx
+      osx_image: xcode9.2
+      brew_packages: poppler
+    - os: osx
+      osx_image: xcode9.2
+      disable_homebrew: true
+    - os: osx
+      osx_image: xcode7.3
+      disable_homebrew: true
   
 addons:
   apt:
     package:
       - libwebp-dev
       - libpoppler-cpp-dev
+      - poppler-data
       - valgrind
 
 cran: https://cran.rstudio.com/
@@ -42,4 +53,8 @@ notifications:
   email:
     on_success: change
     on_failure: change  
+    
+# Prevents Travis timeout for building libpoppler
+before_install:
+  - (while true; do echo 'Ping? Pong!'; sleep 500; done) &
       
