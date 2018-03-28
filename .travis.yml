@@ -34,7 +34,7 @@ matrix:
   
 addons:
   apt:
-    package:
+    packages:
       - libwebp-dev
       - libpoppler-cpp-dev
       - poppler-data
