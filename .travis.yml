@@ -33,7 +33,6 @@ cran: https://cran.rstudio.com/
 r_packages:
    - covr
    
-r_build_args: "--no-build-vignettes --no-manual"
 r_check_args: "--no-vignettes --no-manual --as-cran"
       
 after_success:
