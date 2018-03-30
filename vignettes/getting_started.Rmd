@@ -25,10 +25,10 @@ There are currently two functions in this package of use to users. The first `ke
 The package comes with two pdf files from [arXiv](https://arxiv.org/) to use as test cases. Below is an example of using the `keyword_search` function.
 ```{r search1, message = FALSE}
 library(pdfsearch)
-file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 
 result <- keyword_search(file, 
-            keyword = c('repeated measures', 'mixed effects'),
+            keyword = c('measurement', 'error'),
             path = TRUE)
 head(result)
 head(result$line_text, n = 2)
@@ -39,10 +39,10 @@ The location of the keyword match, including page number and line number, and th
 ## Surrounding lines of text 
 It may be useful to extract not just the line of text that the keyword is found in, but also surrounding text to have additional context when looking at the keyword results. This can be added by using the argument `surround_lines` as follows:
 ```{r surround}
-file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 
 result <- keyword_search(file, 
-            keyword = c('repeated measures', 'mixed effects'),
+            keyword = c('measurement', 'error'),
             path = TRUE, surround_lines = 1)
 head(result)
 head(result$line_text, n = 2)
@@ -76,14 +76,14 @@ One specific note about removing hyphens in multiple column PDF files. The abili
 
 ## Split document into words
 
-Using the [tokenizers](https://github.com/ropensci/tokenizers) R package, it is also possible to split the document into individual words. This may be most useful when the interest is in performing a text analysis rather than a keyword search. Below is an example showing the first page line of the text converted to words. By default, hyphenated words at the end of the lines are removed (see previous section for description of this). 
+Using the [tokenizers](https://github.com/ropensci/tokenizers) R package, it is also possible to split the document into individual words. This may be most useful when the interest is in performing a text analysis rather than a keyword search. Below is an example showing the first page of the text converted to words. By default, hyphenated words at the end of the lines are removed (see previous section for description of this). 
 
 ```{r convert_tokens_text}
 token_result <- convert_tokens(file, path = TRUE)[[1]]
 head(token_result)
 ```
 
-Another implementation of the `convert_tokens` function, is to convert the result text to tokens. This could be interesting when used in tandem with the surround_lines argument. These tokens are included by default when calling the `keyword_search` function.
+Another implementation of the `convert_tokens` function, is to convert the result text to tokens. This could be interesting when used in tandem with the surround_lines argument for input into a text analysis. These tokens are included by default when calling the `keyword_search` function.
 
 ```{r convert_tokens_result}
 file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
@@ -93,7 +93,6 @@ result <- keyword_search(file,
             path = TRUE, surround_lines = 1)
 result
 ```
-
 
 
 # `keyword_directory` Example
@@ -111,7 +110,7 @@ result <- keyword_directory(directory,
 head(result)
 ```
 
-The `full_names` argument is needed here to specify that the full file path needs to be used to access the pdf files. If the search is done from the directly from the repository, then `full_names` could be set to FALSE.
+The `full_names` argument is needed here to specify that the full file path needs to be used to access the pdf files. If the search is done directly from the repository (i.e. when using an R project in RStudio), then `full_names` could be set to FALSE.
 
 # Limitations
 Currently there are a handful of limitations, mostly around how pdfs are read into R using the pdftools R package. When pdfs are created in a multiple column layout, a line in the pdf consists of the entire line across both columns. This can lead to fragmented text that may not give the full contents, even with using the `surround_lines` argument.
