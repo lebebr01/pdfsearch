@@ -1,0 +1,27 @@
+{
+    "description": "pdfsearch 0.2.0\n<ul>\n<li>Added <code>remove_hyphen</code> argument to remove hyphen from words that wrap onto two subsequent lines</li>\n<li>Added <code>convert_tokens</code> function which uses the tokenizers R package to convert text to tokens.</li>\n<li>Created vignette with expanded details</li>\n<li>Created JOSS paper for submission</li>\n<li>Created code of conduct and contributing policies.</li>\n</ul>", 
+    "license": "other-open", 
+    "title": "lebebr01/pdfsearch: JOSS Submission", 
+    "version": "v0.2.0", 
+    "upload_type": "software", 
+    "publication_date": "2018-03-30", 
+    "creators": [
+        {
+            "affiliation": "University of Iowa",
+            "name": "Brandon LeBeau"
+        }
+    ], 
+    "access_right": "open", 
+    "related_identifiers": [
+        {
+            "scheme": "url", 
+            "identifier": "https://github.com/lebebr01/pdfsearch/tree/v0.2.0", 
+            "relation": "isSupplementTo"
+        }, 
+        {
+            "scheme": "doi", 
+            "identifier": "10.5281/zenodo.1210278", 
+            "relation": "isPartOf"
+        }
+    ]
+}
