@@ -24,10 +24,10 @@ There are currently two functions in this package of use to users. The first `ke
 The package comes with two pdf files from [arXiv](https://arxiv.org/) to use as test cases. Below is an example of using the `keyword_search` function.
 ```{r search1, message = FALSE}
 library(pdfsearch)
-file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 
 result <- keyword_search(file, 
-            keyword = c('repeated measures', 'mixed effects'),
+            keyword = c('measurement', 'error'),
             path = TRUE)
 head(result)
 head(result$line_text, n = 2)
@@ -40,10 +40,10 @@ In addition, by default the hyphenated words at the end of the text are combined
 ### Surrounding lines of text 
 It may be useful to extract not just the line of text that the keyword is found in, but also surrounding text to have additional context when looking at the keyword results. This can be added by using the argument `surround_lines` as follows:
 ```{r surround}
-file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 
 result <- keyword_search(file, 
-            keyword = c('repeated measures', 'mixed effects'),
+            keyword = c('measurement', 'error'),
             path = TRUE, surround_lines = 1)
 head(result)
 head(result$line_text, n = 2)

@@ -27,24 +27,24 @@ The package comes with two pdf files from [arXiv](https://arxiv.org/) to use as 
 
 ```r
 library(pdfsearch)
-file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 
 result <- keyword_search(file, 
-            keyword = c('repeated measures', 'mixed effects'),
+            keyword = c('measurement', 'error'),
             path = TRUE)
 head(result)
 ```
 
 ```
 ## # A tibble: 6 x 5
-##   keyword           page_num line_num line_text token_text
-##   <chr>                <int>    <int> <list>    <list>    
-## 1 repeated measures        1       24 <chr [1]> <list [1]>
-## 2 repeated measures        2       57 <chr [1]> <list [1]>
-## 3 repeated measures        2      108 <chr [1]> <list [1]>
-## 4 repeated measures        2      110 <chr [1]> <list [1]>
-## 5 repeated measures        2      125 <chr [1]> <list [1]>
-## 6 repeated measures        6      444 <chr [1]> <list [1]>
+##   keyword     page_num line_num line_text token_text
+##   <chr>          <int>    <int> <list>    <list>    
+## 1 measurement        1        5 <chr [1]> <list [1]>
+## 2 measurement        1        9 <chr [1]> <list [1]>
+## 3 measurement        1       19 <chr [1]> <list [1]>
+## 4 measurement        1       21 <chr [1]> <list [1]>
+## 5 measurement        2       28 <chr [1]> <list [1]>
+## 6 measurement        2       31 <chr [1]> <list [1]>
 ```
 
 ```r
@@ -53,10 +53,10 @@ head(result$line_text, n = 2)
 
 ```
 ## [[1]]
-## [1] "cally the repeated measures design, including the crossover           get false confidence about lack of negative effects. Statistical"
+## [1] "Often in surveys, key items are subject to measurement errors. Given just the"
 ## 
 ## [[2]]
-## [1] "iterations and testing many ideas can reap the most         erations to repeated measures design, with variants to the"
+## [1] "with high quality measurements of the error-prone survey items. We"
 ```
 
 The location of the keyword match, including page number and line number, the actual line of text, and a tokenized version of the text (raw text split by individual words) are returned by default.
@@ -67,24 +67,24 @@ In addition, by default the hyphenated words at the end of the text are combined
 It may be useful to extract not just the line of text that the keyword is found in, but also surrounding text to have additional context when looking at the keyword results. This can be added by using the argument `surround_lines` as follows:
 
 ```r
-file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
+file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 
 result <- keyword_search(file, 
-            keyword = c('repeated measures', 'mixed effects'),
+            keyword = c('measurement', 'error'),
             path = TRUE, surround_lines = 1)
 head(result)
 ```
 
 ```
 ## # A tibble: 6 x 5
-##   keyword           page_num line_num line_text token_text
-##   <chr>                <int>    <int> <list>    <list>    
-## 1 repeated measures        1       24 <chr [3]> <list [3]>
-## 2 repeated measures        2       57 <chr [3]> <list [3]>
-## 3 repeated measures        2      108 <chr [3]> <list [3]>
-## 4 repeated measures        2      110 <chr [3]> <list [3]>
-## 5 repeated measures        2      125 <chr [3]> <list [3]>
-## 6 repeated measures        6      444 <chr [3]> <list [3]>
+##   keyword     page_num line_num line_text token_text
+##   <chr>          <int>    <int> <list>    <list>    
+## 1 measurement        1        5 <chr [3]> <list [3]>
+## 2 measurement        1        9 <chr [3]> <list [3]>
+## 3 measurement        1       19 <chr [3]> <list [3]>
+## 4 measurement        1       21 <chr [3]> <list [3]>
+## 5 measurement        2       28 <chr [3]> <list [3]>
+## 6 measurement        2       31 <chr [3]> <list [3]>
 ```
 
 ```r
@@ -93,14 +93,14 @@ head(result$line_text, n = 2)
 
 ```
 ## [[1]]
-## [1] "introduce more sophisticated experimental designs, specifi-           only would we miss potentially beneficial effects, we may also"  
-## [2] "cally the repeated measures design, including the crossover           get false confidence about lack of negative effects. Statistical"
-## [3] "design and related variants, to increase KPI sensitivity with         power increases with larger effect size, and smaller variances." 
+## [1] "Abstract"                                                                          
+## [2] "Often in surveys, key items are subject to measurement errors. Given just the"     
+## [3] "data, it can be difficult to determine the distribution of this error process, and"
 ## 
 ## [[2]]
-## [1] "a limitation to any online experimentation platform, where       within-subject variation. We also discuss practical considfast"
-## [2] "iterations and testing many ideas can reap the most         erations to repeated measures design, with variants to the"         
-## [3] "rewards.                                                         crossover design to study the carry over effect, including the"
+## [1] "some settings, however, analysts have access to a data source on different individuals"
+## [2] "with high quality measurements of the error-prone survey items. We"                    
+## [3] "present a data fusion framework for leveraging this information to improve inferences"
 ```
 
 ## Example with `keyword_directory`
