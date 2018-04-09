@@ -1,6 +1,6 @@
 split_pdf <- function(x, delim = ' {2,}(?=\\w)') {
   
-  x_lines <- strsplit(x, split = '\r\n')
+  x_lines <- tokenizers::tokenize_lines(x)
   
   x_lines <- lapply(x_lines, strsplit, split = ' {2,}(?=\\b)', perl = TRUE)
   

@@ -78,3 +78,14 @@ test_that('ignore_case functionality', {
                                 nrow(R_case))))
 })
 
+test_that('Platform Specific Encoding', {
+  file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
+  
+  result <- keyword_search(file, 
+                           keyword = c('measurement', 'error'),
+                           path = TRUE)
+  
+  expect_false(any(grepl("\\n", result$line_text)))
+  
+})
+

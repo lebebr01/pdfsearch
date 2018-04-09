@@ -42,6 +42,7 @@
 #'   
 #' @importFrom pdftools pdf_text
 #' @importFrom tibble tibble
+#' @importFrom tokenizers tokenize_lines
 #' @examples 
 #' file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
 #' 
@@ -65,7 +66,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   if(path) {
     x <- pdftools::pdf_text(x)
   }
-  line_nums <- cumsum(sapply(strsplit(x, split = '\r\n'), length))
+  line_nums <- cumsum(lapply(tokenizers::tokenize_lines(x), length))
   if(any(line_nums == 0)) {
     warning('text not recognized in pdf')
     text_out <- data.frame(keyword = NULL, 
@@ -79,7 +80,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
       line_nums <- cumsum(x_list[[2]])
       x_lines <- x_list[[1]]
     } else {
-      x_lines <- unlist(strsplit(x, split = '\r\n'))
+      x_lines <- unlist(tokenizers::tokenize_lines(x))
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
     }
     
