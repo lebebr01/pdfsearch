@@ -25,7 +25,7 @@
 #'    should be split into tokens. See the tokenizers package and 
 #'    \code{\link{convert_tokens}} for more details. Defaults to TRUE.
 #' @param full_names TRUE/FALSE indicating if the full file path should be used.
-#'    Default is FALSE, see \code{\link{list.files}} for more details.
+#'    Default is TRUE, see \code{\link{list.files}} for more details.
 #' @param recursive TRUE/FALSE indicating if subdirectories should be searched 
 #'    as well.
 #'    Default is FALSE, see \code{\link{list.files}} for more details.
@@ -58,7 +58,7 @@
 keyword_directory <- function(directory, keyword, split_pdf = FALSE, 
                               surround_lines = FALSE,
                               ignore_case = FALSE, remove_hyphen = TRUE,
-                              token_results = TRUE, full_names = FALSE, 
+                              token_results = TRUE, full_names = TRUE, 
                               recursive = FALSE, max_search = NULL, ...) {
   files_dir <- list.files(path = directory, pattern = ".pdf", 
                           full.names = full_names, recursive = recursive)
