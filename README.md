@@ -113,7 +113,7 @@ directory <- system.file('pdf', package = 'pdfsearch')
 # do search over two files
 directory_result <- keyword_directory(directory, 
        keyword = c('repeated measures', 'measurement error'),
-       surround_lines = 1, full_names = TRUE)
+       surround_lines = 1)
 
 head(directory_result, n = 2)
 ```
@@ -130,7 +130,7 @@ head(directory_result, n = 2)
 ## 2                                                                         a, limitation, to, any, online, experimentation, platform, where, within, subject, variation, we, also, discuss, practical, considfast, iterations, and, testing, many, ideas, can, reap, the, most, erations, to, repeated, measures, design, with, variants, to, the, rewards, crossover, design, to, study, the, carry, over, effect, including, the
 ```
 
-Note here the use of the `full_names` argument. This argument specifies whether the full path to the PDF file should be used (`TRUE`) or if only the file name should be used (`FALSE`; default). A few other useful arguments are possible when searching for keywords within multiple PDF files in a directory. One is the `recursive` (default is `FALSE`), where if set to `TRUE` will search within subdirectories as well, the default function behavior will not venture into subdirectories. Finally, if the directory has many PDF files, testing the function first on a handful of PDF files may be desired. The number of PDF files can be limited with the argument `max_search` where a positive integer can be specified indicating the number of PDF files to search. For example, is `max_search = 2`, only the first two PDF files will be searched within the directory.
+A few other useful arguments are possible when searching for keywords within multiple PDF files in a directory. One is the `recursive` (default is `FALSE`), where if set to `TRUE` will search within subdirectories as well, the default function behavior will not venture into subdirectories. Finally, if the directory has many PDF files, testing the function first on a handful of PDF files may be desired. The number of PDF files can be limited with the argument `max_search` where a positive integer can be specified indicating the number of PDF files to search. For example, is `max_search = 2`, only the first two PDF files will be searched within the directory.
 
 ### Shiny App
 The package also has a simple Shiny app that can be called using the following command
