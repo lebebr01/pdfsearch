@@ -6,7 +6,7 @@
 \usage{
 keyword_directory(directory, keyword, split_pdf = FALSE,
   surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
-  token_results = TRUE, full_names = FALSE, recursive = FALSE,
+  token_results = TRUE, full_names = TRUE, recursive = FALSE,
   max_search = NULL, ...)
 }
 \arguments{
@@ -39,7 +39,7 @@ should be split into tokens. See the tokenizers package and
 \code{\link{convert_tokens}} for more details. Defaults to TRUE.}
 
 \item{full_names}{TRUE/FALSE indicating if the full file path should be used.
-Default is FALSE, see \code{\link{list.files}} for more details.}
+Default is TRUE, see \code{\link{list.files}} for more details.}
 
 \item{recursive}{TRUE/FALSE indicating if subdirectories should be searched 
 as well.
