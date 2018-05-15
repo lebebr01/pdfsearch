@@ -2,7 +2,7 @@ context("Test Structure")
 
 test_that("correct structure", {
   path <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
-  expect_true(is.tibble(keyword_search(x = path, keyword = 'measurement error', 
+  expect_true(tibble::is.tibble(keyword_search(x = path, keyword = 'measurement error', 
                                        path = TRUE)))
 })
 
@@ -31,7 +31,7 @@ test_that('directory search max_search', {
 test_that("heading search", {
   file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
   
-  expect_true(is.tibble(heading_search(file, 
+  expect_true(tibble::is.tibble(heading_search(file, 
                                   headings = c('abstract', 'introduction'),
                  path = TRUE)))
 })
