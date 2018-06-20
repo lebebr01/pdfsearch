@@ -1,8 +1,8 @@
 {
-    "description": "pdfsearch 0.2.1\n<ul>\n<li>JOSS Acceptance</li>\n<li>Fixed bug with platform specific string splitting #10</li>\n<li>Changed Depends to Imports #12. </li>\n<li>Changed <code>full_names</code> default to <code>TRUE</code> for <code>keyword_directory</code> function.</li>\n<li>Fixed typos and articulated package significance #11 #15 #13. </li>\n</ul>", 
+    "description": "pdfsearch 0.2.2\n<ul>\n<li>JOSS Acceptance</li>\n<li>Fixed bug with platform specific string splitting #10</li>\n<li>Changed Depends to Imports #12. </li>\n<li>Changed <code>full_names</code> default to <code>TRUE</code> for <code>keyword_directory</code> function.</li>\n<li>Fixed typos and articulated package significance #11 #15 #13. </li>\n</ul>", 
     "license": "other-open", 
     "title": "lebebr01/pdfsearch: JOSS Acceptance", 
-    "version": "v0.2.1", 
+    "version": "v0.2.2", 
     "upload_type": "software", 
     "publication_date": "2018-06-20", 
     "creators": [
@@ -15,7 +15,7 @@
     "related_identifiers": [
         {
             "scheme": "url", 
-            "identifier": "https://github.com/lebebr01/pdfsearch/tree/v0.2.1", 
+            "identifier": "https://github.com/lebebr01/pdfsearch/tree/v0.2.2", 
             "relation": "isSupplementTo"
         }, 
         {
