@@ -1,10 +1,10 @@
 {
-    "description": "pdfsearch 0.2.0\n<ul>\n<li>Added <code>remove_hyphen</code> argument to remove hyphen from words that wrap onto two subsequent lines</li>\n<li>Added <code>convert_tokens</code> function which uses the tokenizers R package to convert text to tokens.</li>\n<li>Created vignette with expanded details</li>\n<li>Created JOSS paper for submission</li>\n<li>Created code of conduct and contributing policies.</li>\n</ul>", 
+    "description": "pdfsearch 0.2.1\n<ul>\n<li>JOSS Acceptance</li>\n<li>Fixed bug with platform specific string splitting #10</li>\n<li>Changed Depends to Imports #12. </li>\n<li>Changed <code>full_names</code> default to <code>TRUE</code> for <code>keyword_directory</code> function.</li>\n<li>Fixed typos and articulated package significance #11 #15 #13. </li>\n</ul>", 
     "license": "other-open", 
-    "title": "lebebr01/pdfsearch: JOSS Submission", 
-    "version": "v0.2.0", 
+    "title": "lebebr01/pdfsearch: JOSS Acceptance", 
+    "version": "v0.2.1", 
     "upload_type": "software", 
-    "publication_date": "2018-03-30", 
+    "publication_date": "2018-06-20", 
     "creators": [
         {
             "affiliation": "University of Iowa",
@@ -15,12 +15,12 @@
     "related_identifiers": [
         {
             "scheme": "url", 
-            "identifier": "https://github.com/lebebr01/pdfsearch/tree/v0.2.0", 
+            "identifier": "https://github.com/lebebr01/pdfsearch/tree/v0.2.1", 
             "relation": "isSupplementTo"
         }, 
         {
             "scheme": "doi", 
-            "identifier": "10.5281/zenodo.1210278", 
+            "identifier": "10.5281/zenodo.1294047", 
             "relation": "isPartOf"
         }
     ]
