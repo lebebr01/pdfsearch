@@ -24,7 +24,7 @@ The pdfsearch package can aid users in manipulation of text data from PDF files 
 
 As an example, the package is currently being used to explore the evolution of statistical software and quantitative methods used in published social science research [@lebeau2018]. This process involves getting PDF files from published research articles and using pdfsearch to search for specific software and quantitative methods keywords within the research articles. The results of the keyword matches will be explored using research synthesis methods [@cooper2017].
 
-The package vignette includes more information on this package. Included in the vignette are keyword searches within PDF documents and an exploration of the output from the package. The vignette also discusses limitations of the package. Below is example output of the package searching for the phrase "repeated measures" from @2015arXiv. Link to the package release can be found here: <https://doi.org/10.5281/zenodo.1210279>
+The package vignette includes more information on this package. Included in the vignette are keyword searches within PDF documents and an exploration of the output from the package. The vignette also discusses limitations of the package. Below is example output of the package searching for the phrase "repeated measures" from @2015arXiv.
 
 ![Example output searching for "repeated measures" phrase in a single PDF document.](joss.png)
 
