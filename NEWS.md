@@ -1,3 +1,8 @@
+# pdfsearch 0.2.2
+
+* JOSS Acceptance!
+
+
 # pdfsearch 0.2.0
 
 * Added `remove_hyphen` argument to remove hyphen from words that wrap onto two subsequent lines

@@ -1,8 +1,11 @@
 ## Test Environments
-* local windows install, R 3.3.2
-* r-hub (devel and release)
-* ubuntu 12.04 (travis CI) R 3.3.1
-* OS X 10.9.5 (travis CI) R 3.3.2
+* local windows install, R 3.5.0
+* ubuntu 14.04 (travis CI) R 3.4.4
+* ubuntu 14.04 (travis CI) R 3.5.0
+* ubuntu 14.04 (travis CI) R development
+* OS X 10.13.3 (travis CI) R 3.5.0
+* OS X 10.12.6 (travis CI) R 3.5.0
+* OS X 10.11.6 (travis CI) R 3.5.0
 
 ## R CMD check results
 One Note: New Submission
