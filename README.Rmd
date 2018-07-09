@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/lebebr01/pdfsearch.svg?branch=master)](https://travis-ci.org/lebebr01/pdfsearch)
 [![codecov.io](https://codecov.io/github/lebebr01/pdfsearch/coverage.svg?branch=master)](https://codecov.io/github/lebebr01/pdfsearch?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/pdfsearch)](http://cran.r-project.org/package=pdfsearch)
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.00668/status.svg)](https://doi.org/10.21105/joss.00668)
 
 This package defines a few useful functions for keyword searching using the [pdftools](https://github.com/ropensci/pdftools)  package developed by [rOpenSci](https://ropensci.org/).
 
