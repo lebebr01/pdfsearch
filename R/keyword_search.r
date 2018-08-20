@@ -33,6 +33,8 @@
 #' @param heading_args A list of arguments to pass on to the 
 #'    \code{\link{heading_search}} function. See \code{\link{heading_search}} 
 #'     for more details on arguments needed.
+#' @param collapse TRUE/FALSE indicating if individual lines of PDF file should
+#'     be collapsed into a single large paragraph to perform keyword searching.
 #' @param ... token_function to pass to \code{\link{convert_tokens}} 
 #'   function. 
 #'   
@@ -62,7 +64,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            surround_lines = FALSE, ignore_case = FALSE,
                            remove_hyphen = TRUE, token_results = TRUE,
                            heading_search = FALSE, heading_args = NULL,
-                           ...) {
+                           collapse = TRUE, ...) {
   if(path) {
     x <- pdftools::pdf_text(x)
   }
@@ -88,6 +90,10 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
       x_lines <- remove_hyphen(x_lines)
     }
     
+    # collapse into a single paragraph
+    if(collapse) {
+      x_lines <- paste(x_lines, collapse = ' ')
+    }
     
     if(length(ignore_case) > 1) {
       if(length(keyword) != length(ignore_case)) {
