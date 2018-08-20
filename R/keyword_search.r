@@ -35,6 +35,7 @@
 #'     for more details on arguments needed.
 #' @param collapse TRUE/FALSE indicating if individual lines of PDF file should
 #'     be collapsed into a single large paragraph to perform keyword searching.
+#'     Default is FALSE.
 #' @param ... token_function to pass to \code{\link{convert_tokens}} 
 #'   function. 
 #'   
@@ -64,7 +65,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            surround_lines = FALSE, ignore_case = FALSE,
                            remove_hyphen = TRUE, token_results = TRUE,
                            heading_search = FALSE, heading_args = NULL,
-                           collapse = TRUE, ...) {
+                           collapse = FALSE, ...) {
   if(path) {
     x <- pdftools::pdf_text(x)
   }

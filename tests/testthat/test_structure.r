@@ -25,7 +25,7 @@ test_that('directory search max_search', {
   path <- gsub('/1610.00147.pdf', '', path)
   expect_equal(length(table(keyword_directory(directory = path, 
                       keyword = 'error', full_names = TRUE,
-                    max_search = 1)$ID)), 1)
+                    max_search = 1, collapse = FALSE)$ID)), 1)
 })
 
 test_that("heading search", {
@@ -58,7 +58,8 @@ test_that("heading search returns NA", {
   key_res <- keyword_search(file, 
                             keyword = c('repeated measures', 'mixed effects'),
                             path = TRUE, heading_search = TRUE, 
-                            heading_args = head_args)
+                            heading_args = head_args, 
+                            collapse = FALSE)
   expect_true(any(key_res$heading == 'NA'))
 })
 

@@ -24,6 +24,9 @@
 #'    The split_pdf function attempts to recreate the column layout of the text 
 #'    into a single column starting with the left column and proceeding to the 
 #'    right.
+#' @param collapse TRUE/FALSE indicating if individual lines of PDF file should
+#'     be collapsed into a single large paragraph to perform keyword searching.
+#'     Default is FALSE.
 #' @importFrom pdftools pdf_toc
 #' 
 #' @examples 
@@ -35,7 +38,7 @@
 #' @export
 heading_search <- function(x, headings, path = FALSE, pdf_toc = FALSE,
                            full_line = FALSE, ignore_case = FALSE, 
-                           split_pdf = FALSE) {
+                           split_pdf = FALSE, collapse = FALSE) {
   
   if(pdf_toc & !path) stop('If pdf_toc = TRUE, then path must be specified')
   if(pdf_toc & path) {
@@ -50,6 +53,6 @@ heading_search <- function(x, headings, path = FALSE, pdf_toc = FALSE,
   
   keyword_search(x, keyword = headings, path = path, 
                  surround_lines = FALSE, ignore_case = ignore_case, 
-                 split_pdf = split_pdf)
+                 split_pdf = split_pdf, collapse = collapse)
   
 }

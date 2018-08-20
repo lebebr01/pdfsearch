@@ -5,9 +5,11 @@ test_that('spliting of columns', {
   
   tmp <- keyword_search(x = path, keyword = 'error', 
                         path = TRUE, split = TRUE,
-                        remove_hyphen = FALSE)
+                        remove_hyphen = FALSE, 
+                        collapse = FALSE)
   tmp2 <- keyword_search(x = path, keyword = 'error', 
-                         path = TRUE, remove_hyphen = FALSE)
+                         path = TRUE, remove_hyphen = FALSE, 
+                         collapse = FALSE)
   
   expect_false(isTRUE(all.equal(tmp$line_num, tmp2$line_num)))
 })
