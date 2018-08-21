@@ -6,8 +6,8 @@
 \usage{
 keyword_directory(directory, keyword, split_pdf = FALSE,
   surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
-  token_results = TRUE, full_names = TRUE, recursive = FALSE,
-  max_search = NULL, ...)
+  token_results = TRUE, convert_sentence = TRUE, full_names = TRUE,
+  recursive = FALSE, max_search = NULL, ...)
 }
 \arguments{
 \item{directory}{The directory to perform the search for pdf files to search.}
@@ -37,6 +37,10 @@ be adjusted to combine onto a single line. Default is TRUE.}
 \item{token_results}{TRUE/FALSE indicating whether the results text returned
 should be split into tokens. See the tokenizers package and 
 \code{\link{convert_tokens}} for more details. Defaults to TRUE.}
+
+\item{convert_sentence}{TRUE/FALSE indicating if individual lines of PDF file
+should be collapsed into a single large paragraph to perform keyword 
+searching. Default is TRUE}
 
 \item{full_names}{TRUE/FALSE indicating if the full file path should be used.
 Default is TRUE, see \code{\link{list.files}} for more details.}
