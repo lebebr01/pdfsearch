@@ -38,3 +38,8 @@ remove_hyphen <- function(text_lines) {
   text_lines <- gsub("^\\s+|\\s+$", '', text_lines)
   text_lines
 }
+
+true_false <- function(x, chars) {
+  x > chars
+}
+

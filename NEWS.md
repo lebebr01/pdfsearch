@@ -3,6 +3,7 @@
 * Added ability to split pdf into sentences for keyword searching.
     + This option also available for directory searching.
     + Also for heading search.
+* Stab at better spliting of pdfs.
 * Added JOSS badge and citation information
 
 # pdfsearch 0.2.2

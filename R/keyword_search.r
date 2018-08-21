@@ -80,8 +80,10 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     
     if(split_pdf) {
       x_list <- split_pdf(x)
-      line_nums <- cumsum(x_list[[2]])
-      x_lines <- x_list[[1]]
+      x_lines <- unlist(x_list)
+      x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
+      # line_nums <- cumsum(x_list[[2]])
+      # x_lines <- x_list[[1]]
     } else {
       x_lines <- unlist(stringi::stri_split_lines(x))
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
