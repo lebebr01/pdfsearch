@@ -1,4 +1,4 @@
-# pdfsearch 0.2.3
+# pdfsearch 0.3.0
 
 * Added ability to split pdf into sentences for keyword searching.
     + This option also available for directory searching.
