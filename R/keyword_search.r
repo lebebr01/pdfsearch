@@ -33,9 +33,9 @@
 #' @param heading_args A list of arguments to pass on to the 
 #'    \code{\link{heading_search}} function. See \code{\link{heading_search}} 
 #'     for more details on arguments needed.
-#' @param collapse TRUE/FALSE indicating if individual lines of PDF file should
-#'     be collapsed into a single large paragraph to perform keyword searching.
-#'     Default is FALSE.
+#' @param convert_sentence TRUE/FALSE indicating if individual lines of PDF file
+#'     should be collapsed into a single large paragraph to perform keyword 
+#'     searching. Default is TRUE
 #' @param ... token_function to pass to \code{\link{convert_tokens}} 
 #'   function. 
 #'   
@@ -45,7 +45,7 @@
 #'   
 #' @importFrom pdftools pdf_text
 #' @importFrom tibble tibble
-#' @importFrom tokenizers tokenize_lines
+#' @importFrom stringi stri_split_boundaries stri_split_lines
 #' @examples 
 #' file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
 #' 
@@ -65,7 +65,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            surround_lines = FALSE, ignore_case = FALSE,
                            remove_hyphen = TRUE, token_results = TRUE,
                            heading_search = FALSE, heading_args = NULL,
-                           collapse = FALSE, ...) {
+                           convert_sentence = TRUE, ...) {
   if(path) {
     x <- pdftools::pdf_text(x)
   }
@@ -83,7 +83,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
       line_nums <- cumsum(x_list[[2]])
       x_lines <- x_list[[1]]
     } else {
-      x_lines <- unlist(tokenizers::tokenize_lines(x))
+      x_lines <- unlist(stringi::stri_split_lines(x))
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
     }
     
@@ -92,8 +92,10 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     }
     
     # collapse into a single paragraph
-    if(collapse) {
+    if(convert_sentence) {
       x_lines <- paste(x_lines, collapse = ' ')
+      x_lines <- unlist(stringi::stri_split_boundaries(x_lines, 
+                                                       type = "sentence"))
     }
     
     if(length(ignore_case) > 1) {

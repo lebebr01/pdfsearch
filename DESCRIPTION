@@ -13,7 +13,8 @@ Depends:
 Imports:
     pdftools,
     tibble,
-    tokenizers
+    tokenizers,
+    stringi
 Suggests:
     shiny,
     testthat,

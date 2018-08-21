@@ -6,7 +6,7 @@
 \usage{
 heading_search(x, headings, path = FALSE, pdf_toc = FALSE,
   full_line = FALSE, ignore_case = FALSE, split_pdf = FALSE,
-  collapse = FALSE)
+  convert_sentence = FALSE)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a 
@@ -37,9 +37,9 @@ The split_pdf function attempts to recreate the column layout of the text
 into a single column starting with the left column and proceeding to the 
 right.}
 
-\item{collapse}{TRUE/FALSE indicating if individual lines of PDF file should
-be collapsed into a single large paragraph to perform keyword searching.
-Default is FALSE.}
+\item{convert_sentence}{TRUE/FALSE indicating if individual lines of PDF file
+should be collapsed into a single large paragraph to perform keyword 
+searching. Default is FALSE}
 }
 \description{
 The ability to extract the location of the text and separate by sections. 

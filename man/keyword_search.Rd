@@ -7,7 +7,7 @@
 keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
   surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
   token_results = TRUE, heading_search = FALSE, heading_args = NULL,
-  collapse = FALSE, ...)
+  convert_sentence = TRUE, ...)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a 
@@ -49,9 +49,9 @@ in the pdf.}
 \code{\link{heading_search}} function. See \code{\link{heading_search}} 
  for more details on arguments needed.}
 
-\item{collapse}{TRUE/FALSE indicating if individual lines of PDF file should
-be collapsed into a single large paragraph to perform keyword searching.
-Default is FALSE.}
+\item{convert_sentence}{TRUE/FALSE indicating if individual lines of PDF file
+should be collapsed into a single large paragraph to perform keyword 
+searching. Default is TRUE}
 
 \item{...}{token_function to pass to \code{\link{convert_tokens}} 
 function.}
