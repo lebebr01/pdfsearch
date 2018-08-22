@@ -105,10 +105,10 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
           stop('keyword and ignore.case must be same length')
       }
       keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
-        grep(keyword[xx], x_lines, ignore_case[xx]))
+        grep(keyword[xx], x_lines, ignore_case[xx], perl = TRUE))
     } else {
       keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
-        grep(keyword[xx], x_lines, ignore_case))
+        grep(keyword[xx], x_lines, ignore_case, perl = TRUE))
     }
     keyword_line <- unlist(keyword_line_loc)
     
