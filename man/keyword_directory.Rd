@@ -7,7 +7,7 @@
 keyword_directory(directory, keyword, split_pdf = FALSE,
   surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
   token_results = TRUE, convert_sentence = TRUE, full_names = TRUE,
-  recursive = FALSE, max_search = NULL, ...)
+  file_pattern = ".pdf", recursive = FALSE, max_search = NULL, ...)
 }
 \arguments{
 \item{directory}{The directory to perform the search for pdf files to search.}
@@ -44,6 +44,11 @@ searching. Default is TRUE}
 
 \item{full_names}{TRUE/FALSE indicating if the full file path should be used.
 Default is TRUE, see \code{\link{list.files}} for more details.}
+
+\item{file_pattern}{An optional regular expression to select specific file
+names. Only files that match the regular expression will be searched. 
+Defaults to all pdfs, i.e. \code{".pdf"}. See \code{\link{list.files}} 
+for more details.}
 
 \item{recursive}{TRUE/FALSE indicating if subdirectories should be searched 
 as well.

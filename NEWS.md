@@ -4,6 +4,7 @@
     + This option also available for directory searching.
     + Also for heading search.
 * Stab at better spliting of pdfs.
+* Added `file_pattern` argument to allow for regular expression filtering of files when running `keyword_directory`.
 * Added JOSS badge and citation information
 
 # pdfsearch 0.2.2

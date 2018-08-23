@@ -29,6 +29,10 @@
 #'     searching. Default is TRUE
 #' @param full_names TRUE/FALSE indicating if the full file path should be used.
 #'    Default is TRUE, see \code{\link{list.files}} for more details.
+#' @param file_pattern An optional regular expression to select specific file
+#'    names. Only files that match the regular expression will be searched. 
+#'    Defaults to all pdfs, i.e. \code{".pdf"}. See \code{\link{list.files}} 
+#'    for more details.
 #' @param recursive TRUE/FALSE indicating if subdirectories should be searched 
 #'    as well.
 #'    Default is FALSE, see \code{\link{list.files}} for more details.
@@ -58,15 +62,16 @@
 #' 
 #' 
 #' @export
-keyword_directory <- function(directory, keyword, split_pdf = FALSE, 
-                              surround_lines = FALSE,
+keyword_directory <- function(directory, keyword, 
+                              split_pdf = FALSE, surround_lines = FALSE,
                               ignore_case = FALSE, remove_hyphen = TRUE,
                               token_results = TRUE, convert_sentence = TRUE,
-                              full_names = TRUE, 
+                              full_names = TRUE, file_pattern = ".pdf",
                               recursive = FALSE, max_search = NULL, ...) {
-  files_dir <- list.files(path = directory, pattern = ".pdf", 
+  
+  files_dir <- list.files(path = directory, pattern = file_pattern, 
                           full.names = full_names, recursive = recursive)
-  file_name <- list.files(path = directory, pattern = ".pdf", 
+  file_name <- list.files(path = directory, pattern = file_pattern, 
                           full.names = FALSE, recursive = recursive)
   
   if(is.null(max_search)) {
