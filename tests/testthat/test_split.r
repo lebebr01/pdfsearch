@@ -4,7 +4,7 @@ test_that('spliting of columns', {
   path <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
   
   tmp <- keyword_search(x = path, keyword = 'error', 
-                        path = TRUE, split = TRUE,
+                        path = TRUE, split_pdf = TRUE,
                         remove_hyphen = FALSE)
   tmp2 <- keyword_search(x = path, keyword = 'error', 
                          path = TRUE, remove_hyphen = FALSE)
