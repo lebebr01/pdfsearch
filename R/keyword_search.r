@@ -36,6 +36,10 @@
 #' @param convert_sentence TRUE/FALSE indicating if individual lines of PDF file
 #'     should be collapsed into a single large paragraph to perform keyword 
 #'     searching. Default is TRUE
+#' @param split_pattern Regular expression pattern used to split multicolumn 
+#'     PDF files using \code{\link{stringi::stri_split_regex}}. 
+#'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
+#'     split based on three or more consecutive white space characters. 
 #' @param ... token_function to pass to \code{\link{convert_tokens}} 
 #'   function. 
 #'   
@@ -65,7 +69,8 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            surround_lines = FALSE, ignore_case = FALSE,
                            remove_hyphen = TRUE, token_results = TRUE,
                            heading_search = FALSE, heading_args = NULL,
-                           convert_sentence = TRUE, ...) {
+                           convert_sentence = TRUE, 
+                           split_pattern = "\\p{WHITE_SPACE}{3,}", ...) {
   if(path) {
     x <- pdftools::pdf_text(x)
   }
@@ -79,7 +84,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   } else {
     
     if(split_pdf) {
-      x_list <- split_pdf(x)
+      x_list <- split_pdf(x, pattern = split_pattern)
       x_lines <- unlist(x_list)
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
       # line_nums <- cumsum(x_list[[2]])

@@ -4,8 +4,8 @@
 \alias{convert_tokens}
 \title{Ability to tokenize words.}
 \usage{
-convert_tokens(x, path = FALSE, split_pdf = FALSE, remove_hyphen = TRUE,
-  token_function = NULL)
+convert_tokens(x, path = FALSE, split_pdf = FALSE,
+  remove_hyphen = TRUE, token_function = NULL)
 }
 \arguments{
 \item{x}{The text of the pdf file. This can be specified directly 

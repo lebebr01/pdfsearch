@@ -27,6 +27,10 @@
 #' @param convert_sentence TRUE/FALSE indicating if individual lines of PDF file
 #'     should be collapsed into a single large paragraph to perform keyword 
 #'     searching. Default is TRUE
+#' @param split_pattern Regular expression pattern used to split multicolumn 
+#'     PDF files using \code{\link{stringi::stri_split_regex}}. 
+#'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
+#'     split based on three or more consecutive white space characters. 
 #' @param full_names TRUE/FALSE indicating if the full file path should be used.
 #'    Default is TRUE, see \code{\link{list.files}} for more details.
 #' @param file_pattern An optional regular expression to select specific file
@@ -65,7 +69,8 @@
 keyword_directory <- function(directory, keyword, 
                               split_pdf = FALSE, surround_lines = FALSE,
                               ignore_case = FALSE, remove_hyphen = TRUE,
-                              token_results = TRUE, convert_sentence = TRUE,
+                              token_results = TRUE, convert_sentence = TRUE, 
+                              split_pattern = "\\p{WHITE_SPACE}{3,}",
                               full_names = TRUE, file_pattern = ".pdf",
                               recursive = FALSE, max_search = NULL, ...) {
   
@@ -80,7 +85,8 @@ keyword_directory <- function(directory, keyword,
                      split_pdf = split_pdf, surround_lines = surround_lines, 
                      ignore_case = ignore_case, remove_hyphen = remove_hyphen,
                      token_results = token_results, 
-                     convert_sentence = convert_sentence, ...))
+                     convert_sentence = convert_sentence, 
+                     split_pattern = split_pattern, ...))
   } else {
     files_dir <- files_dir[1:max_search]
     file_name <- file_name[1:max_search]
@@ -89,7 +95,8 @@ keyword_directory <- function(directory, keyword,
                      split_pdf = split_pdf, surround_lines = surround_lines, 
                      ignore_case = ignore_case, remove_hyphen = remove_hyphen,
                      token_results = token_results, 
-                     convert_sentence = convert_sentence, ...))
+                     convert_sentence = convert_sentence, 
+                     split_pattern = split_pattern, ...))
   }
   
   num_rows <- unlist(lapply(extract_table, nrow))

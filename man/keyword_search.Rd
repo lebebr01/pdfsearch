@@ -7,7 +7,8 @@
 keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
   surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
   token_results = TRUE, heading_search = FALSE, heading_args = NULL,
-  convert_sentence = TRUE, ...)
+  convert_sentence = TRUE, split_pattern = "\\\\p{WHITE_SPACE}{3,}",
+  ...)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a 
@@ -52,6 +53,11 @@ in the pdf.}
 \item{convert_sentence}{TRUE/FALSE indicating if individual lines of PDF file
 should be collapsed into a single large paragraph to perform keyword 
 searching. Default is TRUE}
+
+\item{split_pattern}{Regular expression pattern used to split multicolumn 
+PDF files using \code{\link{stringi::stri_split_regex}}. 
+Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
+split based on three or more consecutive white space characters.}
 
 \item{...}{token_function to pass to \code{\link{convert_tokens}} 
 function.}
