@@ -44,7 +44,7 @@ should be collapsed into a single large paragraph to perform keyword
 searching. Default is TRUE}
 
 \item{split_pattern}{Regular expression pattern used to split multicolumn 
-PDF files using \code{\link{stringi::stri_split_regex}}. 
+PDF files using \code{stringi::stri_split_regex}. 
 Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 split based on three or more consecutive white space characters.}
 
