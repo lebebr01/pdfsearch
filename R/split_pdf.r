@@ -50,3 +50,9 @@ split_pdf <- function(x, pattern = "\\p{WHITE_SPACE}{3,}") {
   # return(list(x_lines, length_lines))
   
 }
+
+detect_multicolumn <- function(x, pattern = "\\p{WHITE_SPACE}{3,}") {
+  
+  
+  
+}
