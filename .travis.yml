@@ -2,14 +2,12 @@ language: r
 warnings_are_errors: true
 latex: false
 fortran: false
-sudo: false
 cache: packages
 
 matrix:
   include:
     - os: linux
       dist: trusty
-      env: R_CODECOV=true
       r: oldrel
     - os: linux
       dist: trusty
@@ -17,8 +15,10 @@ matrix:
       r: release
     - os: linux
       dist: trusty
-      env: R_CODECOV=true
       r: devel
+    - os: linux
+      dist: xenial
+      r: release
     - os: osx
       osx_image: xcode10.1
       brew_packages: poppler
@@ -44,13 +44,12 @@ addons:
       - valgrind
 
 cran: https://cran.rstudio.com/
-r_packages:
-   - covr
-   
-r_check_args: "--no-vignettes --no-manual --as-cran"
-      
+
+r_github_packages:
+- jimhester/covr      
+
 after_success:
-   - Rscript -e 'library(covr); codecov()'
+- if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi
 
 notifications:
   email:
