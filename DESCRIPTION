@@ -21,7 +21,7 @@ Suggests:
     knitr,
     rmarkdown
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 URL: https://github.com/lebebr01/pdfsearch
 BugReports: https://github.com/lebebr01/pdfsearch/issues
 VignetteBuilder: knitr

@@ -26,7 +26,13 @@
 #'    \code{\link{convert_tokens}} for more details. Defaults to TRUE.
 #' @param convert_sentence TRUE/FALSE indicating if individual lines of PDF file
 #'     should be collapsed into a single large paragraph to perform keyword 
-#'     searching. Default is TRUE
+#'     searching. Default is TRUE.
+#' @param remove_equations TRUE/FALSE indicating if equations should be removed.
+#'     Default behavior is to search for the following regex:
+#'     "\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
+#'     followed by at least one number followed by another parenthesis at
+#'     the end of the text line. This will not detect other patterns or
+#'     detect the entire equation if it is a multi-row equation.
 #' @param split_pattern Regular expression pattern used to split multicolumn 
 #'     PDF files using \code{stringi::stri_split_regex}. 
 #'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
@@ -70,6 +76,7 @@ keyword_directory <- function(directory, keyword,
                               split_pdf = FALSE, surround_lines = FALSE,
                               ignore_case = FALSE, remove_hyphen = TRUE,
                               token_results = TRUE, convert_sentence = TRUE, 
+                              remove_equation = TRUE,
                               split_pattern = "\\p{WHITE_SPACE}{3,}",
                               full_names = TRUE, file_pattern = ".pdf",
                               recursive = FALSE, max_search = NULL, ...) {

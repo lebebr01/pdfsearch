@@ -43,3 +43,9 @@ true_false <- function(x, chars) {
   x > chars
 }
 
+remove_equation <- function(text_lines) {
+  
+  text_lines[-grep("\\([0-9]{1,}\\)$", text_lines)]
+  
+}
+
