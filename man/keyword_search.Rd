@@ -7,8 +7,8 @@
 keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
   surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
   token_results = TRUE, heading_search = FALSE, heading_args = NULL,
-  convert_sentence = TRUE, split_pattern = "\\\\p{WHITE_SPACE}{3,}",
-  ...)
+  convert_sentence = TRUE, remove_equations = TRUE,
+  split_pattern = "\\\\p{WHITE_SPACE}{3,}", ...)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a 
@@ -53,6 +53,13 @@ in the pdf.}
 \item{convert_sentence}{TRUE/FALSE indicating if individual lines of PDF file
 should be collapsed into a single large paragraph to perform keyword 
 searching. Default is TRUE}
+
+\item{remove_equations}{TRUE/FALSE indicating if equations should be removed.
+Default behavior is to search for the following regex:
+"\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
+followed by at least one number followed by another parenthesis at
+the end of the text line. This will not detect other patterns or
+detect the entire equation if it is a multi-row equation.}
 
 \item{split_pattern}{Regular expression pattern used to split multicolumn 
 PDF files using \code{stringi::stri_split_regex}. 
