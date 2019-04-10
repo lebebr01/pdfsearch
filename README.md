@@ -1,6 +1,7 @@
 # pdfsearch
 
 [![Build Status](https://travis-ci.org/lebebr01/pdfsearch.svg?branch=master)](https://travis-ci.org/lebebr01/pdfsearch)
+[![Build status](https://ci.appveyor.com/api/projects/status/kjptcw7m8tlajmix?svg=true)](https://ci.appveyor.com/project/lebebr01/pdfsearch)
 [![codecov.io](https://codecov.io/github/lebebr01/pdfsearch/coverage.svg?branch=master)](https://codecov.io/github/lebebr01/pdfsearch?branch=master)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/pdfsearch)](https://cran.r-project.org/package=pdfsearch)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00668/status.svg)](https://doi.org/10.21105/joss.00668)
@@ -40,12 +41,12 @@ head(result)
 ## # A tibble: 6 x 5
 ##   keyword     page_num line_num line_text token_text
 ##   <chr>          <int>    <int> <list>    <list>    
-## 1 measurement        1        5 <chr [1]> <list [1]>
-## 2 measurement        1        9 <chr [1]> <list [1]>
-## 3 measurement        1       19 <chr [1]> <list [1]>
-## 4 measurement        1       21 <chr [1]> <list [1]>
-## 5 measurement        2       28 <chr [1]> <list [1]>
-## 6 measurement        2       31 <chr [1]> <list [1]>
+## 1 measurement        1        2 <chr [1]> <list [1]>
+## 2 measurement        1        4 <chr [1]> <list [1]>
+## 3 measurement        1       10 <chr [1]> <list [1]>
+## 4 measurement        1       12 <chr [1]> <list [1]>
+## 5 measurement        1       15 <chr [1]> <list [1]>
+## 6 measurement        1       17 <chr [1]> <list [1]>
 ```
 
 ```r
@@ -54,10 +55,10 @@ head(result$line_text, n = 2)
 
 ```
 ## [[1]]
-## [1] "Often in surveys, key items are subject to measurement errors. Given just the"
+## [1] "Reiter, Maria DeYoreo* arXiv:1610.00147v1 [stat.ME] 1 Oct 2016 Abstract Often in surveys, key items are subject to measurement errors. "
 ## 
 ## [[2]]
-## [1] "with high quality measurements of the error-prone survey items. We"
+## [1] "In some settings, however, analysts have access to a data source on different individuals with high quality measurements of the error-prone survey items. "
 ```
 
 The location of the keyword match, including page number and line number, the actual line of text, and a tokenized version of the text (raw text split by individual words) are returned by default.
@@ -80,12 +81,12 @@ head(result)
 ## # A tibble: 6 x 5
 ##   keyword     page_num line_num line_text token_text
 ##   <chr>          <int>    <int> <list>    <list>    
-## 1 measurement        1        5 <chr [3]> <list [3]>
-## 2 measurement        1        9 <chr [3]> <list [3]>
-## 3 measurement        1       19 <chr [3]> <list [3]>
-## 4 measurement        1       21 <chr [3]> <list [3]>
-## 5 measurement        2       28 <chr [3]> <list [3]>
-## 6 measurement        2       31 <chr [3]> <list [3]>
+## 1 measurement        1        2 <chr [3]> <list [3]>
+## 2 measurement        1        4 <chr [3]> <list [3]>
+## 3 measurement        1       10 <chr [3]> <list [3]>
+## 4 measurement        1       12 <chr [3]> <list [3]>
+## 5 measurement        1       15 <chr [3]> <list [3]>
+## 6 measurement        1       17 <chr [3]> <list [3]>
 ```
 
 ```r
@@ -94,14 +95,14 @@ head(result$line_text, n = 2)
 
 ```
 ## [[1]]
-## [1] "Abstract"                                                                          
-## [2] "Often in surveys, key items are subject to measurement errors. Given just the"     
-## [3] "data, it can be difficult to determine the distribution of this error process, and"
+## [1] "Data Fusion for Correcting Measurement Errors Tracy Schifeling, Jerome P. "                                                                                                    
+## [2] "Reiter, Maria DeYoreo* arXiv:1610.00147v1 [stat.ME] 1 Oct 2016 Abstract Often in surveys, key items are subject to measurement errors. "                                       
+## [3] "Given just the data, it can be difficult to determine the distribution of this error process, and hence to obtain accurate inferences that involve the error-prone variables. "
 ## 
 ## [[2]]
-## [1] "some settings, however, analysts have access to a data source on different individuals"
-## [2] "with high quality measurements of the error-prone survey items. We"                    
-## [3] "present a data fusion framework for leveraging this information to improve inferences"
+## [1] "Given just the data, it can be difficult to determine the distribution of this error process, and hence to obtain accurate inferences that involve the error-prone variables. "
+## [2] "In some settings, however, analysts have access to a data source on different individuals with high quality measurements of the error-prone survey items. "                    
+## [3] "We present a data fusion framework for leveraging this information to improve inferences in the error-prone survey. "
 ```
 
 ## Example with `keyword_directory`
@@ -121,14 +122,14 @@ head(directory_result, n = 2)
 
 ```
 ##   ID       pdf_name           keyword page_num line_num
-## 1  1 1501.00450.pdf repeated measures        1       24
-## 2  1 1501.00450.pdf repeated measures        2       57
-##                                                                                                                                                                                                                                                                                                                                                                                                             line_text
-## 1 introduce more sophisticated experimental designs, specifi-           only would we miss potentially beneficial effects, we may also, cally the repeated measures design, including the crossover           get false confidence about lack of negative effects. Statistical, design and related variants, to increase KPI sensitivity with         power increases with larger effect size, and smaller variances.
-## 2                            a limitation to any online experimentation platform, where       within-subject variation. We also discuss practical considfast, iterations and testing many ideas can reap the most         erations to repeated measures design, with variants to the, rewards.                                                         crossover design to study the carry over effect, including the
-##                                                                                                                                                                                                                                                                                                                                                                                                                        token_text
-## 1 introduce, more, sophisticated, experimental, designs, specifi, only, would, we, miss, potentially, beneficial, effects, we, may, also, cally, the, repeated, measures, design, including, the, crossover, get, false, confidence, about, lack, of, negative, effects, statistical, design, and, related, variants, to, increase, kpi, sensitivity, with, power, increases, with, larger, effect, size, and, smaller, variances
-## 2                                                                         a, limitation, to, any, online, experimentation, platform, where, within, subject, variation, we, also, discuss, practical, considfast, iterations, and, testing, many, ideas, can, reap, the, most, erations, to, repeated, measures, design, with, variants, to, the, rewards, crossover, design, to, study, the, carry, over, effect, including, the
+## 1  1 1501.00450.pdf repeated measures        1        9
+## 2  1 1501.00450.pdf repeated measures        1       30
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       line_text
+## 1                                                                                                                                                                                               We             Running under powered experiments have many perils. , Not introduce more sophisticated experimental designs, specifi-           only would we miss potentially beneficial effects, we may also cally the repeated measures design, including the crossover           get false confidence about lack of negative effects. , Statistical design and related variants, to increase KPI sensitivity with         power increases with larger effect size, and smaller variances. the same traffic size and duration of experiment. 
+## 2 This poses  a limitation to any online experimentation platform, where       within-subject variation. , We also discuss practical considfast iterations and testing many ideas can reap the most         erations to repeated measures design, with variants to the rewards.                                                         crossover design to study the carry over effect, including the “re-randomized” design (row 5 in table 1). , 1.1     Motivation To improve sensitivity of measurement, apart from accurate       1.2     Main Contributions implementation and increase sample size and duration, we         In this paper, we propose a framework called FORME (Flexcan employ statistical methods to reduce variance. 
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                token_text
+## 1                                                                                                                                                             we, running, under, powered, experiments, have, many, perils, not, introduce, more, sophisticated, experimental, designs, specifi, only, would, we, miss, potentially, beneficial, effects, we, may, also, cally, the, repeated, measures, design, including, the, crossover, get, false, confidence, about, lack, of, negative, effects, statistical, design, and, related, variants, to, increase, kpi, sensitivity, with, power, increases, with, larger, effect, size, and, smaller, variances, the, same, traffic, size, and, duration, of, experiment
+## 2 this, poses, a, limitation, to, any, online, experimentation, platform, where, within, subject, variation, we, also, discuss, practical, considfast, iterations, and, testing, many, ideas, can, reap, the, most, erations, to, repeated, measures, design, with, variants, to, the, rewards, crossover, design, to, study, the, carry, over, effect, including, the, re, randomized, design, row, 5, in, table, 1, 1.1, motivation, to, improve, sensitivity, of, measurement, apart, from, accurate, 1.2, main, contributions, implementation, and, increase, sample, size, and, duration, we, in, this, paper, we, propose, a, framework, called, forme, flexcan, employ, statistical, methods, to, reduce, variance
 ```
 
 A few other useful arguments are possible when searching for keywords within multiple PDF files in a directory. One is the `recursive` (default is `FALSE`), where if set to `TRUE` will search within subdirectories as well, the default function behavior will not venture into subdirectories. Finally, if the directory has many PDF files, testing the function first on a handful of PDF files may be desired. The number of PDF files can be limited with the argument `max_search` where a positive integer can be specified indicating the number of PDF files to search. For example, is `max_search = 2`, only the first two PDF files will be searched within the directory.

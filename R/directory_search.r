@@ -76,7 +76,7 @@ keyword_directory <- function(directory, keyword,
                               split_pdf = FALSE, surround_lines = FALSE,
                               ignore_case = FALSE, remove_hyphen = TRUE,
                               token_results = TRUE, convert_sentence = TRUE, 
-                              remove_equation = TRUE,
+                              remove_equations = TRUE,
                               split_pattern = "\\p{WHITE_SPACE}{3,}",
                               full_names = TRUE, file_pattern = ".pdf",
                               recursive = FALSE, max_search = NULL, ...) {

@@ -7,7 +7,7 @@
 keyword_directory(directory, keyword, split_pdf = FALSE,
   surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
   token_results = TRUE, convert_sentence = TRUE,
-  remove_equation = TRUE, split_pattern = "\\\\p{WHITE_SPACE}{3,}",
+  remove_equations = TRUE, split_pattern = "\\\\p{WHITE_SPACE}{3,}",
   full_names = TRUE, file_pattern = ".pdf", recursive = FALSE,
   max_search = NULL, ...)
 }
@@ -44,6 +44,13 @@ should be split into tokens. See the tokenizers package and
 should be collapsed into a single large paragraph to perform keyword 
 searching. Default is TRUE.}
 
+\item{remove_equations}{TRUE/FALSE indicating if equations should be removed.
+Default behavior is to search for the following regex:
+"\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
+followed by at least one number followed by another parenthesis at
+the end of the text line. This will not detect other patterns or
+detect the entire equation if it is a multi-row equation.}
+
 \item{split_pattern}{Regular expression pattern used to split multicolumn 
 PDF files using \code{stringi::stri_split_regex}. 
 Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
@@ -66,13 +73,6 @@ of pdfs to search. Will only search the first n cases.}
 
 \item{...}{token_function to pass to \code{\link{convert_tokens}} 
 function.}
-
-\item{remove_equations}{TRUE/FALSE indicating if equations should be removed.
-Default behavior is to search for the following regex:
-"\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
-followed by at least one number followed by another parenthesis at
-the end of the text line. This will not detect other patterns or
-detect the entire equation if it is a multi-row equation.}
 }
 \value{
 A tibble data frame that contains the keyword, location of match, 
