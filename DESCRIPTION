@@ -2,7 +2,7 @@ Package: pdfsearch
 Type: Package
 Authors@R: person("Brandon", "LeBeau", email = "lebebr01+pdfsearch@gmail.com",
                role = c("aut", "cre"))
-Version: 0.3.0
+Version: 0.3.1
 License: MIT + file LICENSE
 Title: Search Tools for PDF Files
 Description: Includes functions for keyword search of pdf files. There is
