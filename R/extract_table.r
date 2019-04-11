@@ -1,7 +1,20 @@
 #' Function to extract tables
 #' 
-#' @param text_lines The text of a PDF document read into R and split into 
-#'    lines. 
+#' @param x Either the text of the pdf read in with the pdftools package or a 
+#'    path for the location of the pdf file.
+#' @param path An optional path designation for the location of the pdf to be 
+#'    converted to text. The pdftools package is used for this conversion.
+#' @param split_pdf TRUE/FALSE indicating whether to split the pdf using white 
+#'    space. This would be most useful with multicolumn pdf files. 
+#'    The split_pdf function attempts to recreate the column layout of the text 
+#'    into a single column starting with the left column and proceeding to the 
+#'    right. 
+#' @param remove_equations TRUE/FALSE indicating if equations should be removed.
+#'     Default behavior is to search for the following regex:
+#'     "\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
+#'     followed by at least one number followed by another parenthesis at
+#'     the end of the text line. This will not detect other patterns or
+#'     detect the entire equation if it is a multi-row equation.
 #' @param delimiter A delimiter used to detect tables. The default is two 
 #'   consecutive blank white spaces.
 #' @param delimiter_table A delimiter used to separate table cells. The default
@@ -14,17 +27,46 @@
 #'   would take the values from the first row of data extracted. 
 #' @importFrom readr read_delim
 #' @export
-extract_tables <- function(text_lines, delimiter = "\\s{2,}",
+extract_tables <- function(x, path = FALSE, split_pdf = FALSE,
+                           remove_equations = TRUE,
+                           delimiter = "\\s{2,}",
                            delimiter_table = "\\s{2,}",
                            replacement = "\\/",
                            col_names = FALSE) {
   
-  possible_table_locations <- grep(delimiter, text_lines)
+  if(path) {
+    x <- pdftools::pdf_text(x)
+  }
+  line_nums <- cumsum(lapply(tokenizers::tokenize_lines(x), length))
+  if(any(line_nums == 0)) {
+    warning('text not recognized in pdf')
+    text_out <- data.frame(keyword = NULL, 
+                           page_num = NULL,
+                           line_num = NULL,
+                           line_text = NULL)
+  } else {
+    
+    if(split_pdf) {
+      x_list <- split_pdf(x, pattern = split_pattern)
+      x_lines <- unlist(x_list)
+      x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
+      # line_nums <- cumsum(x_list[[2]])
+      # x_lines <- x_list[[1]]
+    } else {
+      x_lines <- unlist(stringi::stri_split_lines(x))
+      x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
+    }
+    
+    if(remove_equations) {
+      x_lines <- remove_equation(x_lines)
+    }
+  
+  possible_table_locations <- grep(delimiter, x_lines)
   
   table_locations <- find_table_locations(possible_table_locations)
   
   table_text <- lapply(seq_along(table_locations), function(xx) 
-    text_lines[table_locations[[xx]]]
+    x_lines[table_locations[[xx]]]
   )
   
   table_text <- lapply(table_text, add_delimiter, 
@@ -35,6 +77,7 @@ extract_tables <- function(text_lines, delimiter = "\\s{2,}",
                    col_names = col_names)
   
   tables
+  }
 }
 
 find_table_locations <- function(row_numbers) {

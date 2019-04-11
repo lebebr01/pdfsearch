@@ -4,13 +4,30 @@
 \alias{extract_tables}
 \title{Function to extract tables}
 \usage{
-extract_tables(text_lines, delimiter = "\\\\s{2,}",
+extract_tables(x, path = FALSE, split_pdf = FALSE,
+  remove_equations = TRUE, delimiter = "\\\\s{2,}",
   delimiter_table = "\\\\s{2,}", replacement = "\\\\/",
   col_names = FALSE)
 }
 \arguments{
-\item{text_lines}{The text of a PDF document read into R and split into 
-lines.}
+\item{x}{Either the text of the pdf read in with the pdftools package or a 
+path for the location of the pdf file.}
+
+\item{path}{An optional path designation for the location of the pdf to be 
+converted to text. The pdftools package is used for this conversion.}
+
+\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white 
+space. This would be most useful with multicolumn pdf files. 
+The split_pdf function attempts to recreate the column layout of the text 
+into a single column starting with the left column and proceeding to the 
+right.}
+
+\item{remove_equations}{TRUE/FALSE indicating if equations should be removed.
+Default behavior is to search for the following regex:
+"\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
+followed by at least one number followed by another parenthesis at
+the end of the text line. This will not detect other patterns or
+detect the entire equation if it is a multi-row equation.}
 
 \item{delimiter}{A delimiter used to detect tables. The default is two 
 consecutive blank white spaces.}
