@@ -2,7 +2,6 @@ language: r
 warnings_are_errors: true
 latex: false
 fortran: false
-cache: packages
 
 matrix:
   include:
