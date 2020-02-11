@@ -6,11 +6,6 @@
 #' If running from RStudio, will open the application in the viewer, 
 #' otherwise will use the default internet browser.
 #' 
-#' @examples 
-#' \donttest{
-#' run_shiny()
-#' }
-#' 
 #' @export
 run_shiny <- function() {
   appDir <- system.file("shiny_example", package = "pdfsearch")
