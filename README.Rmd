@@ -31,7 +31,7 @@ file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 result <- keyword_search(file, 
             keyword = c('measurement', 'error'),
             path = TRUE)
-head(result)
+
 head(result$line_text, n = 2)
 ```
 
@@ -41,7 +41,7 @@ In addition, by default the hyphenated words at the end of the text are combined
 
 ### Surrounding lines of text 
 It may be useful to extract not just the line of text that the keyword is found in, but also surrounding text to have additional context when looking at the keyword results. This can be added by using the argument `surround_lines` as follows:
-```{r surround}
+```{r surround, eval = FALSE}
 file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 
 result <- keyword_search(file, 
@@ -54,7 +54,7 @@ head(result$line_text, n = 2)
 ## Example with `keyword_directory`
 The `keyword_directory` function allows users to search for keywords in multiple PDF files in one function call. The same functionality from the `keyword_search` function can be invoked, specifically `remove_hyphen` and `surround_lines`. Below is an example of searching a single directory. 
 
-```{r directory}
+```{r directory, eval = FALSE}
 directory <- system.file('pdf', package = 'pdfsearch')
 
 # do search over two files
