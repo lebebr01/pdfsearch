@@ -1,6 +1,6 @@
 # pdfsearch
 
-[![Build Status](https://travis-ci.org/lebebr01/pdfsearch.svg?branch=master)](https://travis-ci.org/lebebr01/pdfsearch)
+[![R build status](https://github.com/lebebr01/pdfsearch/workflows/R-CMD-check/badge.svg)](https://github.com/lebebr01/pdfsearch/actions?workflow=R-CMD-check)
 [![Build status](https://ci.appveyor.com/api/projects/status/kjptcw7m8tlajmix?svg=true)](https://ci.appveyor.com/project/lebebr01/pdfsearch)
 [![codecov.io](https://codecov.io/github/lebebr01/pdfsearch/coverage.svg?branch=master)](https://codecov.io/github/lebebr01/pdfsearch?branch=master)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/pdfsearch)](https://cran.r-project.org/package=pdfsearch)
