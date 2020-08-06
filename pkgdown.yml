@@ -3,4 +3,7 @@ pkgdown: 1.4.1.9000
 pkgdown_sha: 732fb5b9ccc0ef87a73dfd0772ae661a4039b2a8
 articles:
   intro_to_pdfsearch: intro_to_pdfsearch.html
+urls:
+  reference: https://pdfsearch.brandonlebeau.org//reference
+  article: https://pdfsearch.brandonlebeau.org//articles
 
