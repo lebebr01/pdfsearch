@@ -1,0 +1,11 @@
+destination: docs
+url: https://pdfsearch.brandonlebeau.org/
+
+authors: 
+  Brandon LeBeau: 
+    href: https://brandonlebeau.org
+    
+template: 
+  params: 
+    bootswatch: flatly
+    ganalytics: UA-43425299-5

@@ -7,3 +7,5 @@
 ^contributing\.md$
 ^conduct\.md$
 ^\.zenodo\.json$
+^_pkgdown\.yml$
+^\.github$
