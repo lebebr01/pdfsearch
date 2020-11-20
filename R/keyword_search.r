@@ -47,10 +47,7 @@
 #'     PDF files using \code{stringi::stri_split_regex}. 
 #'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 #'     split based on three or more consecutive white space characters. 
-#' @param use_azure If Azure APIs should be used for OCR and translation
-#' @param azure_vision_api_token An optional token for Azure  APIs if ocr is used
-#' @param azure_translation_api_token An optional token for Azure  APIs if translation is used
-#' @param ... token_function to pass to \code{\link{convert_tokens}} 
+#' @param ... token_function to pass to \code{\link{convert_tokens}}
 #'   function. 
 #'   
 #' @return A tibble data frame that contains the keyword, location of match, 
@@ -83,18 +80,20 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            convert_sentence = TRUE, 
                            remove_equations = FALSE,
                            split_pattern = "\\p{WHITE_SPACE}{3,}",
-                           use_azure = FALSE,
-                           azure_vision_api_token = "",
-                           azure_translate_api_token = "",
+                           ocr_pdf_fun = function(...) {return("")},
+                           ocr_pdf_fun_params = nil,
+                           translate_fun = function(x,...) {return(x)},
+                           translate_fun_params = nil,
+                           translation_target_language="eng",
                            ...) {
   print(x)
   if(path) {
     path <- x
     x  <- pdftools::pdf_text(x)
     num_chars <- stri_length(stri_trim(stri_c(x,collapse = "")))
-    if (num_chars < 10 & use_azure) {
+    if (num_chars < 10) {
       print("Empty PDF, will OCR it")
-      x = ocr_pdf(path,azure_vision_api_token)
+      x = ocr_pdf_fun(path,ocr_pdf_fun_params)
     }
   }
   line_nums <- cumsum(lapply(tokenizers::tokenize_lines(x), length))
@@ -108,8 +107,8 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   } else {
     language <- franc(stringi::stri_c(x,collapse = " "))
     print(paste("Detected language: ", language))
-    if (language != "eng" & use_azure) {
-      x = translate(x,azure_translate_api_token)
+    if (language != translation_target_language) {
+      x = translate_fun(x,translation_target_language,translate_fun_params)
     }
     if(split_pdf) {
       x_list <- split_pdf(x, pattern = split_pattern)
@@ -198,85 +197,3 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
 }
 
 
-#' @importFrom httr upload_file GET POST headers content_type add_headers content
-
-do_ocr_pdf <- function(path,azure_vision_api_token,md5) {
-
-  upload <- upload_file(path)
-
-  post_response <-  POST("https://westeurope.api.cognitive.microsoft.com/vision/v3.0/read/analyze",
-                         add_headers(`Ocp-Apim-Subscription-Key` = azure_vision_api_token),
-                         content_type("application/octet-stream"),
-                                        #                       httr::verbose(),
-                         body=upload)
-                                        #print(post_response)
-  response_headers <- headers(post_response)
-                                        #print(response_headers)
-
-  results_location <- response_headers$`operation-location`
-  print(results_location)
-
-  repeat {
-    results_response <-
-      GET(results_location,
-          add_headers(`Ocp-Apim-Subscription-Key` = azure_vision_api_token))
-    if (content(results_response)$status =="succeeded") {
-      break
-    }
-    print("sleep 5 seconds")
-    Sys.sleep(5)
-
-  }
-
-
-  ocr_result <- content(results_response)
-
-
-  num_lines = length(ocr_result$analyzeResult$readResults[[1]]$lines)
-
-  lines = c()
-
-  for (i in 1:num_lines) {
-    lines[i]=ocr_result$analyzeResult$readResults[[1]]$lines[[i]]$text
-  }
-
-  return(lines)
-
-}
-
-fc <- memoise::cache_filesystem(".cache")
-
-
-mem_do_ocr_pdf = memoise::memoise(do_ocr_pdf,cache=fc)
-
-ocr_pdf <- function(path,azure_vision_api_token) {
-  md5 <- tools::md5sum(path)
-  mem_do_ocr_pdf(path,azure_vision_api_token,md5)
-}
-
-do_translate <- function(x,azure_translate_api_token) {
-
-
-  print("do translation")
-
-  texts_to_translate=lapply(x,function(s) {list(text=s)})
-
-  result <- POST("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=en",
-                 add_headers(`Ocp-Apim-Subscription-Key` = azure_translate_api_token,
-                             `Ocp-Apim-Subscription-Region` = "westeurope"),
-                 encode = "json",
-                 content_type("application/json"),
-                                        #verbose(),
-                 body = jsonlite::toJSON(texts_to_translate,auto_unbox = T)
-                 )
-
-  translation <- sapply(content(result),function(res) {res$translations[[1]]$text})
-  return(translation)
-}
-
-
-mem_translate <- memoise::memoise(do_translate,cache=fc)
-
-translate <- function(x,azure_translate_api_token) {
-  mem_translate(x,azure_translate_api_token)
-}

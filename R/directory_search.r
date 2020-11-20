@@ -48,9 +48,6 @@
 #'    Default is FALSE, see \code{\link{list.files}} for more details.
 #' @param max_search An optional numeric vector indicating the maximum number
 #'    of pdfs to search. Will only search the first n cases.
-#' @param use_azure If Azure APIs should be used for OCR and translation
-#' @param azure_vision_api_token An optional token for Azure  APIs if ocr is used
-#' @param azure_translation_api_token An optional token for Azure  APIs if translation is used
 #' @param ... token_function to pass to \code{\link{convert_tokens}}
 #'   function. 
 #'   
@@ -82,10 +79,12 @@ keyword_directory <- function(directory, keyword,
                               remove_equations = TRUE,
                               split_pattern = "\\p{WHITE_SPACE}{3,}",
                               full_names = TRUE, file_pattern = ".pdf",
-                              recursive = FALSE, max_search = NULL,
-                              use_azure = FALSE,
-                              azure_vision_api_token = "",
-                              azure_translate_api_token = "",
+                              recursive = FALSE, max_search = NLL,
+                              ocr_pdf_fun = function(...) {return("")},
+                              ocr_pdf_fun_params = nil,
+                              translate_fun = identity,
+                              translate_fun_params = nil,
+                              translation_target_language="eng",
                               ...) {
   
   files_dir <- list.files(path = directory, pattern = file_pattern, 
@@ -101,9 +100,11 @@ keyword_directory <- function(directory, keyword,
                      token_results = token_results, 
                      convert_sentence = convert_sentence, 
                      split_pattern = split_pattern,
-                     use_azure = use_azure,
-                     azure_vision_api_token = azure_vision_api_token,
-                     azure_translate_api_token = azure_translate_api_token,
+                     ocr_pfd_fun = ocr_pfd_fun,
+                     ocr_pdf_fun_params = ocr_pdf_fun_params,
+                     translate_fun = translate_fun,
+                     translate_fun_params = translate_fun_params,
+                     translation_target_language = translation_target_language,
                      ...))
   } else {
     files_dir <- files_dir[1:max_search]
@@ -115,9 +116,11 @@ keyword_directory <- function(directory, keyword,
                      token_results = token_results, 
                      convert_sentence = convert_sentence, 
                      split_pattern = split_pattern,
-                     use_azure = use_azure,
-                     azure_vision_api_token = azure_vision_api_token,
-                     azure_translate_api_token = azure_translate_api_token,
+                     ocr_pfd_fun = ocr_pfd_fun,
+                     ocr_pdf_fun_params = ocr_pdf_fun_params,
+                     translate_fun = translate_fun,
+                     translate_fun_params = translate_fun_params,
+                     translation_target_language = translation_target_language,
                      ...))
   }
   
