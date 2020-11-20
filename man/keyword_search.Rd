@@ -19,6 +19,7 @@ keyword_search(
   remove_equations = FALSE,
   split_pattern = "\\\\p{WHITE_SPACE}{3,}",
   azure_vision_api_token = "",
+  azure_translate_api_token = "",
   ...
 )
 }

@@ -81,7 +81,9 @@ keyword_directory <- function(directory, keyword,
                               split_pattern = "\\p{WHITE_SPACE}{3,}",
                               full_names = TRUE, file_pattern = ".pdf",
                               recursive = FALSE, max_search = NULL,
-                              azure_vision_api_token = "", ...) {
+                              azure_vision_api_token = "",
+                              azure_translate_api_token = "",
+                              ...) {
   
   files_dir <- list.files(path = directory, pattern = file_pattern, 
                           full.names = full_names, recursive = recursive)
@@ -97,6 +99,7 @@ keyword_directory <- function(directory, keyword,
                      convert_sentence = convert_sentence, 
                      split_pattern = split_pattern,
                      azure_vision_api_token = azure_vision_api_token,
+                     azure_translate_api_token = azure_translate_api_token,
                      ...))
   } else {
     files_dir <- files_dir[1:max_search]

@@ -20,6 +20,7 @@ keyword_directory(
   recursive = FALSE,
   max_search = NULL,
   azure_vision_api_token = "",
+  azure_translate_api_token = "",
   ...
 )
 }
