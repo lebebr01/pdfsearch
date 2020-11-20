@@ -48,8 +48,10 @@
 #'    Default is FALSE, see \code{\link{list.files}} for more details.
 #' @param max_search An optional numeric vector indicating the maximum number
 #'    of pdfs to search. Will only search the first n cases.
+#' @param use_azure If Azure APIs should be used for OCR and translation
 #' @param azure_vision_api_token An optional token for Azure  APIs if ocr is used
-#' @param ... token_function to pass to \code{\link{convert_tokens}} 
+#' @param azure_translation_api_token An optional token for Azure  APIs if translation is used
+#' @param ... token_function to pass to \code{\link{convert_tokens}}
 #'   function. 
 #'   
 #' @return A tibble data frame that contains the keyword, location of match, 
@@ -81,6 +83,7 @@ keyword_directory <- function(directory, keyword,
                               split_pattern = "\\p{WHITE_SPACE}{3,}",
                               full_names = TRUE, file_pattern = ".pdf",
                               recursive = FALSE, max_search = NULL,
+                              use_azure = FALSE,
                               azure_vision_api_token = "",
                               azure_translate_api_token = "",
                               ...) {
@@ -98,6 +101,7 @@ keyword_directory <- function(directory, keyword,
                      token_results = token_results, 
                      convert_sentence = convert_sentence, 
                      split_pattern = split_pattern,
+                     use_azure = use_azure,
                      azure_vision_api_token = azure_vision_api_token,
                      azure_translate_api_token = azure_translate_api_token,
                      ...))
@@ -111,7 +115,9 @@ keyword_directory <- function(directory, keyword,
                      token_results = token_results, 
                      convert_sentence = convert_sentence, 
                      split_pattern = split_pattern,
+                     use_azure = use_azure,
                      azure_vision_api_token = azure_vision_api_token,
+                     azure_translate_api_token = azure_translate_api_token,
                      ...))
   }
   

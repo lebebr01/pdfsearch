@@ -19,6 +19,7 @@ keyword_directory(
   file_pattern = ".pdf",
   recursive = FALSE,
   max_search = NULL,
+  use_azure = FALSE,
   azure_vision_api_token = "",
   azure_translate_api_token = "",
   ...
@@ -84,10 +85,14 @@ Default is FALSE, see \code{\link{list.files}} for more details.}
 \item{max_search}{An optional numeric vector indicating the maximum number
 of pdfs to search. Will only search the first n cases.}
 
+\item{use_azure}{If Azure APIs should be used for OCR and translation}
+
 \item{azure_vision_api_token}{An optional token for Azure  APIs if ocr is used}
 
-\item{...}{token_function to pass to \code{\link{convert_tokens}} 
+\item{...}{token_function to pass to \code{\link{convert_tokens}}
 function.}
+
+\item{azure_translation_api_token}{An optional token for Azure  APIs if translation is used}
 }
 \value{
 A tibble data frame that contains the keyword, location of match, 

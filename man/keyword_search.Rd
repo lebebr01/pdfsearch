@@ -81,10 +81,14 @@ PDF files using \code{stringi::stri_split_regex}.
 Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 split based on three or more consecutive white space characters.}
 
+\item{use_azure}{If Azure APIs should be used for OCR and translation}
+
 \item{azure_vision_api_token}{An optional token for Azure  APIs if ocr is used}
 
 \item{...}{token_function to pass to \code{\link{convert_tokens}} 
 function.}
+
+\item{azure_translation_api_token}{An optional token for Azure  APIs if translation is used}
 }
 \value{
 A tibble data frame that contains the keyword, location of match, 
