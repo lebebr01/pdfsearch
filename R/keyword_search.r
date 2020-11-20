@@ -100,9 +100,9 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     warning('text not recognized in pdf')
 
     text_out <- data.frame(keyword = NULL, 
-                               page_num = NULL,
-                               line_num = NULL,
-                               line_text = NULL)
+                           page_num = NULL,
+                           line_num = NULL,
+                           line_text = NULL)
   } else {
     language <- franc(stringi::stri_c(x,collapse = " "))
     print(paste("Detected language: ", language))
@@ -113,8 +113,8 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
       x_list <- split_pdf(x, pattern = split_pattern)
       x_lines <- unlist(x_list)
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
-      # line_nums <- cumsum(x_list[[2]])
-      # x_lines <- x_list[[1]]
+                                        # line_nums <- cumsum(x_list[[2]])
+                                        # x_lines <- x_list[[1]]
     } else {
       x_lines <- unlist(stringi::stri_split_lines(x))
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
@@ -128,7 +128,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
       x_lines <- remove_hyphen(x_lines)
     }
     
-    # collapse into a single paragraph
+                                        # collapse into a single paragraph
     if(convert_sentence) {
       x_lines <- paste(x_lines, collapse = ' ')
       x_lines <- unlist(stringi::stri_split_boundaries(x_lines, 
@@ -137,7 +137,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     
     if(length(ignore_case) > 1) {
       if(length(keyword) != length(ignore_case)) {
-          stop('keyword and ignore.case must be same length')
+        stop('keyword and ignore.case must be same length')
       }
       keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
         grep(keyword[xx], x_lines, ignore_case[xx], perl = TRUE))
@@ -176,14 +176,14 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                                line_num = keyword_line,
                                line_text = lines_sel,
                                token_text = token_results_text
-    )
+                               )
     
     if(heading_search) {
       head_res <- do.call('heading_search', heading_args)
       
       row_nums <- findInterval(text_out$line_num, head_res$line_num)
       col <- data.frame(do.call('rbind', lapply(seq_along(row_nums), 
-                  function(xx) head_res[row_nums[xx], 'keyword'])))
+                                                function(xx) head_res[row_nums[xx], 'keyword'])))
       if(any(row_nums == 0)) {
         col <- data.frame(c(rep('NA', table(row_nums)[1]), col$keyword))
       }
@@ -198,64 +198,83 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
 
 #' @importFrom httr upload_file GET POST headers content_type add_headers content
 
-ocr_pdf <- function(path,azure_vision_api_token) {
+do_ocr_pdf <- function(path,azure_vision_api_token,md5) {
 
   upload <- upload_file(path)
 
   post_response <-  POST("https://westeurope.api.cognitive.microsoft.com/vision/v3.0/read/analyze",
-                       add_headers(`Ocp-Apim-Subscription-Key` = azure_vision_api_token),
-                       content_type("application/octet-stream"),
-#                       httr::verbose(),
-                       body=upload)
-  #print(post_response)
+                         add_headers(`Ocp-Apim-Subscription-Key` = azure_vision_api_token),
+                         content_type("application/octet-stream"),
+                                        #                       httr::verbose(),
+                         body=upload)
+                                        #print(post_response)
   response_headers <- headers(post_response)
-  #print(response_headers)
+                                        #print(response_headers)
 
   results_location <- response_headers$`operation-location`
   print(results_location)
 
- repeat {
-   results_response <-
-     GET(results_location,
-         add_headers(`Ocp-Apim-Subscription-Key` = azure_vision_api_token))
-   if (content(results_response)$status =="succeeded") {
-     break
-   }
-   print("sleep 5 seconds")
-   Sys.sleep(5)
+  repeat {
+    results_response <-
+      GET(results_location,
+          add_headers(`Ocp-Apim-Subscription-Key` = azure_vision_api_token))
+    if (content(results_response)$status =="succeeded") {
+      break
+    }
+    print("sleep 5 seconds")
+    Sys.sleep(5)
 
- }
-
-
- ocr_result <- content(results_response)
+  }
 
 
-num_lines = length(ocr_result$analyzeResult$readResults[[1]]$lines)
+  ocr_result <- content(results_response)
 
-lines = c()
 
-for (i in 1:num_lines) {
-  lines[i]=ocr_result$analyzeResult$readResults[[1]]$lines[[i]]$text
+  num_lines = length(ocr_result$analyzeResult$readResults[[1]]$lines)
+
+  lines = c()
+
+  for (i in 1:num_lines) {
+    lines[i]=ocr_result$analyzeResult$readResults[[1]]$lines[[i]]$text
+  }
+
+  return(lines)
+
 }
 
- return(lines)
+fc <- memoise::cache_filesystem(".cache")
 
+
+mem_do_ocr_pdf = memoise::memoise(do_ocr_pdf,cache=fc)
+
+ocr_pdf <- function(path,azure_vision_api_token) {
+  md5 <- tools::md5sum(path)
+  mem_do_ocr_pdf(path,azure_vision_api_token,md5)
 }
 
-translate <- function(x,azure_translate_api_token) {
-print("do translation")
+do_translate <- function(x,azure_translate_api_token) {
 
-texts_to_translate=lapply(x,function(s) {list(text=s)})
 
-result <- POST("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=en",
-               add_headers(`Ocp-Apim-Subscription-Key` = azure_translate_api_token,
-                           `Ocp-Apim-Subscription-Region` = "westeurope"),
-     encode = "json",
-     content_type("application/json"),
-     #verbose(),
-     body = jsonlite::toJSON(texts_to_translate,auto_unbox = T)
-     )
+  print("do translation")
+
+  texts_to_translate=lapply(x,function(s) {list(text=s)})
+
+  result <- POST("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=en",
+                 add_headers(`Ocp-Apim-Subscription-Key` = azure_translate_api_token,
+                             `Ocp-Apim-Subscription-Region` = "westeurope"),
+                 encode = "json",
+                 content_type("application/json"),
+                                        #verbose(),
+                 body = jsonlite::toJSON(texts_to_translate,auto_unbox = T)
+                 )
 
   translation <- sapply(content(result),function(res) {res$translations[[1]]$text})
   return(translation)
-  }
+}
+
+
+mem_translate <- memoise::memoise(do_translate,cache=fc)
+
+translate <- function(x,azure_translate_api_token) {
+  mem_translate(x,azure_translate_api_token)
+}
