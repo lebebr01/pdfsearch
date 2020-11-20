@@ -42,10 +42,12 @@
 #'     followed by at least one number followed by another parenthesis at
 #'     the end of the text line. This will not detect other patterns or
 #'     detect the entire equation if it is a multi-row equation.
+#'     BUGGY, do not use.
 #' @param split_pattern Regular expression pattern used to split multicolumn 
 #'     PDF files using \code{stringi::stri_split_regex}. 
 #'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 #'     split based on three or more consecutive white space characters. 
+#' @param azure_vision_api_token An optional token for Azure  APIs if ocr is used
 #' @param ... token_function to pass to \code{\link{convert_tokens}} 
 #'   function. 
 #'   
@@ -55,8 +57,8 @@
 #'   
 #' @importFrom pdftools pdf_text
 #' @importFrom tibble tibble
-#' @importFrom stringi stri_split_boundaries stri_split_lines
-#' @examples 
+#' @importFrom stringi stri_split_boundaries stri_split_lines stri_isempty stri_trim stri_c stri_length
+#' @examples
 #' file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
 #' 
 #' keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
@@ -76,14 +78,21 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            remove_hyphen = TRUE, token_results = TRUE,
                            heading_search = FALSE, heading_args = NULL,
                            convert_sentence = TRUE, 
-                           remove_equations = TRUE,
-                           split_pattern = "\\p{WHITE_SPACE}{3,}", ...) {
+                           remove_equations = FALSE,
+                           split_pattern = "\\p{WHITE_SPACE}{3,}",
+                           azure_vision_api_token = "", ...) {
   if(path) {
-    x <- pdftools::pdf_text(x)
+    text <- pdftools::pdf_text(x)
+    num_chars <- stri_length(stri_trim(stri_c(text,collapse = "")))
+    if (num_chars < 10) {
+      print("Empty PDF, will OCR it")
+      x = ocr_pdf(x,azure_vision_api_token)
+    }
   }
   line_nums <- cumsum(lapply(tokenizers::tokenize_lines(x), length))
   if(any(line_nums == 0)) {
     warning('text not recognized in pdf')
+
     text_out <- data.frame(keyword = NULL, 
                                page_num = NULL,
                                line_num = NULL,
@@ -174,4 +183,51 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   }
   
   return(text_out)
+}
+
+
+#' @importFrom httr upload_file GET POST headers content_type add_headers content
+
+ocr_pdf <- function(path,azure_vision_api_token) {
+
+  upload <- upload_file(path)
+
+  post_response <-  POST("https://westeurope.api.cognitive.microsoft.com/vision/v3.0/read/analyze?language=en",
+                       add_headers(`Ocp-Apim-Subscription-Key` = azure_vision_api_token),
+                       content_type("application/octet-stream"),
+#                       httr::verbose(),
+                       body=upload)
+  print(post_response)
+  response_headers <- headers(post_response)
+  print(response_headers)
+
+  results_location <- response_headers$`operation-location`
+  print(results_location)
+
+ repeat {
+   results_response <-
+     GET(results_location,
+         add_headers(`Ocp-Apim-Subscription-Key` = azure_vision_api_token))
+   if (content(results_response)$status =="succeeded") {
+     break
+   }
+   print("sleep 5 seconds")
+   Sys.sleep(5)
+
+ }
+
+
+ ocr_result <- content(results_response)
+
+
+num_lines = length(ocr_result$analyzeResult$readResults[[1]]$lines)
+
+lines = c()
+
+for (i in 1:num_lines) {
+  lines[i]=ocr_result$analyzeResult$readResults[[1]]$lines[[i]]$text
+}
+
+ return(lines)
+
 }

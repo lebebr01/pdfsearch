@@ -48,6 +48,7 @@
 #'    Default is FALSE, see \code{\link{list.files}} for more details.
 #' @param max_search An optional numeric vector indicating the maximum number
 #'    of pdfs to search. Will only search the first n cases.
+#' @param azure_vision_api_token An optional token for Azure  APIs if ocr is used
 #' @param ... token_function to pass to \code{\link{convert_tokens}} 
 #'   function. 
 #'   
@@ -79,7 +80,8 @@ keyword_directory <- function(directory, keyword,
                               remove_equations = TRUE,
                               split_pattern = "\\p{WHITE_SPACE}{3,}",
                               full_names = TRUE, file_pattern = ".pdf",
-                              recursive = FALSE, max_search = NULL, ...) {
+                              recursive = FALSE, max_search = NULL,
+                              azure_vision_api_token = "", ...) {
   
   files_dir <- list.files(path = directory, pattern = file_pattern, 
                           full.names = full_names, recursive = recursive)
@@ -93,7 +95,9 @@ keyword_directory <- function(directory, keyword,
                      ignore_case = ignore_case, remove_hyphen = remove_hyphen,
                      token_results = token_results, 
                      convert_sentence = convert_sentence, 
-                     split_pattern = split_pattern, ...))
+                     split_pattern = split_pattern,
+                     azure_vision_api_token = azure_vision_api_token,
+                     ...))
   } else {
     files_dir <- files_dir[1:max_search]
     file_name <- file_name[1:max_search]
@@ -103,7 +107,9 @@ keyword_directory <- function(directory, keyword,
                      ignore_case = ignore_case, remove_hyphen = remove_hyphen,
                      token_results = token_results, 
                      convert_sentence = convert_sentence, 
-                     split_pattern = split_pattern, ...))
+                     split_pattern = split_pattern,
+                     azure_vision_api_token = azure_vision_api_token,
+                     ...))
   }
   
   num_rows <- unlist(lapply(extract_table, nrow))
