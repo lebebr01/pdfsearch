@@ -18,9 +18,9 @@ keyword_search(
   convert_sentence = TRUE,
   remove_equations = FALSE,
   split_pattern = "\\\\p{WHITE_SPACE}{3,}",
-  ocr_pdf_fun = function(path) {     return("") },
+  ocr_pdf_fun = function(...) {     return("") },
   ocr_pdf_fun_params = nil,
-  translate_fun = identity,
+  translate_fun = function(x, ...) {     return(x) },
   translate_fun_params = nil,
   translation_target_language = "eng",
   ...

@@ -18,10 +18,10 @@ keyword_directory(
   full_names = TRUE,
   file_pattern = ".pdf",
   recursive = FALSE,
-  max_search = NLL,
-  ocr_pdf_fun = function(path) {     return("") },
+  max_search = NULL,
+  ocr_pdf_fun = function(...) {     return("") },
   ocr_pdf_fun_params = nil,
-  translate_fun = identity,
+  translate_fun = function(x, ...) {     return(x) },
   translate_fun_params = nil,
   translation_target_language = "eng",
   ...
