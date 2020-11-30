@@ -1,18 +1,9 @@
-
-
-
-
 remove_ws <- function(x) {
   sapply(x,
          FUN = function(s) { trimws(gsub("\\s+", " ", s)) },
          USE.NAMES  =F
          )
 }
-
-
-
-
-
 
 
 #' @importFrom  tokenizers tokenize_sentences
@@ -111,30 +102,11 @@ split_text <- function(x) {
   
 }
 
-split_string_max_10000 <- function(s) {
-  if (length(s) > 1) {
-    stop("length > 1")
-  }
-  result = list()
-  current_string = ""
-  chunk_counter <- 1
-  words <- stringi::stri_split_fixed(s," ")
-  for (word in words[[1]]) {
-    if (stri_length(paste(current_string, word)) > 8000) {
-      
-      result[chunk_counter] <- current_string
-      current_string <- ""    
-      chunk_counter <- chunk_counter + 1
-    }
-    current_string <- paste(current_string,word)
-  }
-  result[chunk_counter] <- current_string
-  return(result)
-}
 chunk_list <- function(d,n) {
 
  split(d, ceiling(seq_along(d)/n))
 }
+
 translate_chunk <- function(x,translation_target_language,params) {
   texts_to_translate <- lapply(x, function(s) {list(text=s)})
 
@@ -162,13 +134,10 @@ translate_chunk <- function(x,translation_target_language,params) {
     
   }
 
-
   translation <- sapply(content(result),function(res) {res$translations[[1]]$text})
 
-
   return(translation)
-  
-  
+
 }
 do_translate <- function(x,path,translation_target_language,params) {
 
@@ -186,17 +155,6 @@ do_translate <- function(x,path,translation_target_language,params) {
     results <- append(results,translate_chunk(chunk,translation_target_language ,params))
   }
   
-  # if (text_length>10000) {
-  #   print("NOT translated , text too long")
-  #   warning("more then 10000 character , not traslated")
-  #   return(x)
-  # }
-  # print(paste("# texts to translate: ",length(texts_to_translate)))
-  # if (length(texts_to_translate) > 100) {
-  #   print("NOT translated , to may texts")
-  #   warning("more then 100 texts , not tranlated")
-  #   return(x)
-  # }
   results <- unlist(results)
   output_dir_name <- paste0(dirname(path),"/outputs/")
   dir.create(output_dir_name,showWarnings = F)
