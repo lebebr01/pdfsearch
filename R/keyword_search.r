@@ -108,7 +108,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     language <- franc(stringi::stri_c(x,collapse = " "))
     print(paste("Detected language: ", language))
     if (language != translation_target_language) {
-      x = translate_fun(x,translation_target_language,translate_fun_params)
+      x = translate_fun(x,path,translation_target_language,translate_fun_params)
     }
     if(split_pdf) {
       x_list <- split_pdf(x, pattern = split_pattern)
