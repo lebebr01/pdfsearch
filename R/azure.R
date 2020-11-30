@@ -77,34 +77,6 @@ ocr_pdf <- function(path,params) {
   mem_do_ocr_pdf(path,params,md5)
 }
 
-split_text <- function(x) {
-  chunks <- c()
-  current_chunk = c()
-  chunk_counter <- 1
-  print(paste("length x : ", length(x)))
-  for (i in 1:length(x)) {
-    #print(x[i])
-    next_chunk <- append(current_chunk,x[[i]])
-    #print(length(next_chunk))
-    if ((length(next_chunk) > 99) ||
-        (stri_length(stri_join(next_chunk,collapse="")) > 10000)) {
-      #browser()
-      chunks[[chunk_counter]] <- current_chunk
-      next_chunk  = c()
-      current_chunk = x[[i]]
-      chunk_counter <- chunk_counter +1
-    } else {
-      current_chunk <- next_chunk
-    }
-  }
-  if (length(current_chunk)!=0) {
-      chunks[[chunk_counter]] <- current_chunk
-  }
-  print(paste("result chunks: " , length(chunks)))
-  print(paste("#chunks ",sapply(chunks, length),collapse = " "))
-  return(chunks)  
-  
-}
 
 chunk_list <- function(d,n) {
 
