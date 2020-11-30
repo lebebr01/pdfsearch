@@ -46,15 +46,19 @@ do_ocr_pdf <- function(path,params,md5) {
   num_results <- length(ocr_result$analyzeResult$readResults)
   lines <- c()
   counter <- 1
+#  browser()
   for (i in 1:num_results) {
 
     num_lines = length(ocr_result$analyzeResult$readResults[[i]]$lines)
-    for (j in 1:num_lines) {
-
-      lines[counter]=trimws(gsub("\\s+", " ", ocr_result$analyzeResult$readResults[[i]]$lines[[j]]$text))
-      counter <- counter +1
+    if (num_lines > 0) {
+      for (j in 1:num_lines) {
+#        print(paste(i, " - ", j , " -> ", counter))
+        lines[counter]=trimws(gsub("\\s+", " ", ocr_result$analyzeResult$readResults[[i]]$lines[[j]]$text))
+        counter <- counter + 1
+      }
     }
   }
+ #  browser()
   output_dir_name <- paste0(dirname(path),"/outputs/")
   dir.create(output_dir_name,showWarnings = F)
   writeLines(lines,file(paste0(output_dir_name,basename(path),".ocr.txt")))
