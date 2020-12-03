@@ -67,6 +67,8 @@ do_ocr_pdf <- function(path,params,md5) {
 
 }
 
+cache_folder <- paste0(Sys.getenv("HOME"),"/.pdfsearceCache")
+dir.create(cache_folder,showWarnings = F)
 fc <- memoise::cache_filesystem(".cache")
 
 
