@@ -5,7 +5,6 @@ remove_ws <- function(x) {
          )
 }
 
-
 #' @importFrom  tokenizers tokenize_sentences
 #' @importFrom stringi stri_length stri_flatten stri_join
 #' @importFrom httr progress status_code upload_file GET POST headers content_type add_headers content stop_for_status
@@ -142,6 +141,8 @@ cumSumReset <- function(x, thresh = 10000) {
 
 
 #' @import purrr
+#' @importFrom dplyr %>% pull mutate
+
 split_into_chunks <- function(sentences) {
   lengths <- purrr::map_dbl(sentences,~ calc_size(.x))
   tib <- tibble(
