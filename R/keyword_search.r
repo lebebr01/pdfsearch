@@ -91,7 +91,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     path <- x
     x  <- pdftools::pdf_text(x)
     num_chars <- stri_length(stri_trim(stri_c(x,collapse = "")))
-    if (num_chars < 10) {
+    if (num_chars < 1000) {
       print("Empty PDF, will OCR it")
       x = ocr_pdf_fun(path,ocr_pdf_fun_params)
     }
