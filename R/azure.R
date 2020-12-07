@@ -9,6 +9,7 @@ remove_ws <- function(x) {
 #' @importFrom stringi stri_length stri_flatten stri_join
 #' @importFrom httr progress status_code upload_file GET POST headers content_type add_headers content stop_for_status
 do_ocr_pdf <- function(path,params,md5) {
+  print("will OCR document")
   upload <- upload_file(path)
 
   post_response <-  POST("https://westeurope.api.cognitive.microsoft.com/vision/v3.0/read/analyze",
@@ -66,7 +67,8 @@ do_ocr_pdf <- function(path,params,md5) {
 
 }
 
-cache_folder <- paste0(Sys.getenv("HOME"),"/.pdfsearceCache")
+
+cache_folder <- paste0(Sys.getenv("HOME"),"/.pdfsearchCache")
 dir.create(cache_folder,showWarnings = F)
 fc <- memoise::cache_filesystem(cache_folder)
 

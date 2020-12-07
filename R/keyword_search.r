@@ -89,10 +89,10 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   print(x)
   if(path) {
     path <- x
-    x  <- pdftools::pdf_text(x)
+    x  <- suppressMessages(pdftools::pdf_text(x))
+    writeLines(x,file(paste0(dirname(path),"/outputs/",basename(path),".txt")) )
     num_chars <- stri_length(stri_trim(stri_c(x,collapse = "")))
     if (num_chars < 1000) {
-      print("Empty PDF, will OCR it")
       x = ocr_pdf_fun(path,ocr_pdf_fun_params)
     }
   }
