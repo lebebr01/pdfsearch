@@ -17,7 +17,8 @@ Imports:
     stringi,
     httr,
     franc,
-    memoise
+    memoise,
+    dplyr
 Suggests:
     shiny,
     testthat,
