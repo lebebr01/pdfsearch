@@ -90,6 +90,8 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   if(path) {
     path <- x
     x  <- suppressMessages(pdftools::pdf_text(x))
+    output_dir_name <- paste0(dirname(path),"/outputs/")
+    dir.create(output_dir_name,showWarnings = F)
     writeLines(x,file(paste0(dirname(path),"/outputs/",basename(path),".txt")) )
     num_chars <- stri_length(stri_trim(stri_c(x,collapse = "")))
     if (num_chars < 1000) {
