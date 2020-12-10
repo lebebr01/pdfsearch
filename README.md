@@ -8,17 +8,13 @@
 
 This package defines a few useful functions for keyword searching using the [pdftools](https://github.com/ropensci/pdftools)  package developed by [rOpenSci](https://ropensci.org/).
 
-The package can be installed from CRAN directly:
-
-```r
-install.packages("pdfsearch")
-```
+This fork adds automatic OCR and translation via Azure APIs to the package.
 
 To install the development version you use devtools:
 
 ```r
 install.packages("devtools")
-devtools::install_github('lebebr01/pdfsearch')
+devtools::install_github('openefsa/pdfsearch')
 ```
 
 ## Basic Usage
