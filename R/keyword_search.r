@@ -42,21 +42,26 @@
 #'     followed by at least one number followed by another parenthesis at
 #'     the end of the text line. This will not detect other patterns or
 #'     detect the entire equation if it is a multi-row equation.
+#'     This is a developmental feature that needs more testing. Please pass on any issues with this functionality.
+
 #' @param split_pattern Regular expression pattern used to split multicolumn 
 #'     PDF files using \code{stringi::stri_split_regex}. 
 #'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 #'     split based on three or more consecutive white space characters. 
-#' @param ... token_function to pass to \code{\link{convert_tokens}} 
+#' @param ocr_args A list of arguments to pass to the OCR functions. These could include: `ocr_pdf_fun` or `ocr_pdf_fun_params`. See details for more specifics.
+#' @param translate_args A list of arguments to pass to the translation functions. These could include: `translate_fun`, `translate_fun_params`, or `translation_target_language`. See details for more specifics.
+#' @param ... token_function to pass to \code{\link{convert_tokens}}
 #'   function. 
 #'   
 #' @return A tibble data frame that contains the keyword, location of match, 
 #'   the line of text match, and optionally the tokens associated with the line
 #'   of text match. 
 #'   
+#' @importFrom franc franc
 #' @importFrom pdftools pdf_text
 #' @importFrom tibble tibble
-#' @importFrom stringi stri_split_boundaries stri_split_lines
-#' @examples 
+#' @importFrom stringi stri_split_boundaries stri_split_lines stri_isempty stri_trim stri_c stri_length
+#' @examples
 #' file <- system.file('pdf', '1501.00450.pdf', package = 'pdfsearch')
 #' 
 #' keyword_search(file, keyword = c('repeated measures', 'mixed effects'),
@@ -76,26 +81,50 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            remove_hyphen = TRUE, token_results = TRUE,
                            heading_search = FALSE, heading_args = NULL,
                            convert_sentence = TRUE, 
-                           remove_equations = TRUE,
-                           split_pattern = "\\p{WHITE_SPACE}{3,}", ...) {
+                           remove_equations = FALSE,
+                           split_pattern = "\\p{WHITE_SPACE}{3,}",
+                           ocr_args = NULL,
+                           translate_args = NULL,
+
+                           ...) {
   if(path) {
-    x <- pdftools::pdf_text(x)
+    path <- x
+    x  <- suppressMessages(pdftools::pdf_text(x))
+    output_dir_name <- paste0(dirname(path),"/outputs/")
+    dir.create(output_dir_name,showWarnings = F)
+    writeLines(x,file(paste0(dirname(path),"/outputs/",basename(path),".txt")) )
+    num_chars <- stri_length(stri_trim(stri_c(x,collapse = "")))
+    ## a heuristic, to detect if tere is no text came back from pdftools::pdf_text,
+    ## most scanned documents have some characters of extractable text
+    if (num_chars < 1000) {
+      if (!is.null(ocr_args$ocr_PDF_FUN)) {
+        x = ocr_args$ocr_pdf_fun(path,ocr_args$ocr_pdf_fun_params)
+       }
+    }
   }
   line_nums <- cumsum(lapply(tokenizers::tokenize_lines(x), length))
   if(any(line_nums == 0)) {
     warning('text not recognized in pdf')
+
     text_out <- data.frame(keyword = NULL, 
-                               page_num = NULL,
-                               line_num = NULL,
-                               line_text = NULL)
+                           page_num = NULL,
+                           line_num = NULL,
+                           line_text = NULL)
   } else {
-    
+    language <- franc(stringi::stri_c(x,collapse = " "))
+    print(paste("Detected language: ", language))
+    target_language <- ifelse(!is.null (translate_args$translation_target_language) ,
+                              translate_args$translation_target_language,
+                              "eng")
+    if (language != target_language & !(is.null(translate_args$translate_fun))) {
+      x = translate_args$translate_fun(x,path,translate_args$translation_target_language,translate_args$translate_fun_params)
+    }
     if(split_pdf) {
       x_list <- split_pdf(x, pattern = split_pattern)
       x_lines <- unlist(x_list)
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
-      # line_nums <- cumsum(x_list[[2]])
-      # x_lines <- x_list[[1]]
+                                        # line_nums <- cumsum(x_list[[2]])
+                                        # x_lines <- x_list[[1]]
     } else {
       x_lines <- unlist(stringi::stri_split_lines(x))
       x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
@@ -109,7 +138,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
       x_lines <- remove_hyphen(x_lines)
     }
     
-    # collapse into a single paragraph
+                                        # collapse into a single paragraph
     if(convert_sentence) {
       x_lines <- paste(x_lines, collapse = ' ')
       x_lines <- unlist(stringi::stri_split_boundaries(x_lines, 
@@ -118,7 +147,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     
     if(length(ignore_case) > 1) {
       if(length(keyword) != length(ignore_case)) {
-          stop('keyword and ignore.case must be same length')
+        stop('keyword and ignore.case must be same length')
       }
       keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
         grep(keyword[xx], x_lines, ignore_case[xx], perl = TRUE))
@@ -157,14 +186,14 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                                line_num = keyword_line,
                                line_text = lines_sel,
                                token_text = token_results_text
-    )
+                               )
     
     if(heading_search) {
       head_res <- do.call('heading_search', heading_args)
       
       row_nums <- findInterval(text_out$line_num, head_res$line_num)
       col <- data.frame(do.call('rbind', lapply(seq_along(row_nums), 
-                  function(xx) head_res[row_nums[xx], 'keyword'])))
+                                                function(xx) head_res[row_nums[xx], 'keyword'])))
       if(any(row_nums == 0)) {
         col <- data.frame(c(rep('NA', table(row_nums)[1]), col$keyword))
       }
@@ -175,3 +204,4 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   
   return(text_out)
 }
+

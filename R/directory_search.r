@@ -48,7 +48,10 @@
 #'    Default is FALSE, see \code{\link{list.files}} for more details.
 #' @param max_search An optional numeric vector indicating the maximum number
 #'    of pdfs to search. Will only search the first n cases.
-#' @param ... token_function to pass to \code{\link{convert_tokens}} 
+#' @param ocr_args A list of arguments to pass to the OCR functions. The could include: `ocr_pdf_fun` or `ocr_pdf_fun_params`. See details for more specifics.
+#' @param translate_args A list of arguments to pass to the translation functions. These could include: `translate_fun`, `translate_fun_params`, or `translation_target_language`. See details for more specifics.
+#' @param ... token_function to pass to \code{\link{convert_tokens}}
+
 #'   function. 
 #'   
 #' @return A tibble data frame that contains the keyword, location of match, 
@@ -79,7 +82,15 @@ keyword_directory <- function(directory, keyword,
                               remove_equations = TRUE,
                               split_pattern = "\\p{WHITE_SPACE}{3,}",
                               full_names = TRUE, file_pattern = ".pdf",
-                              recursive = FALSE, max_search = NULL, ...) {
+                              recursive = FALSE, max_search = NULL,
+                              ocr_args = NULL,
+                              translate_args = NULL,
+                              #ocr_pdf_fun = function(...) {return("")},
+                              #ocr_pdf_fun_params = nil,
+                              #translate_fun = function(x,...) {return(x)},
+                              #translate_fun_params = nil,
+                              #translation_target_language="eng",
+                              ...) {
   
   files_dir <- list.files(path = directory, pattern = file_pattern, 
                           full.names = full_names, recursive = recursive)
@@ -93,7 +104,15 @@ keyword_directory <- function(directory, keyword,
                      ignore_case = ignore_case, remove_hyphen = remove_hyphen,
                      token_results = token_results, 
                      convert_sentence = convert_sentence, 
-                     split_pattern = split_pattern, ...))
+                     split_pattern = split_pattern,
+                     ocr_args = ocr_args,
+                     translate_args = translate_args,
+                     #ocr_pdf_fun = ocr_pdf_fun,
+                     #ocr_pdf_fun_params = ocr_pdf_fun_params,
+                     #translate_fun = translate_fun,
+                     #translate_fun_params = translate_fun_params,
+                     #translation_target_language = translation_target_language,
+                     ...))
   } else {
     files_dir <- files_dir[1:max_search]
     file_name <- file_name[1:max_search]
@@ -103,7 +122,15 @@ keyword_directory <- function(directory, keyword,
                      ignore_case = ignore_case, remove_hyphen = remove_hyphen,
                      token_results = token_results, 
                      convert_sentence = convert_sentence, 
-                     split_pattern = split_pattern, ...))
+                     split_pattern = split_pattern,
+                     ocr_args = ocr_args,
+                     translate_args = translate_args,
+                     #ocr_pdf_fun = ocr_pdf_fun,
+                     #ocr_pdf_fun_params = ocr_pdf_fun_params,
+                     #translate_fun = translate_fun,
+                     #translate_fun_params = translate_fun_params,
+                     #translation_target_language = translation_target_language,
+                     ...))
   }
   
   num_rows <- unlist(lapply(extract_table, nrow))

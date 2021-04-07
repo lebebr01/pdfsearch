@@ -2,7 +2,7 @@ Package: pdfsearch
 Type: Package
 Authors@R: person("Brandon", "LeBeau", email = "lebebr01+pdfsearch@gmail.com",
                role = c("aut", "cre"))
-Version: 0.3.1
+Version: 0.4.0
 License: MIT + file LICENSE
 Title: Search Tools for PDF Files
 Description: Includes functions for keyword search of pdf files. There is
@@ -14,7 +14,11 @@ Imports:
     pdftools,
     tibble,
     tokenizers,
-    stringi
+    stringi,
+    httr,
+    franc,
+    memoise,
+    dplyr
 Suggests:
     shiny,
     testthat,
@@ -22,7 +26,7 @@ Suggests:
     rmarkdown,
     covr
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 URL: https://github.com/lebebr01/pdfsearch
 BugReports: https://github.com/lebebr01/pdfsearch/issues
 VignetteBuilder: knitr

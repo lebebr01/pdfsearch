@@ -4,11 +4,27 @@
 \alias{keyword_search}
 \title{Search a pdf file for keywords}
 \usage{
-keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
-  surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
-  token_results = TRUE, heading_search = FALSE, heading_args = NULL,
-  convert_sentence = TRUE, remove_equations = TRUE,
-  split_pattern = "\\\\p{WHITE_SPACE}{3,}", ...)
+keyword_search(
+  x,
+  keyword,
+  path = FALSE,
+  split_pdf = FALSE,
+  surround_lines = FALSE,
+  ignore_case = FALSE,
+  remove_hyphen = TRUE,
+  token_results = TRUE,
+  heading_search = FALSE,
+  heading_args = NULL,
+  convert_sentence = TRUE,
+  remove_equations = FALSE,
+  split_pattern = "\\\\p{WHITE_SPACE}{3,}",
+  ocr_pdf_fun = function(...) {     return("") },
+  ocr_pdf_fun_params = nil,
+  translate_fun = function(x, ...) {     return(x) },
+  translate_fun_params = nil,
+  translation_target_language = "eng",
+  ...
+)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a 
@@ -59,14 +75,15 @@ Default behavior is to search for the following regex:
 "\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
 followed by at least one number followed by another parenthesis at
 the end of the text line. This will not detect other patterns or
-detect the entire equation if it is a multi-row equation.}
+detect the entire equation if it is a multi-row equation.
+BUGGY, do not use.}
 
 \item{split_pattern}{Regular expression pattern used to split multicolumn 
 PDF files using \code{stringi::stri_split_regex}. 
 Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 split based on three or more consecutive white space characters.}
 
-\item{...}{token_function to pass to \code{\link{convert_tokens}} 
+\item{...}{token_function to pass to \code{\link{convert_tokens}}
 function.}
 }
 \value{

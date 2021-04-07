@@ -8,11 +8,7 @@
 
 This package defines a few useful functions for keyword searching using the [pdftools](https://github.com/ropensci/pdftools)  package developed by [rOpenSci](https://ropensci.org/).
 
-The package can be installed from CRAN directly:
-
-```r
-install.packages("pdfsearch")
-```
+This fork adds automatic OCR and translation via Azure APIs to the package.
 
 To install the development version you use devtools:
 
@@ -91,4 +87,3 @@ run_shiny()
 The pdfsearch package may be most useful to those conducting research syntheses or meta-analyses. The package can allow users to search for keywords related to a research question; therefore, instead of searching the entire text of a document, specific portions of the text can be identified to be searched. This could increase the reproducibility and reduce the time needed to collect the data for the research synthesis or meta-analysis.
 
 As an example, the package is currently being used to explore the evolution of statistical software and quantitative methods used in published social science research (https://ww2.amstat.org/meetings/jsm/2018/onlineprogram/AbstractDetails.cfm?abstractid=330777). This process involves getting PDF files from published research articles and using pdfsearch to search for specific software and quantitative methods keywords within the research articles. The results of the keyword matches will be explored using research synthesis methods. A pre-print of the paper and slides from the presentation will be posted to the GitHub repo as part of the package later this summer.
-
