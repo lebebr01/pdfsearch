@@ -97,7 +97,9 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     ## a heuristic, to detect if tere is no text came back from pdftools::pdf_text,
     ## most scanned documents have some characters of extractable text
     if (num_chars < 1000) {
-      x = ocr_args$ocr_pdf_fun(path,ocr_args$ocr_pdf_fun_params)
+      if (!is.null(ocr_args$ocr_PDF_FUN)) {
+        x = ocr_args$ocr_pdf_fun(path,ocr_args$ocr_pdf_fun_params)
+       }
     }
   }
   line_nums <- cumsum(lapply(tokenizers::tokenize_lines(x), length))
@@ -111,7 +113,10 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   } else {
     language <- franc(stringi::stri_c(x,collapse = " "))
     print(paste("Detected language: ", language))
-    if (language != translate_args$translation_target_language) {
+    target_language <- ifelse(!is.null (translate_args$translation_target_language) ,
+                              translate_args$translation_target_language,
+                              "eng")
+    if (language != target_language & !(is.null(translate_args$translate_fun))) {
       x = translate_args$translate_fun(x,path,translate_args$translation_target_language,translate_args$translate_fun_params)
     }
     if(split_pdf) {
