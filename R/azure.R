@@ -15,16 +15,12 @@ do_ocr_pdf <- function(path,params,md5) {
   post_response <-  POST("https://westeurope.api.cognitive.microsoft.com/vision/v3.0/read/analyze",
                          add_headers(`Ocp-Apim-Subscription-Key` = params$api_token),
                          content_type("application/octet-stream"),
-                                        #                       httr::verbose(),
                          progress("up"),
                          body=upload)
-                                        #print(post_response)
   stop_for_status(post_response,paste0("OCR: ",content(post_response,as = "text")))
   response_headers <- headers(post_response)
-                                        #print(response_headers)
 
   results_location <- response_headers$`operation-location`
-  #print(results_location)
 
   repeat {
     results_response <-
@@ -46,21 +42,18 @@ do_ocr_pdf <- function(path,params,md5) {
   num_results <- length(ocr_result$analyzeResult$readResults)
   lines <- c()
   counter <- 1
-#  browser()
   for (i in 1:num_results) {
 
     num_lines = length(ocr_result$analyzeResult$readResults[[i]]$lines)
     if (num_lines > 0) {
       for (j in 1:num_lines) {
-#        print(paste(i, " - ", j , " -> ", counter))
         lines[counter]=trimws(gsub("\\s+", " ", ocr_result$analyzeResult$readResults[[i]]$lines[[j]]$text))
         counter <- counter + 1
       }
     }
   }
- #  browser()
   output_dir_name <- paste0(dirname(path),"/outputs/")
-  dir.create(output_dir_name,showWarnings = F)
+  dir.create(output_dir_name,showWarnings = FALSE)
   writeLines(lines,file(paste0(output_dir_name,basename(path),".ocr.txt")))
 
   return(lines)
@@ -69,7 +62,7 @@ do_ocr_pdf <- function(path,params,md5) {
 
 
 cache_folder <- paste0(Sys.getenv("HOME"),"/.pdfsearchCache")
-dir.create(cache_folder,showWarnings = F)
+dir.create(cache_folder,showWarnings = FALSE)
 fc <- memoise::cache_filesystem(cache_folder)
 
 
@@ -82,7 +75,6 @@ ocr_pdf <- function(path,params) {
 
 
  chunk_list <- function(d,n) {
- 
   split(d, ceiling(seq_along(d)/n))
  }
 
@@ -92,17 +84,13 @@ translate_chunk <- function(x,translation_target_language,params) {
   print("translate chunk")
   x <- remove_ws(x)
   print(paste("#lines: ", length(x)));
-  body <- jsonlite::toJSON(texts_to_translate,auto_unbox = T)
+  body <- jsonlite::toJSON(texts_to_translate,auto_unbox = TRUE)
   print(paste("body size: " , stri_length(body) ))
- #browser()
-  
-  
   result <- POST("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=en",
                  add_headers(`Ocp-Apim-Subscription-Key` = params$api_token,
                              `Ocp-Apim-Subscription-Region` = "westeurope"),
                  encode = "json",
                  content_type("application/json"),
-                 #verbose(),
                  body = body
                  )
   stop_for_status(result,paste0("tranlate: ",content(result,as="text")))
@@ -179,7 +167,7 @@ do_translate <- function(x,path,translation_target_language,params) {
   
   results <- unlist(results)
   output_dir_name <- paste0(dirname(path),"/outputs/")
-  dir.create(output_dir_name,showWarnings = F)
+  dir.create(output_dir_name,showWarnings = FALSE)
   writeLines(results,file(paste0(output_dir_name,
                                basename(path),".",
                                translation_target_language, ".txt")))

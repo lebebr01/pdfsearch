@@ -48,7 +48,7 @@
 #'     PDF files using \code{stringi::stri_split_regex}. 
 #'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 #'     split based on three or more consecutive white space characters. 
-#' @param ocr_args A list of arguments to pass to the OCR functions. The could include: `ocr_pdf_fun` or `ocr_pdf_fun_params`. See details for more specifics.
+#' @param ocr_args A list of arguments to pass to the OCR functions. These could include: `ocr_pdf_fun` or `ocr_pdf_fun_params`. See details for more specifics.
 #' @param translate_args A list of arguments to pass to the translation functions. These could include: `translate_fun`, `translate_fun_params`, or `translation_target_language`. See details for more specifics.
 #' @param ... token_function to pass to \code{\link{convert_tokens}}
 #'   function. 
@@ -83,11 +83,10 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            convert_sentence = TRUE, 
                            remove_equations = FALSE,
                            split_pattern = "\\p{WHITE_SPACE}{3,}",
-                              ocr_args = NULL,
-                              translate_args = NULL,
+                           ocr_args = NULL,
+                           translate_args = NULL,
 
                            ...) {
-  print(x)
   if(path) {
     path <- x
     x  <- suppressMessages(pdftools::pdf_text(x))
@@ -95,8 +94,10 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     dir.create(output_dir_name,showWarnings = F)
     writeLines(x,file(paste0(dirname(path),"/outputs/",basename(path),".txt")) )
     num_chars <- stri_length(stri_trim(stri_c(x,collapse = "")))
+    ## a heuristic, to detect if tere is no text came back from pdftools::pdf_text,
+    ## most scanned documents have some characters of extractable text
     if (num_chars < 1000) {
-      x = ocr_pdf_fun(path,ocr_pdf_fun_params)
+      x = ocr_args$ocr_pdf_fun(path,ocr_args$ocr_pdf_fun_params)
     }
   }
   line_nums <- cumsum(lapply(tokenizers::tokenize_lines(x), length))
@@ -110,8 +111,8 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   } else {
     language <- franc(stringi::stri_c(x,collapse = " "))
     print(paste("Detected language: ", language))
-    if (language != translation_target_language) {
-      x = translate_fun(x,path,translation_target_language,translate_fun_params)
+    if (language != translate_args$translation_target_language) {
+      x = translate_args$translate_fun(x,path,translate_args$translation_target_language,translate_args$translate_fun_params)
     }
     if(split_pdf) {
       x_list <- split_pdf(x, pattern = split_pattern)
