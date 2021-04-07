@@ -1,7 +1,7 @@
 remove_ws <- function(x) {
   sapply(x,
          FUN = function(s) { trimws(gsub("\\s+", " ", s)) },
-         USE.NAMES  =F
+         USE.NAMES = FALSE
          )
 }
 
@@ -192,4 +192,3 @@ mem_translate <- memoise::memoise(do_translate,cache=fc)
 translate <- function(x,path,translation_target_language,params) {
   mem_translate(x,path,translation_target_language,params)
 }
-

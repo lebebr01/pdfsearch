@@ -48,7 +48,10 @@
 #'    Default is FALSE, see \code{\link{list.files}} for more details.
 #' @param max_search An optional numeric vector indicating the maximum number
 #'    of pdfs to search. Will only search the first n cases.
+#' @param ocr_args A list of arguments to pass to the OCR functions. The could include: `ocr_pdf_fun` or `ocr_pdf_fun_params`. See details for more specifics.
+#' @param translate_args A list of arguments to pass to the translation functions. These could include: `translate_fun`, `translate_fun_params`, or `translation_target_language`. See details for more specifics.
 #' @param ... token_function to pass to \code{\link{convert_tokens}}
+
 #'   function. 
 #'   
 #' @return A tibble data frame that contains the keyword, location of match, 

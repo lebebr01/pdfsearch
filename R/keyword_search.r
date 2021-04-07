@@ -42,11 +42,14 @@
 #'     followed by at least one number followed by another parenthesis at
 #'     the end of the text line. This will not detect other patterns or
 #'     detect the entire equation if it is a multi-row equation.
-#'     BUGGY, do not use.
+#'     This is a developmental feature that needs more testing. Please pass on any issues with this functionality.
+
 #' @param split_pattern Regular expression pattern used to split multicolumn 
 #'     PDF files using \code{stringi::stri_split_regex}. 
 #'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 #'     split based on three or more consecutive white space characters. 
+#' @param ocr_args A list of arguments to pass to the OCR functions. The could include: `ocr_pdf_fun` or `ocr_pdf_fun_params`. See details for more specifics.
+#' @param translate_args A list of arguments to pass to the translation functions. These could include: `translate_fun`, `translate_fun_params`, or `translation_target_language`. See details for more specifics.
 #' @param ... token_function to pass to \code{\link{convert_tokens}}
 #'   function. 
 #'   
@@ -80,11 +83,9 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            convert_sentence = TRUE, 
                            remove_equations = FALSE,
                            split_pattern = "\\p{WHITE_SPACE}{3,}",
-                           ocr_pdf_fun = function(...) {return("")},
-                           ocr_pdf_fun_params = nil,
-                           translate_fun = function(x,...) {return(x)},
-                           translate_fun_params = nil,
-                           translation_target_language="eng",
+                              ocr_args = NULL,
+                              translate_args = NULL,
+
                            ...) {
   print(x)
   if(path) {
@@ -197,5 +198,4 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
   
   return(text_out)
 }
-
 
