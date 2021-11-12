@@ -9,7 +9,7 @@ split_pdf <- function(x, pattern = "\\p{WHITE_SPACE}{3,}") {
   
   x_page <- lapply(x_lines, stringi::stri_split_regex, 
                    pattern = pattern, 
-         omit_empty = NA, simplify = TRUE)
+                   omit_empty = NA, simplify = TRUE)
   
   page_lines <- unlist(lapply(x_page, nrow))
   columns <- unlist(lapply(x_page, ncol))
@@ -51,8 +51,33 @@ split_pdf <- function(x, pattern = "\\p{WHITE_SPACE}{3,}") {
   
 }
 
-detect_multicolumn <- function(x, pattern = "\\p{WHITE_SPACE}{3,}") {
+detect_num_textcolumns <- function(x, pattern = "\\p{WHITE_SPACE}{3,}") {
   
+  x_lines <- stringi::stri_split_lines(x)
   
+  x_lines <- lapply(x_lines, gsub,
+                    pattern = "^\\s{1,20}", 
+                    replacement = "")
+  
+  x_page <- lapply(x_lines, stringi::stri_split_regex, 
+                   pattern = pattern, 
+                   omit_empty = NA, simplify = TRUE)
+  
+  empty_cells <- lapply(seq_along(x_page), function(xx) 
+    apply(x_page[[xx]], 2, stringi::stri_isempty))
+  for(xx in seq_along(empty_cells)) {
+    empty_cells[[xx]][is.na(empty_cells[[xx]])] <- TRUE
+  }
+  
+  sum_columns <- unlist(lapply(seq_along(empty_cells), function(xx) 
+    apply(apply(empty_cells[[xx]], 2, detect_false), 1, sum)
+    )
+  )
+  
+  most_columns <- table(sum_columns)
+  
+  as.numeric(attr(most_columns[order(most_columns, decreasing = TRUE)][1], "names"))
   
 }
+
+detect_false <- function(x) { x == FALSE }
