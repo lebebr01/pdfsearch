@@ -4,11 +4,22 @@
 \alias{keyword_search}
 \title{Search a pdf file for keywords}
 \usage{
-keyword_search(x, keyword, path = FALSE, split_pdf = FALSE,
-  surround_lines = FALSE, ignore_case = FALSE, remove_hyphen = TRUE,
-  token_results = TRUE, heading_search = FALSE, heading_args = NULL,
-  convert_sentence = TRUE, remove_equations = TRUE,
-  split_pattern = "\\\\p{WHITE_SPACE}{3,}", ...)
+keyword_search(
+  x,
+  keyword,
+  path = FALSE,
+  split_pdf = FALSE,
+  surround_lines = FALSE,
+  ignore_case = FALSE,
+  remove_hyphen = TRUE,
+  token_results = TRUE,
+  heading_search = FALSE,
+  heading_args = NULL,
+  convert_sentence = TRUE,
+  remove_equations = TRUE,
+  split_pattern = "\\\\p{WHITE_SPACE}{3,}",
+  ...
+)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a 

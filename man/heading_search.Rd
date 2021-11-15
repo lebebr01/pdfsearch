@@ -4,9 +4,16 @@
 \alias{heading_search}
 \title{Function to locate sections of pdf}
 \usage{
-heading_search(x, headings, path = FALSE, pdf_toc = FALSE,
-  full_line = FALSE, ignore_case = FALSE, split_pdf = FALSE,
-  convert_sentence = FALSE)
+heading_search(
+  x,
+  headings,
+  path = FALSE,
+  pdf_toc = FALSE,
+  full_line = FALSE,
+  ignore_case = FALSE,
+  split_pdf = FALSE,
+  convert_sentence = FALSE
+)
 }
 \arguments{
 \item{x}{Either the text of the pdf read in with the pdftools package or a 

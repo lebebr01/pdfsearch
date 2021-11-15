@@ -22,7 +22,7 @@ Suggests:
     rmarkdown,
     covr
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.2
 URL: https://github.com/lebebr01/pdfsearch
 BugReports: https://github.com/lebebr01/pdfsearch/issues
 VignetteBuilder: knitr

@@ -51,6 +51,7 @@ split_pdf <- function(x, pattern = "\\p{WHITE_SPACE}{3,}") {
   
 }
 
+#' @importFrom stringi stri_isempty
 detect_num_textcolumns <- function(x, pattern = "\\p{WHITE_SPACE}{3,}") {
   
   x_lines <- stringi::stri_split_lines(x)
