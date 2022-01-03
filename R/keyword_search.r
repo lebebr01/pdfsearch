@@ -76,7 +76,7 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
                            remove_hyphen = TRUE, token_results = TRUE,
                            heading_search = FALSE, heading_args = NULL,
                            convert_sentence = TRUE, 
-                           remove_equations = TRUE,
+                           remove_equations = FALSE,
                            split_pattern = "\\p{WHITE_SPACE}{3,}", ...) {
   if(path) {
     x <- pdftools::pdf_text(x)
@@ -92,29 +92,33 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     
     if(split_pdf) {
       x_list <- split_pdf(x, pattern = split_pattern)
-      x_lines <- unlist(x_list)
-      x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
-      # line_nums <- cumsum(x_list[[2]])
-      # x_lines <- x_list[[1]]
+      x_lines_list <- x_list
     } else {
-      x_lines <- unlist(stringi::stri_split_lines(x))
-      x_lines <- gsub("^\\s+|\\s+$", '', x_lines)
+      x_lines_list <- stringi::stri_split_lines(x)
     }
     
+    x_lines_list <- lapply(seq_along(x_lines_list), function(xx) gsub("^\\s+|\\s+$", '', 
+                                                 x = x_lines_list[[xx]]))
+    
     if(remove_equations) {
-      x_lines <- remove_equation(x_lines)
+      x_lines_list <- lapply(x_lines_list, remove_equation)
     }
     
     if(remove_hyphen) {
-      x_lines <- remove_hyphen(x_lines)
+      x_lines_list <- lapply(x_lines_list, remove_hyphen)
     }
     
     # collapse into a single paragraph
     if(convert_sentence) {
-      x_lines <- paste(x_lines, collapse = ' ')
-      x_lines <- unlist(stringi::stri_split_boundaries(x_lines, 
+      x_lines_list <- lapply(seq_along(x_lines_list), function(xx) paste(x_lines_list[[xx]], collapse = ' ')
+      )
+      x_lines_list <- lapply(seq_along(x_lines_list), function(xx) unlist(stringi::stri_split_boundaries(x_lines_list[[xx]], 
                                                        type = "sentence"))
+                             )
+      line_nums <- cumsum(unlist(lapply(x_lines_list, length)))
     }
+    
+    x_lines <- unlist(x_lines_list)
     
     if(length(ignore_case) > 1) {
       if(length(keyword) != length(ignore_case)) {

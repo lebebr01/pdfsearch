@@ -16,7 +16,7 @@ keyword_search(
   heading_search = FALSE,
   heading_args = NULL,
   convert_sentence = TRUE,
-  remove_equations = TRUE,
+  remove_equations = FALSE,
   split_pattern = "\\\\p{WHITE_SPACE}{3,}",
   ...
 )
