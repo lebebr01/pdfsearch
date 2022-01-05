@@ -100,12 +100,12 @@ keyword_search <- function(x, keyword, path = FALSE, split_pdf = FALSE,
     x_lines_list <- lapply(seq_along(x_lines_list), function(xx) gsub("^\\s+|\\s+$", '', 
                                                  x = x_lines_list[[xx]]))
     
-    if(remove_equations) {
-      x_lines_list <- lapply(x_lines_list, remove_equation)
-    }
-    
     if(remove_hyphen) {
       x_lines_list <- lapply(x_lines_list, remove_hyphen)
+    }
+    
+    if(remove_equations) {
+      x_lines_list <- lapply(x_lines_list, remove_equation)
     }
     
     # collapse into a single paragraph
