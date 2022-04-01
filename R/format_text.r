@@ -61,7 +61,6 @@ format_text <- function(pdf_text, split_pdf = FALSE,
     x_lines_list <- lapply(seq_along(x_lines_list), function(xx) unlist(stringi::stri_split_boundaries(x_lines_list[[xx]], 
                                                                                                        type = "sentence"))
     )
-    line_nums <- cumsum(unlist(lapply(x_lines_list, length)))
   }
   
   x_lines_list

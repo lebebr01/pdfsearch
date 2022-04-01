@@ -98,6 +98,10 @@ keyword_search <- function(x, keyword, path = FALSE,
                                 remove_hyphen, convert_sentence,
                                 remove_equations, split_pattern)
     
+    if(convert_sentence) {
+      line_nums <- cumsum(unlist(lapply(x_lines_list, length)))
+    }
+    
     x_lines <- unlist(x_lines_list)
     
     if(length(ignore_case) > 1) {
