@@ -71,13 +71,17 @@
 #' 
 #' @export
 keyword_search <- function(x, keyword, path = FALSE, 
-                           surround_lines = FALSE, ignore_case = FALSE,
+                           surround_lines = FALSE, 
+                           ignore_case = FALSE,
                            token_results = TRUE,
-                           heading_search = FALSE, heading_args = NULL,
-                           split_pdf = FALSE, remove_hyphen = TRUE,
+                           heading_search = FALSE, 
+                           heading_args = NULL,
+                           split_pdf = FALSE, 
+                           remove_hyphen = TRUE,
                            convert_sentence = TRUE, 
                            remove_equations = FALSE,
-                           split_pattern = "\\p{WHITE_SPACE}{3,}", ...) {
+                           split_pattern = "\\p{WHITE_SPACE}{3,}", 
+                           ...) {
   if(path) {
     pdf_text <- pdftools::pdf_text(x)
   }

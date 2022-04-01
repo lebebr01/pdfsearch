@@ -6,11 +6,6 @@
 #' @param directory The directory to perform the search for pdf files to search.
 #' @param keyword The keyword(s) to be used to search in the text. Multiple 
 #'    keywords can be specified with a character vector.
-#' @param split_pdf TRUE/FALSE indicating whether to split the pdf using white 
-#'    space. This would be most useful with multicolumn pdf files. 
-#'    The split_pdf function attempts to recreate the column layout of the text 
-#'    into a single column starting with the left column and proceeding to the 
-#'    right.
 #' @param surround_lines numeric/FALSE indicating whether the output should 
 #'    extract the surrouding lines of text in addition to the matching line. 
 #'    Default is FALSE, if not false, include a numeric number that indicates 
@@ -19,11 +14,16 @@
 #'    case of the keyword matters. 
 #'    Default is FALSE meaning that case of the keyword is literal. If a vector, 
 #'    must be same length as the keyword vector.
-#' @param remove_hyphen TRUE/FALSE indicating whether hyphenated words should
-#'    be adjusted to combine onto a single line. Default is TRUE.
 #' @param token_results TRUE/FALSE indicating whether the results text returned
 #'    should be split into tokens. See the tokenizers package and 
 #'    \code{\link{convert_tokens}} for more details. Defaults to TRUE.
+#' @param split_pdf TRUE/FALSE indicating whether to split the pdf using white 
+#'    space. This would be most useful with multicolumn pdf files. 
+#'    The split_pdf function attempts to recreate the column layout of the text 
+#'    into a single column starting with the left column and proceeding to the 
+#'    right.
+#' @param remove_hyphen TRUE/FALSE indicating whether hyphenated words should
+#'    be adjusted to combine onto a single line. Default is TRUE.
 #' @param convert_sentence TRUE/FALSE indicating if individual lines of PDF file
 #'     should be collapsed into a single large paragraph to perform keyword 
 #'     searching. Default is TRUE.
@@ -73,13 +73,19 @@
 #' 
 #' @export
 keyword_directory <- function(directory, keyword, 
-                              split_pdf = FALSE, surround_lines = FALSE,
-                              ignore_case = FALSE, remove_hyphen = TRUE,
-                              token_results = TRUE, convert_sentence = TRUE, 
+                              surround_lines = FALSE,
+                              ignore_case = FALSE, 
+                              token_results = TRUE, 
+                              split_pdf = FALSE,
+                              remove_hyphen = TRUE,
+                              convert_sentence = TRUE, 
                               remove_equations = TRUE,
                               split_pattern = "\\p{WHITE_SPACE}{3,}",
-                              full_names = TRUE, file_pattern = ".pdf",
-                              recursive = FALSE, max_search = NULL, ...) {
+                              full_names = TRUE, 
+                              file_pattern = ".pdf",
+                              recursive = FALSE, 
+                              max_search = NULL, 
+                              ...) {
   
   files_dir <- list.files(path = directory, pattern = file_pattern, 
                           full.names = full_names, recursive = recursive)
@@ -89,9 +95,11 @@ keyword_directory <- function(directory, keyword,
   if(is.null(max_search)) {
     extract_table <- lapply(seq_along(files_dir), function(xx) 
       keyword_search(files_dir[xx], keyword = keyword, path = TRUE,
-                     split_pdf = split_pdf, surround_lines = surround_lines, 
-                     ignore_case = ignore_case, remove_hyphen = remove_hyphen,
+                     surround_lines = surround_lines, 
+                     ignore_case = ignore_case, 
                      token_results = token_results, 
+                     split_pdf = split_pdf, 
+                     remove_hyphen = remove_hyphen,
                      convert_sentence = convert_sentence, 
                      split_pattern = split_pattern, ...))
   } else {
@@ -99,9 +107,11 @@ keyword_directory <- function(directory, keyword,
     file_name <- file_name[1:max_search]
     extract_table <- lapply(seq_along(files_dir), function(xx) 
       keyword_search(files_dir[xx], keyword = keyword, path = TRUE,
-                     split_pdf = split_pdf, surround_lines = surround_lines, 
-                     ignore_case = ignore_case, remove_hyphen = remove_hyphen,
+                     surround_lines = surround_lines, 
+                     ignore_case = ignore_case, 
                      token_results = token_results, 
+                     split_pdf = split_pdf, 
+                     remove_hyphen = remove_hyphen,
                      convert_sentence = convert_sentence, 
                      split_pattern = split_pattern, ...))
   }
