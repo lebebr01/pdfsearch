@@ -7,11 +7,11 @@
 keyword_directory(
   directory,
   keyword,
-  split_pdf = FALSE,
   surround_lines = FALSE,
   ignore_case = FALSE,
-  remove_hyphen = TRUE,
   token_results = TRUE,
+  split_pdf = FALSE,
+  remove_hyphen = TRUE,
   convert_sentence = TRUE,
   remove_equations = TRUE,
   split_pattern = "\\\\p{WHITE_SPACE}{3,}",
@@ -28,12 +28,6 @@ keyword_directory(
 \item{keyword}{The keyword(s) to be used to search in the text. Multiple 
 keywords can be specified with a character vector.}
 
-\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white 
-space. This would be most useful with multicolumn pdf files. 
-The split_pdf function attempts to recreate the column layout of the text 
-into a single column starting with the left column and proceeding to the 
-right.}
-
 \item{surround_lines}{numeric/FALSE indicating whether the output should 
 extract the surrouding lines of text in addition to the matching line. 
 Default is FALSE, if not false, include a numeric number that indicates 
@@ -44,12 +38,18 @@ case of the keyword matters.
 Default is FALSE meaning that case of the keyword is literal. If a vector, 
 must be same length as the keyword vector.}
 
-\item{remove_hyphen}{TRUE/FALSE indicating whether hyphenated words should
-be adjusted to combine onto a single line. Default is TRUE.}
-
 \item{token_results}{TRUE/FALSE indicating whether the results text returned
 should be split into tokens. See the tokenizers package and 
 \code{\link{convert_tokens}} for more details. Defaults to TRUE.}
+
+\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white 
+space. This would be most useful with multicolumn pdf files. 
+The split_pdf function attempts to recreate the column layout of the text 
+into a single column starting with the left column and proceeding to the 
+right.}
+
+\item{remove_hyphen}{TRUE/FALSE indicating whether hyphenated words should
+be adjusted to combine onto a single line. Default is TRUE.}
 
 \item{convert_sentence}{TRUE/FALSE indicating if individual lines of PDF file
 should be collapsed into a single large paragraph to perform keyword 
