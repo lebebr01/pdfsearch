@@ -8,13 +8,13 @@ keyword_search(
   x,
   keyword,
   path = FALSE,
-  split_pdf = FALSE,
   surround_lines = FALSE,
   ignore_case = FALSE,
-  remove_hyphen = TRUE,
   token_results = TRUE,
   heading_search = FALSE,
   heading_args = NULL,
+  split_pdf = FALSE,
+  remove_hyphen = TRUE,
   convert_sentence = TRUE,
   remove_equations = FALSE,
   split_pattern = "\\\\p{WHITE_SPACE}{3,}",
@@ -31,14 +31,8 @@ keywords can be specified with a character vector.}
 \item{path}{An optional path designation for the location of the pdf to be 
 converted to text. The pdftools package is used for this conversion.}
 
-\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white 
-space. This would be most useful with multicolumn pdf files. 
-The split_pdf function attempts to recreate the column layout of the text 
-into a single column starting with the left column and proceeding to the 
-right.}
-
 \item{surround_lines}{numeric/FALSE indicating whether the output should 
-extract the surrouding lines of text in addition to the matching line. 
+extract the surrounding lines of text in addition to the matching line. 
 Default is FALSE, if not false, include a numeric number that indicates 
 the additional number of surrounding lines that will be extracted.}
 
@@ -46,9 +40,6 @@ the additional number of surrounding lines that will be extracted.}
 case of the keyword matters. Default is FALSE meaning that case of the 
 keyword is literal. If a vector, must be same length as the keyword 
 vector.}
-
-\item{remove_hyphen}{TRUE/FALSE indicating whether hyphenated words should
-be adjusted to combine onto a single line. Default is TRUE.}
 
 \item{token_results}{TRUE/FALSE indicating whether the results text returned
 should be split into tokens. See the tokenizers package and 
@@ -60,6 +51,15 @@ in the pdf.}
 \item{heading_args}{A list of arguments to pass on to the 
 \code{\link{heading_search}} function. See \code{\link{heading_search}} 
  for more details on arguments needed.}
+
+\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white 
+space. This would be most useful with multicolumn pdf files. 
+The split_pdf function attempts to recreate the column layout of the text 
+into a single column starting with the left column and proceeding to the 
+right.}
+
+\item{remove_hyphen}{TRUE/FALSE indicating whether hyphenated words should
+be adjusted to combine onto a single line. Default is TRUE.}
 
 \item{convert_sentence}{TRUE/FALSE indicating if individual lines of PDF file
 should be collapsed into a single large paragraph to perform keyword 
