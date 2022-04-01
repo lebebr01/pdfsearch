@@ -43,6 +43,8 @@ detect the entire equation if it is a multi-row equation.}
 PDF files using \code{stringi::stri_split_regex}. 
 Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 split based on three or more consecutive white space characters.}
+
+\item{...}{Additional arguments, currently not used.}
 }
 \description{
 Performs some formatting of pdf text upon import.

@@ -25,6 +25,7 @@
 #'     PDF files using \code{stringi::stri_split_regex}. 
 #'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
 #'     split based on three or more consecutive white space characters. 
+#' @param ... Additional arguments, currently not used.
 #' 
 #' @importFrom stringi stri_split_lines stri_split_boundaries
 #' 
