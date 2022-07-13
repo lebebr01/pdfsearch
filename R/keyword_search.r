@@ -84,6 +84,8 @@ keyword_search <- function(x, keyword, path = FALSE,
                            ...) {
   if(path) {
     pdf_text <- pdftools::pdf_text(x)
+  } else {
+    pdf_text <- x
   }
   line_nums <- cumsum(lapply(tokenizers::tokenize_lines(pdf_text), length))
   if(any(line_nums == 0)) {
