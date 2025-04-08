@@ -28,14 +28,13 @@
 #'     should be collapsed into a single large paragraph to perform keyword 
 #'     searching. Default is TRUE.
 #' @param remove_equations TRUE/FALSE indicating if equations should be removed.
-#'     Default behavior is to search for the following regex:
-#'     "\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
+#'     Default behavior is to search for a literal parenthesis,
 #'     followed by at least one number followed by another parenthesis at
 #'     the end of the text line. This will not detect other patterns or
 #'     detect the entire equation if it is a multi-row equation.
 #' @param split_pattern Regular expression pattern used to split multicolumn 
 #'     PDF files using \code{stringi::stri_split_regex}. 
-#'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
+#'     Default pattern is to 
 #'     split based on three or more consecutive white space characters. 
 #' @param full_names TRUE/FALSE indicating if the full file path should be used.
 #'    Default is TRUE, see \code{\link{list.files}} for more details.
