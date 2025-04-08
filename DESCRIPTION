@@ -9,7 +9,7 @@ Description: Includes functions for keyword search of pdf files. There is
     also a wrapper that includes searching of all files within a single
     directory.
 Depends:
-    R (>= 3.3.0)
+    R (>= 4.0.0)
 Imports:
     pdftools,
     tibble,

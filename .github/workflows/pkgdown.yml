@@ -4,8 +4,6 @@ on:
 
 name: Pkgdown
 
-name: Pkgdown
-
 jobs:
   pkgdown:
     runs-on: ubuntu-latest
