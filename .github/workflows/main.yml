@@ -22,15 +22,11 @@ jobs:
           - {os: ubuntu-18.04,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-18.04,   r: 'release'}
           - {os: ubuntu-18.04,   r: 'oldrel-1'}
-
-    env:
-      R_KEEP_PKG_SOURCE: yes
+          - {os: ubuntu-18.04,   r: 'oldrel-2'}
 
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v4
       - uses: r-lib/actions/setup-pandoc@v2
-
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
@@ -43,5 +39,8 @@ jobs:
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
+        with:
+          upload-snapshots: true
+          build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf")'
       - name: Test coverage
         run: Rscript -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'
