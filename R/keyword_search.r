@@ -37,8 +37,7 @@
 #'     should be collapsed into a single large paragraph to perform keyword 
 #'     searching. Default is TRUE
 #' @param remove_equations TRUE/FALSE indicating if equations should be removed.
-#'     Default behavior is to search for the following regex:
-#'     "\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
+#'     Default behavior is to search for a literal parenthesis,
 #'     followed by at least one number followed by another parenthesis at
 #'     the end of the text line. This will not detect other patterns or
 #'     detect the entire equation if it is a multi-row equation.
