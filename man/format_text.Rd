@@ -7,6 +7,7 @@
 format_text(
   pdf_text,
   split_pdf = FALSE,
+  blank_lines = TRUE,
   remove_hyphen = TRUE,
   convert_sentence = TRUE,
   remove_equations = FALSE,
@@ -24,6 +25,9 @@ space. This would be most useful with multicolumn pdf files.
 The split_pdf function attempts to recreate the column layout of the text 
 into a single column starting with the left column and proceeding to the 
 right.}
+
+\item{blank_lines}{TRUE/FALSE indicating whether blank text lines should
+be removed. Default is TRUE.}
 
 \item{remove_hyphen}{TRUE/FALSE indicating whether hyphenated words should
 be adjusted to combine onto a single line. Default is TRUE.}

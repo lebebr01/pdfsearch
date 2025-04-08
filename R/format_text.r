@@ -10,6 +10,8 @@
 #'    The split_pdf function attempts to recreate the column layout of the text 
 #'    into a single column starting with the left column and proceeding to the 
 #'    right.
+#' @param blank_lines TRUE/FALSE indicating whether blank text lines should
+#'    be removed. Default is TRUE.
 #' @param remove_hyphen TRUE/FALSE indicating whether hyphenated words should
 #'    be adjusted to combine onto a single line. Default is TRUE.
 #' @param convert_sentence TRUE/FALSE indicating if individual lines of PDF file
@@ -30,6 +32,7 @@
 #' 
 #' @export
 format_text <- function(pdf_text, split_pdf = FALSE,
+                        blank_lines = TRUE,
                         remove_hyphen = TRUE,
                         convert_sentence = TRUE, 
                         remove_equations = FALSE,
@@ -44,6 +47,10 @@ format_text <- function(pdf_text, split_pdf = FALSE,
   
   x_lines_list <- lapply(seq_along(x_lines_list), function(xx) gsub("^\\s+|\\s+$", '', 
                                                                     x = x_lines_list[[xx]]))
+  
+  if(blank_lines) {
+    x_lines_list <- lapply(x_lines_list, remove_blank_lines)
+  }
   
   if(remove_hyphen) {
     x_lines_list <- lapply(x_lines_list, remove_hyphen)

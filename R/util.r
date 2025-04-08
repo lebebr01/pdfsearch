@@ -19,6 +19,10 @@ collapse_columns <- function(x_list, lengths) {
   )
 }
 
+remove_blank_lines <- function(text_lines) {
+  text_lines[nchar(text_lines) != 0]
+}
+
 remove_hyphen <- function(text_lines) {
   
   hyphen_location <- grep("-$", text_lines)

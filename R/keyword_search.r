@@ -31,6 +31,8 @@
 #'    The split_pdf function attempts to recreate the column layout of the text 
 #'    into a single column starting with the left column and proceeding to the 
 #'    right.
+#' @param blank_lines TRUE/FALSE indicating whether blank text lines should
+#'    be removed. Default is TRUE.
 #' @param remove_hyphen TRUE/FALSE indicating whether hyphenated words should
 #'    be adjusted to combine onto a single line. Default is TRUE.
 #' @param convert_sentence TRUE/FALSE indicating if individual lines of PDF file
@@ -76,6 +78,7 @@ keyword_search <- function(x, keyword, path = FALSE,
                            heading_search = FALSE, 
                            heading_args = NULL,
                            split_pdf = FALSE, 
+                           blank_lines = TRUE,
                            remove_hyphen = TRUE,
                            convert_sentence = TRUE, 
                            remove_equations = FALSE,
@@ -95,9 +98,12 @@ keyword_search <- function(x, keyword, path = FALSE,
                                line_text = NULL)
   } else {
     
-    x_lines_list <- format_text(pdf_text, split_pdf, 
-                                remove_hyphen, convert_sentence,
-                                remove_equations, split_pattern)
+    x_lines_list <- format_text(pdf_text, split_pdf = split_pdf, 
+                                blank_lines = blank_lines,
+                                remove_hyphen = remove_hyphen, 
+                                convert_sentence = convert_sentence,
+                                remove_equations = remove_equations, 
+                                split_pattern = split_pattern)
     
     if(convert_sentence) {
       line_nums <- cumsum(unlist(lapply(x_lines_list, length)))
@@ -110,10 +116,10 @@ keyword_search <- function(x, keyword, path = FALSE,
           stop('keyword and ignore.case must be same length')
       }
       keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
-        grep(keyword[xx], x_lines, ignore_case[xx], perl = TRUE))
+        grep(keyword[xx], x_lines, ignore.case = ignore_case[xx], perl = TRUE))
     } else {
       keyword_line_loc <- lapply(seq_along(keyword), function(xx) 
-        grep(keyword[xx], x_lines, ignore_case, perl = TRUE))
+        grep(keyword[xx], x_lines, ignore.case = ignore_case, perl = TRUE))
     }
     keyword_line <- unlist(keyword_line_loc)
     
