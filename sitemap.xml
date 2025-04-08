@@ -1,24 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://pdfsearch.brandonlebeau.org//index.html</loc>
-  </url>
-  <url>
-    <loc>https://pdfsearch.brandonlebeau.org//reference/convert_tokens.html</loc>
-  </url>
-  <url>
-    <loc>https://pdfsearch.brandonlebeau.org//reference/heading_search.html</loc>
-  </url>
-  <url>
-    <loc>https://pdfsearch.brandonlebeau.org//reference/keyword_directory.html</loc>
-  </url>
-  <url>
-    <loc>https://pdfsearch.brandonlebeau.org//reference/keyword_search.html</loc>
-  </url>
-  <url>
-    <loc>https://pdfsearch.brandonlebeau.org//reference/run_shiny.html</loc>
-  </url>
-  <url>
-    <loc>https://pdfsearch.brandonlebeau.org//articles/intro_to_pdfsearch.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://pdfsearch.brandonlebeau.org/404.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/LICENSE-text.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/articles/index.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/articles/intro_to_pdfsearch.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/authors.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/conduct.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/contributing.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/index.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/news/index.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/reference/convert_tokens.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/reference/extract_tables.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/reference/format_text.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/reference/heading_search.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/reference/index.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/reference/keyword_directory.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/reference/keyword_search.html</loc></url>
+<url><loc>https://pdfsearch.brandonlebeau.org/reference/run_shiny.html</loc></url>
 </urlset>
+
