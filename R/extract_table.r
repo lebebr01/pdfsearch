@@ -10,8 +10,7 @@
 #'    into a single column starting with the left column and proceeding to the 
 #'    right. 
 #' @param remove_equations TRUE/FALSE indicating if equations should be removed.
-#'     Default behavior is to search for the following regex:
-#'     "\\([0-9]{1,}\\)$", essentially this matches a literal parenthesis,
+#'     Default behavior is to search for a literal parenthesis,
 #'     followed by at least one number followed by another parenthesis at
 #'     the end of the text line. This will not detect other patterns or
 #'     detect the entire equation if it is a multi-row equation.
@@ -19,6 +18,10 @@
 #'   consecutive blank white spaces.
 #' @param delimiter_table A delimiter used to separate table cells. The default
 #'   value is two consecutive blank white spaces. 
+#' @param split_pattern Regular expression pattern used to split multicolumn 
+#'     PDF files using \code{stringi::stri_split_regex}. 
+#'     Default pattern is to 
+#'     split based on three or more consecutive white space characters. 
 #' @param replacement A delimiter used to separate table cells after the 
 #'   replacement of white space is done. 
 #' @param col_names TRUE/FALSE value passed to `readr::read_delim` 
@@ -31,6 +34,7 @@ extract_tables <- function(x, path = FALSE, split_pdf = FALSE,
                            remove_equations = TRUE,
                            delimiter = "\\s{2,}",
                            delimiter_table = "\\s{2,}",
+                           split_pattern = "\\p{WHITE_SPACE}{3,}", 
                            replacement = "\\/",
                            col_names = FALSE) {
   
