@@ -26,7 +26,7 @@ Can be NULL if pdf_toc = TRUE.}
 converted to text. The pdftools package is used for this conversion.}
 
 \item{pdf_toc}{TRUE/FALSE whether the pdf_toc function should be used from
-the {pdftools} package. This is most useful if the pdf has 
+the pdftools package. This is most useful if the pdf has 
 the table of contents embedded within the pdf.
 Must specify path = TRUE if pdf_toc = TRUE.}
 

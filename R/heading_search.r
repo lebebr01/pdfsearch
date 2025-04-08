@@ -10,7 +10,7 @@
 #' @param path An optional path designation for the location of the pdf to be 
 #'    converted to text. The pdftools package is used for this conversion.
 #' @param pdf_toc TRUE/FALSE whether the pdf_toc function should be used from
-#'    the {pdftools} package. This is most useful if the pdf has 
+#'    the pdftools package. This is most useful if the pdf has 
 #'    the table of contents embedded within the pdf.
 #'    Must specify path = TRUE if pdf_toc = TRUE.
 #' @param full_line TRUE/FALSE indicating whether the headings should reside on
