@@ -2,7 +2,7 @@ Package: pdfsearch
 Type: Package
 Authors@R: person("Brandon", "LeBeau", email = "lebebr01+pdfsearch@gmail.com",
                role = c("aut", "cre"))
-Version: 0.3.4
+Version: 0.4.0
 License: MIT + file LICENSE
 Title: Search Tools for PDF Files
 Description: Includes functions for keyword search of pdf files. There is
@@ -14,7 +14,8 @@ Imports:
     pdftools,
     tibble,
     tokenizers,
-    stringi
+    stringi,
+    readr
 Suggests:
     shiny,
     testthat,
