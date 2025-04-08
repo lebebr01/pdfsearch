@@ -44,7 +44,7 @@
 #'     detect the entire equation if it is a multi-row equation.
 #' @param split_pattern Regular expression pattern used to split multicolumn 
 #'     PDF files using \code{stringi::stri_split_regex}. 
-#'     Default pattern is "\\p{WHITE_SPACE}{3,}" which can be interpreted as: 
+#'     Default pattern is to 
 #'     split based on three or more consecutive white space characters. 
 #' @param ... token_function to pass to \code{\link{convert_tokens}} 
 #'   function. 
