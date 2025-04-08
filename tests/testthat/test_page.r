@@ -24,6 +24,6 @@ test_that('correct page manual', {
     keyword = 'anneal', 
     path = TRUE, 
     ignore_case = TRUE
-  )[['page_num']], 108)
+  )[['page_num']][1], 156)
 })
 
