@@ -2,7 +2,7 @@
 
 [![R build status](https://github.com/lebebr01/pdfsearch/workflows/R-CMD-check/badge.svg)](https://github.com/lebebr01/pdfsearch/actions?workflow=R-CMD-check)
 [![Build status](https://ci.appveyor.com/api/projects/status/kjptcw7m8tlajmix?svg=true)](https://ci.appveyor.com/project/lebebr01/pdfsearch)
-[![codecov.io](https://codecov.io/github/lebebr01/pdfsearch/coverage.svg?branch=master)](https://codecov.io/github/lebebr01/pdfsearch?branch=master)
+[![codecov.io](https://app.codecov.io/github/lebebr01/pdfsearch?branch=master)](https://app.codecov.io/github/lebebr01/pdfsearch?branch=master)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/pdfsearch)](https://cran.r-project.org/package=pdfsearch)
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.00668/status.svg)](https://doi.org/10.21105/joss.00668)
 
@@ -10,13 +10,13 @@ This package defines a few useful functions for keyword searching using the [pdf
 
 The package can be installed from CRAN directly:
 
-```r
+``` r
 install.packages("pdfsearch")
 ```
 
 To install the development version you use devtools:
 
-```r
+``` r
 install.packages("devtools")
 devtools::install_github('lebebr01/pdfsearch')
 ```
@@ -27,7 +27,7 @@ There are currently two functions in this package of use to users. The first `ke
 ## Example with `keyword_search`
 The package comes with two pdf files from [arXiv](https://arxiv.org/) to use as test cases. Below is an example of using the `keyword_search` function.
 
-```r
+``` r
 library(pdfsearch)
 file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 
@@ -53,7 +53,7 @@ In addition, by default the hyphenated words at the end of the text are combined
 ### Surrounding lines of text 
 It may be useful to extract not just the line of text that the keyword is found in, but also surrounding text to have additional context when looking at the keyword results. This can be added by using the argument `surround_lines` as follows:
 
-```r
+``` r
 file <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
 
 result <- keyword_search(file, 
@@ -67,7 +67,7 @@ head(result$line_text, n = 2)
 The `keyword_directory` function allows users to search for keywords in multiple PDF files in one function call. The same functionality from the `keyword_search` function can be invoked, specifically `remove_hyphen` and `surround_lines`. Below is an example of searching a single directory. 
 
 
-```r
+``` r
 directory <- system.file('pdf', package = 'pdfsearch')
 
 # do search over two files
@@ -83,7 +83,7 @@ A few other useful arguments are possible when searching for keywords within mul
 ### Shiny App
 The package also has a simple Shiny app that can be called using the following command
 
-```r
+``` r
 run_shiny()
 ```
 
