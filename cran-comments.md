@@ -1,13 +1,12 @@
 ## Test Environments
-* local windows install, R 3.5.2
-* ubuntu 14.04 (travis CI) R 3.4.4
-* ubuntu 14.04 (travis CI) R 3.5.2
-* ubuntu 14.04 (travis CI) R development
-* ubuntu 16.04 (travis CI) R 3.5.2
-* OS X 10.13.6 (travis CI) R 3.5.2
-* OS X 10.13.3 (travis CI) R 3.5.2
-* OS X 10.12.6 (travis CI) R 3.5.2
-* OS X 10.11.6 (travis CI) R 3.5.2
+* local OS X 15.4, R 4.4.1
+* OS X 14.7.4 (GitHub Actions) R 4.4.3
+* Windows Server 2022, 10.0.20348 (GitHub Actions) R 4.4.3
+* Ubuntu 24.04.2 (GitHub Actions), R devel
+* Ubuntu 24.04.2 (GitHub Actions), R 4.4.3
+* Ubuntu 24.04.2 (GitHub Actions), R 4.3.3
+* Ubuntu 24.04.2 (GitHub Actions), R 4.2.3
+* Ubuntu 24.04.2 (GitHub Actions), R 4.1.3
 
 ## R CMD check results
 No Errors, warnings, or notes.
