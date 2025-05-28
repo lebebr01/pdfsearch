@@ -20,10 +20,10 @@ test_that('correct page', {
 
 test_that('correct page manual', {
   expect_equal(keyword_search(
-    'https://cran.r-project.org/web/packages/tmap/tmap.pdf', 
-    keyword = 'anneal', 
+    system.file('pdf', 'simglm.pdf', package = 'pdfsearch'), 
+    keyword = 'parse', 
     path = TRUE, 
     ignore_case = TRUE
-  )[['page_num']][1], 156)
+  )[['page_num']][1], 2)
 })
 

@@ -17,7 +17,7 @@ test_that('directory search', {
   path <- system.file('pdf', '1610.00147.pdf', package = 'pdfsearch')
   path <- gsub('/1610.00147.pdf', '', path)
   expect_equal(length(table(keyword_directory(directory = path, 
-                        keyword = 'error', full_names = TRUE)$ID)), 2)
+                        keyword = 'error', full_names = TRUE)$ID)), 3)
 })
 
 test_that('directory search max_search', {
