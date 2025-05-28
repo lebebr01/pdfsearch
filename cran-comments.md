@@ -1,6 +1,5 @@
 ## Updates
-- Fixes the test errors from cran results
-- Added local PDF (inside package) to search rather than web resource.
+- Fix link in README
 
 ## Test Environments
 * local OS X 15.5, R 4.5.0
