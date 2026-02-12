@@ -12,21 +12,39 @@ extract_tables(
   delimiter = "\\\\s{2,}",
   delimiter_table = "\\\\s{2,}",
   split_pattern = "\\\\p{WHITE_SPACE}{3,}",
+  split_method = c("regex", "coordinates"),
+  column_count = c("auto", "1", "2"),
+  remove_section_headers = FALSE,
+  remove_page_headers = FALSE,
+  remove_page_footers = FALSE,
+  remove_repeated_furniture = FALSE,
+  table_min_numeric_tokens = 3,
+  table_min_digit_ratio = 0.18,
+  table_min_block_lines = 2,
+  table_block_max_gap = 3,
+  table_include_headers = TRUE,
+  table_header_lookback = 3,
+  table_include_notes = FALSE,
+  table_note_lookahead = 2,
+  remove_captions = TRUE,
+  caption_continuation_max = 2,
   replacement = "\\\\/",
-  col_names = FALSE
+  col_names = FALSE,
+  output = c("parsed", "blocks", "both"),
+  merge_across_pages = TRUE
 )
 }
 \arguments{
-\item{x}{Either the text of the pdf read in with the pdftools package or a 
+\item{x}{Either the text of the pdf read in with the pdftools package or a
 path for the location of the pdf file.}
 
-\item{path}{An optional path designation for the location of the pdf to be 
+\item{path}{An optional path designation for the location of the pdf to be
 converted to text. The pdftools package is used for this conversion.}
 
-\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white 
-space. This would be most useful with multicolumn pdf files. 
-The split_pdf function attempts to recreate the column layout of the text 
-into a single column starting with the left column and proceeding to the 
+\item{split_pdf}{TRUE/FALSE indicating whether to split the pdf using white
+space. This would be most useful with multicolumn pdf files.
+The split_pdf function attempts to recreate the column layout of the text
+into a single column starting with the left column and proceeding to the
 right.}
 
 \item{remove_equations}{TRUE/FALSE indicating if equations should be removed.
@@ -35,24 +53,82 @@ followed by at least one number followed by another parenthesis at
 the end of the text line. This will not detect other patterns or
 detect the entire equation if it is a multi-row equation.}
 
-\item{delimiter}{A delimiter used to detect tables. The default is two 
+\item{delimiter}{A delimiter used to detect tables. The default is two
 consecutive blank white spaces.}
 
 \item{delimiter_table}{A delimiter used to separate table cells. The default
 value is two consecutive blank white spaces.}
 
-\item{split_pattern}{Regular expression pattern used to split multicolumn 
-PDF files using \code{stringi::stri_split_regex}. 
-Default pattern is to 
+\item{split_pattern}{Regular expression pattern used to split multicolumn
+PDF files using \code{stringi::stri_split_regex}.
+Default pattern is to
 split based on three or more consecutive white space characters.}
 
-\item{replacement}{A delimiter used to separate table cells after the 
+\item{split_method}{Method used for splitting multicolumn PDF text.
+Defaults to "regex". Use "coordinates" to split with
+\code{pdftools::pdf_data()} token coordinates.}
+
+\item{column_count}{Expected number of columns for coordinate splitting.
+Options are "auto", "1", or "2". Used when
+\code{split_method = "coordinates"}.}
+
+\item{remove_section_headers}{TRUE/FALSE indicating if section-header-like
+lines should be removed prior to table extraction.}
+
+\item{remove_page_headers}{TRUE/FALSE indicating if page-header furniture
+should be removed prior to table extraction.}
+
+\item{remove_page_footers}{TRUE/FALSE indicating if page-footer furniture
+should be removed prior to table extraction.}
+
+\item{remove_repeated_furniture}{TRUE/FALSE indicating if repeated text
+found in page edges should be removed prior to table extraction.}
+
+\item{table_min_numeric_tokens}{Minimum numeric tokens used to classify a
+line as table-like.}
+
+\item{table_min_digit_ratio}{Minimum digit-character ratio used to classify
+a line as table-like.}
+
+\item{table_min_block_lines}{Minimum number of adjacent table-like lines for
+a block to be treated as a table block.}
+
+\item{table_block_max_gap}{Maximum gap (in lines) allowed between
+table-like lines inside one table block.}
+
+\item{table_include_headers}{TRUE/FALSE indicating if table header lines
+adjacent to detected table blocks should be included in output blocks.}
+
+\item{table_header_lookback}{Number of lines above a detected table block to
+inspect for header rows.}
+
+\item{table_include_notes}{TRUE/FALSE indicating if note/source lines after
+table blocks should be included in output blocks.}
+
+\item{table_note_lookahead}{Number of lines after a detected table block to
+inspect for note/source rows.}
+
+\item{remove_captions}{TRUE/FALSE indicating if figure/table caption lines
+should be removed before table-block detection.}
+
+\item{caption_continuation_max}{Number of additional lines after a caption
+start line to remove when they appear to be caption continuations.}
+
+\item{replacement}{A delimiter used to separate table cells after the
 replacement of white space is done.}
 
-\item{col_names}{TRUE/FALSE value passed to `readr::read_delim` 
-to indicate if column names should be used. Default value is FALSE which 
+\item{col_names}{TRUE/FALSE value passed to `readr::read_delim`
+to indicate if column names should be used. Default value is FALSE which
 means column names will be generic (i.e. X1, X2, etc). A value of TRUE
 would take the values from the first row of data extracted.}
+
+\item{output}{Output mode: "parsed" returns list of parsed data frames,
+"blocks" returns detected table blocks with metadata, and "both" returns
+a list with both representations.}
+
+\item{merge_across_pages}{TRUE/FALSE indicating if adjacent blocks on
+consecutive pages should be merged when they appear to be table
+continuations.}
 }
 \description{
 Function to extract tables
