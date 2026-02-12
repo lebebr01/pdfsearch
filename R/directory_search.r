@@ -36,6 +36,63 @@
 #'     PDF files using \code{stringi::stri_split_regex}. 
 #'     Default pattern is to 
 #'     split based on three or more consecutive white space characters. 
+#' @param split_method Method used for splitting multicolumn PDF text.
+#'     Defaults to "regex". Use "coordinates" to split with
+#'     \code{pdftools::pdf_data()} token coordinates.
+#' @param column_count Expected number of columns for coordinate splitting.
+#'     Options are "auto", "1", or "2". Used when
+#'     \code{split_method = "coordinates"}.
+#' @param mask_nonprose TRUE/FALSE indicating if non-prose lines (likely
+#'     equations, tables, figure/table captions) should be removed when
+#'     using coordinate splitting.
+#' @param nonprose_digit_ratio Numeric threshold for classifying a line as
+#'     non-prose based on digit character ratio.
+#' @param nonprose_symbol_ratio Numeric threshold for classifying a line as
+#'     non-prose based on math-symbol character ratio.
+#' @param nonprose_short_token_max Maximum token count for short symbolic
+#'     lines to classify as non-prose.
+#' @param remove_section_headers TRUE/FALSE indicating if section-header-like
+#'     lines should be removed when using coordinate splitting.
+#' @param remove_page_headers TRUE/FALSE indicating if page-header furniture
+#'     (e.g., arXiv identifiers, emails, URLs) should be removed when using
+#'     coordinate splitting.
+#' @param remove_page_footers TRUE/FALSE indicating if page-footer furniture
+#'     (e.g., page numbers, copyright markers) should be removed when using
+#'     coordinate splitting.
+#' @param page_margin_ratio Numeric ratio used to define top and bottom page
+#'     bands for header/footer removal.
+#' @param remove_repeated_furniture TRUE/FALSE indicating if repeated text
+#'     found in the first/last lines across many pages should be removed.
+#' @param repeated_edge_n Number of lines from top and bottom of each page to
+#'     consider for repeated edge-line detection.
+#' @param repeated_edge_min_pages Minimum number of pages an edge line must
+#'     appear on before being removed.
+#' @param remove_captions TRUE/FALSE indicating if figure/table caption lines
+#'     should be removed.
+#' @param caption_continuation_max Number of additional lines after a caption
+#'     start line to remove when they appear to be caption continuations.
+#' @param table_mode How to handle detected table blocks. "keep" keeps all
+#'     lines, "remove" excludes table blocks, and "only" keeps only table
+#'     blocks.
+#' @param table_min_numeric_tokens Minimum numeric tokens used to classify a
+#'     line as table-like.
+#' @param table_min_digit_ratio Minimum digit-character ratio used to classify
+#'     a line as table-like.
+#' @param table_min_block_lines Minimum number of adjacent table-like lines for
+#'     a block to be treated as a table block.
+#' @param table_block_max_gap Maximum gap (in lines) allowed between
+#'     table-like lines inside one table block.
+#' @param table_include_headers TRUE/FALSE indicating if table header lines
+#'     adjacent to detected table blocks should be included in table blocks.
+#' @param table_header_lookback Number of lines above a detected table block to
+#'     inspect for header rows.
+#' @param table_include_notes TRUE/FALSE indicating if trailing note/source
+#'     lines should be included with detected table blocks.
+#' @param table_note_lookahead Number of lines after a detected table block to
+#'     inspect for note/source rows.
+#' @param concatenate_pages TRUE/FALSE indicating if page text should be
+#'     concatenated after column rectification and cleaning, before sentence
+#'     conversion. This is only used when \code{convert_sentence = TRUE}.
 #' @param full_names TRUE/FALSE indicating if the full file path should be used.
 #'    Default is TRUE, see \code{\link{list.files}} for more details.
 #' @param file_pattern An optional regular expression to select specific file
@@ -80,11 +137,39 @@ keyword_directory <- function(directory, keyword,
                               convert_sentence = TRUE, 
                               remove_equations = TRUE,
                               split_pattern = "\\p{WHITE_SPACE}{3,}",
+                              split_method = c("regex", "coordinates"),
+                              column_count = c("auto", "1", "2"),
+                              mask_nonprose = FALSE,
+                              nonprose_digit_ratio = 0.35,
+                              nonprose_symbol_ratio = 0.15,
+                              nonprose_short_token_max = 3,
+                              remove_section_headers = FALSE,
+                              remove_page_headers = FALSE,
+                              remove_page_footers = FALSE,
+                              page_margin_ratio = 0.08,
+                              remove_repeated_furniture = FALSE,
+                              repeated_edge_n = 3,
+                              repeated_edge_min_pages = 4,
+                              remove_captions = FALSE,
+                              caption_continuation_max = 2,
+                              table_mode = c("keep", "remove", "only"),
+                              table_min_numeric_tokens = 3,
+                              table_min_digit_ratio = 0.18,
+                              table_min_block_lines = 2,
+                              table_block_max_gap = 3,
+                              table_include_headers = TRUE,
+                              table_header_lookback = 3,
+                              table_include_notes = FALSE,
+                              table_note_lookahead = 2,
+                              concatenate_pages = FALSE,
                               full_names = TRUE, 
                               file_pattern = ".pdf",
                               recursive = FALSE, 
                               max_search = NULL, 
                               ...) {
+  split_method <- match.arg(split_method)
+  column_count <- match.arg(column_count)
+  table_mode <- match.arg(table_mode)
   
   files_dir <- list.files(path = directory, pattern = file_pattern, 
                           full.names = full_names, recursive = recursive)
@@ -100,7 +185,33 @@ keyword_directory <- function(directory, keyword,
                      split_pdf = split_pdf, 
                      remove_hyphen = remove_hyphen,
                      convert_sentence = convert_sentence, 
-                     split_pattern = split_pattern, ...))
+                     split_pattern = split_pattern,
+                     split_method = split_method,
+                     column_count = column_count,
+                     mask_nonprose = mask_nonprose,
+                     nonprose_digit_ratio = nonprose_digit_ratio,
+                     nonprose_symbol_ratio = nonprose_symbol_ratio,
+                     nonprose_short_token_max = nonprose_short_token_max,
+                     remove_section_headers = remove_section_headers,
+                     remove_page_headers = remove_page_headers,
+                     remove_page_footers = remove_page_footers,
+                     page_margin_ratio = page_margin_ratio,
+                     remove_repeated_furniture = remove_repeated_furniture,
+                     repeated_edge_n = repeated_edge_n,
+                     repeated_edge_min_pages = repeated_edge_min_pages,
+                     remove_captions = remove_captions,
+                     caption_continuation_max = caption_continuation_max,
+                     table_mode = table_mode,
+                     table_min_numeric_tokens = table_min_numeric_tokens,
+                     table_min_digit_ratio = table_min_digit_ratio,
+                     table_min_block_lines = table_min_block_lines,
+                     table_block_max_gap = table_block_max_gap,
+                     table_include_headers = table_include_headers,
+                     table_header_lookback = table_header_lookback,
+                     table_include_notes = table_include_notes,
+                     table_note_lookahead = table_note_lookahead,
+                     concatenate_pages = concatenate_pages,
+                     ...))
   } else {
     files_dir <- files_dir[1:max_search]
     file_name <- file_name[1:max_search]
@@ -112,7 +223,33 @@ keyword_directory <- function(directory, keyword,
                      split_pdf = split_pdf, 
                      remove_hyphen = remove_hyphen,
                      convert_sentence = convert_sentence, 
-                     split_pattern = split_pattern, ...))
+                     split_pattern = split_pattern,
+                     split_method = split_method,
+                     column_count = column_count,
+                     mask_nonprose = mask_nonprose,
+                     nonprose_digit_ratio = nonprose_digit_ratio,
+                     nonprose_symbol_ratio = nonprose_symbol_ratio,
+                     nonprose_short_token_max = nonprose_short_token_max,
+                     remove_section_headers = remove_section_headers,
+                     remove_page_headers = remove_page_headers,
+                     remove_page_footers = remove_page_footers,
+                     page_margin_ratio = page_margin_ratio,
+                     remove_repeated_furniture = remove_repeated_furniture,
+                     repeated_edge_n = repeated_edge_n,
+                     repeated_edge_min_pages = repeated_edge_min_pages,
+                     remove_captions = remove_captions,
+                     caption_continuation_max = caption_continuation_max,
+                     table_mode = table_mode,
+                     table_min_numeric_tokens = table_min_numeric_tokens,
+                     table_min_digit_ratio = table_min_digit_ratio,
+                     table_min_block_lines = table_min_block_lines,
+                     table_block_max_gap = table_block_max_gap,
+                     table_include_headers = table_include_headers,
+                     table_header_lookback = table_header_lookback,
+                     table_include_notes = table_include_notes,
+                     table_note_lookahead = table_note_lookahead,
+                     concatenate_pages = concatenate_pages,
+                     ...))
   }
   
   num_rows <- unlist(lapply(extract_table, nrow))
