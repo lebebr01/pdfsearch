@@ -25,7 +25,7 @@ that the keyword is found are returned."><!-- mathjax --><script src="https://cd
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pdfsearch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -41,6 +41,9 @@ that the keyword is found are returned."><!-- mathjax --><script src="https://cd
   </a>
   <ul class="dropdown-menu" role="menu"><li>
       <a href="../articles/intro_to_pdfsearch.html">Getting Started with pdfsearch</a>
+    </li>
+    <li>
+      <a href="../articles/multicolumn_and_tables.html">Robust Multi-Column and Table Workflows</a>
     </li>
   </ul></li>
 <li>
@@ -88,6 +91,31 @@ that the keyword is found are returned.</p>
 <span>  convert_sentence <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  remove_equations <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  split_pattern <span class="op">=</span> <span class="st">"\\p{WHITE_SPACE}{3,}"</span>,</span>
+<span>  split_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"regex"</span>, <span class="st">"coordinates"</span><span class="op">)</span>,</span>
+<span>  column_count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"auto"</span>, <span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span>,</span>
+<span>  mask_nonprose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  nonprose_digit_ratio <span class="op">=</span> <span class="fl">0.35</span>,</span>
+<span>  nonprose_symbol_ratio <span class="op">=</span> <span class="fl">0.15</span>,</span>
+<span>  nonprose_short_token_max <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  remove_section_headers <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  remove_page_headers <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  remove_page_footers <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  page_margin_ratio <span class="op">=</span> <span class="fl">0.08</span>,</span>
+<span>  remove_repeated_furniture <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  repeated_edge_n <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  repeated_edge_min_pages <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  remove_captions <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  caption_continuation_max <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  table_mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"keep"</span>, <span class="st">"remove"</span>, <span class="st">"only"</span><span class="op">)</span>,</span>
+<span>  table_min_numeric_tokens <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  table_min_digit_ratio <span class="op">=</span> <span class="fl">0.18</span>,</span>
+<span>  table_min_block_lines <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  table_block_max_gap <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  table_include_headers <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  table_header_lookback <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  table_include_notes <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  table_note_lookahead <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  concatenate_pages <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -181,6 +209,138 @@ Default pattern is to
 split based on three or more consecutive white space characters.</p></dd>
 
 
+<dt id="arg-split-method">split_method<a class="anchor" aria-label="anchor" href="#arg-split-method"></a></dt>
+<dd><p>Method used for splitting multicolumn PDF text.
+Defaults to "regex". Use "coordinates" to split with
+<code><a href="https://docs.ropensci.org/pdftools//reference/pdftools.html" class="external-link">pdftools::pdf_data()</a></code> token coordinates.</p></dd>
+
+
+<dt id="arg-column-count">column_count<a class="anchor" aria-label="anchor" href="#arg-column-count"></a></dt>
+<dd><p>Expected number of columns for coordinate splitting.
+Options are "auto", "1", or "2". Used when
+<code>split_method = "coordinates"</code>.</p></dd>
+
+
+<dt id="arg-mask-nonprose">mask_nonprose<a class="anchor" aria-label="anchor" href="#arg-mask-nonprose"></a></dt>
+<dd><p>TRUE/FALSE indicating if non-prose lines (likely
+equations, tables, figure/table captions) should be removed when
+using coordinate splitting.</p></dd>
+
+
+<dt id="arg-nonprose-digit-ratio">nonprose_digit_ratio<a class="anchor" aria-label="anchor" href="#arg-nonprose-digit-ratio"></a></dt>
+<dd><p>Numeric threshold for classifying a line as
+non-prose based on digit character ratio.</p></dd>
+
+
+<dt id="arg-nonprose-symbol-ratio">nonprose_symbol_ratio<a class="anchor" aria-label="anchor" href="#arg-nonprose-symbol-ratio"></a></dt>
+<dd><p>Numeric threshold for classifying a line as
+non-prose based on math-symbol character ratio.</p></dd>
+
+
+<dt id="arg-nonprose-short-token-max">nonprose_short_token_max<a class="anchor" aria-label="anchor" href="#arg-nonprose-short-token-max"></a></dt>
+<dd><p>Maximum token count for short symbolic
+lines to classify as non-prose.</p></dd>
+
+
+<dt id="arg-remove-section-headers">remove_section_headers<a class="anchor" aria-label="anchor" href="#arg-remove-section-headers"></a></dt>
+<dd><p>TRUE/FALSE indicating if section-header-like
+lines should be removed when using coordinate splitting.</p></dd>
+
+
+<dt id="arg-remove-page-headers">remove_page_headers<a class="anchor" aria-label="anchor" href="#arg-remove-page-headers"></a></dt>
+<dd><p>TRUE/FALSE indicating if page-header furniture
+(e.g., arXiv identifiers, emails, URLs) should be removed when using
+coordinate splitting.</p></dd>
+
+
+<dt id="arg-remove-page-footers">remove_page_footers<a class="anchor" aria-label="anchor" href="#arg-remove-page-footers"></a></dt>
+<dd><p>TRUE/FALSE indicating if page-footer furniture
+(e.g., page numbers, copyright markers) should be removed when using
+coordinate splitting.</p></dd>
+
+
+<dt id="arg-page-margin-ratio">page_margin_ratio<a class="anchor" aria-label="anchor" href="#arg-page-margin-ratio"></a></dt>
+<dd><p>Numeric ratio used to define top and bottom page
+bands for header/footer removal.</p></dd>
+
+
+<dt id="arg-remove-repeated-furniture">remove_repeated_furniture<a class="anchor" aria-label="anchor" href="#arg-remove-repeated-furniture"></a></dt>
+<dd><p>TRUE/FALSE indicating if repeated text
+found in the first/last lines across many pages should be removed.</p></dd>
+
+
+<dt id="arg-repeated-edge-n">repeated_edge_n<a class="anchor" aria-label="anchor" href="#arg-repeated-edge-n"></a></dt>
+<dd><p>Number of lines from top and bottom of each page to
+consider for repeated edge-line detection.</p></dd>
+
+
+<dt id="arg-repeated-edge-min-pages">repeated_edge_min_pages<a class="anchor" aria-label="anchor" href="#arg-repeated-edge-min-pages"></a></dt>
+<dd><p>Minimum number of pages an edge line must
+appear on before being removed.</p></dd>
+
+
+<dt id="arg-remove-captions">remove_captions<a class="anchor" aria-label="anchor" href="#arg-remove-captions"></a></dt>
+<dd><p>TRUE/FALSE indicating if figure/table caption lines
+should be removed.</p></dd>
+
+
+<dt id="arg-caption-continuation-max">caption_continuation_max<a class="anchor" aria-label="anchor" href="#arg-caption-continuation-max"></a></dt>
+<dd><p>Number of additional lines after a caption
+start line to remove when they appear to be caption continuations.</p></dd>
+
+
+<dt id="arg-table-mode">table_mode<a class="anchor" aria-label="anchor" href="#arg-table-mode"></a></dt>
+<dd><p>How to handle detected table blocks. "keep" keeps all
+lines, "remove" excludes table blocks, and "only" keeps only table
+blocks.</p></dd>
+
+
+<dt id="arg-table-min-numeric-tokens">table_min_numeric_tokens<a class="anchor" aria-label="anchor" href="#arg-table-min-numeric-tokens"></a></dt>
+<dd><p>Minimum numeric tokens used to classify a
+line as table-like.</p></dd>
+
+
+<dt id="arg-table-min-digit-ratio">table_min_digit_ratio<a class="anchor" aria-label="anchor" href="#arg-table-min-digit-ratio"></a></dt>
+<dd><p>Minimum digit-character ratio used to classify
+a line as table-like.</p></dd>
+
+
+<dt id="arg-table-min-block-lines">table_min_block_lines<a class="anchor" aria-label="anchor" href="#arg-table-min-block-lines"></a></dt>
+<dd><p>Minimum number of adjacent table-like lines for
+a block to be treated as a table block.</p></dd>
+
+
+<dt id="arg-table-block-max-gap">table_block_max_gap<a class="anchor" aria-label="anchor" href="#arg-table-block-max-gap"></a></dt>
+<dd><p>Maximum gap (in lines) allowed between
+table-like lines inside one table block.</p></dd>
+
+
+<dt id="arg-table-include-headers">table_include_headers<a class="anchor" aria-label="anchor" href="#arg-table-include-headers"></a></dt>
+<dd><p>TRUE/FALSE indicating if table header lines
+adjacent to detected table blocks should be included in table blocks.</p></dd>
+
+
+<dt id="arg-table-header-lookback">table_header_lookback<a class="anchor" aria-label="anchor" href="#arg-table-header-lookback"></a></dt>
+<dd><p>Number of lines above a detected table block to
+inspect for header rows.</p></dd>
+
+
+<dt id="arg-table-include-notes">table_include_notes<a class="anchor" aria-label="anchor" href="#arg-table-include-notes"></a></dt>
+<dd><p>TRUE/FALSE indicating if trailing note/source
+lines should be included with detected table blocks.</p></dd>
+
+
+<dt id="arg-table-note-lookahead">table_note_lookahead<a class="anchor" aria-label="anchor" href="#arg-table-note-lookahead"></a></dt>
+<dd><p>Number of lines after a detected table block to
+inspect for note/source rows.</p></dd>
+
+
+<dt id="arg-concatenate-pages">concatenate_pages<a class="anchor" aria-label="anchor" href="#arg-concatenate-pages"></a></dt>
+<dd><p>TRUE/FALSE indicating if page text should be
+concatenated after column rectification and cleaning, before sentence
+conversion. This is only used when <code>convert_sentence = TRUE</code>.</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>token_function to pass to <code><a href="convert_tokens.html">convert_tokens</a></code>
 function.</p></dd>
@@ -206,7 +366,7 @@ function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> repeated measures        2       31 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> repeated measures        2       58 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> repeated measures        2       60 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> repeated measures        3       70 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> repeated measures        2       70 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> repeated measures        6      169 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> repeated measures        6      180 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> repeated measures        6      185 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
@@ -243,7 +403,7 @@ function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> repeated measures        2       51 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> repeated measures        6      211 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> repeated measures        6      219 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> repeated measures        7      225 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> repeated measures        6      225 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> repeated measures        9      353 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -260,7 +420,7 @@ function.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>

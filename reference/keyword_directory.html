@@ -24,7 +24,7 @@ directory. Includes the ability to include subdirectories as well."><!-- mathjax
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pdfsearch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -40,6 +40,9 @@ directory. Includes the ability to include subdirectories as well."><!-- mathjax
   </a>
   <ul class="dropdown-menu" role="menu"><li>
       <a href="../articles/intro_to_pdfsearch.html">Getting Started with pdfsearch</a>
+    </li>
+    <li>
+      <a href="../articles/multicolumn_and_tables.html">Robust Multi-Column and Table Workflows</a>
     </li>
   </ul></li>
 <li>
@@ -82,6 +85,31 @@ directory. Includes the ability to include subdirectories as well.</p>
 <span>  convert_sentence <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  remove_equations <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  split_pattern <span class="op">=</span> <span class="st">"\\p{WHITE_SPACE}{3,}"</span>,</span>
+<span>  split_method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"regex"</span>, <span class="st">"coordinates"</span><span class="op">)</span>,</span>
+<span>  column_count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"auto"</span>, <span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span>,</span>
+<span>  mask_nonprose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  nonprose_digit_ratio <span class="op">=</span> <span class="fl">0.35</span>,</span>
+<span>  nonprose_symbol_ratio <span class="op">=</span> <span class="fl">0.15</span>,</span>
+<span>  nonprose_short_token_max <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  remove_section_headers <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  remove_page_headers <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  remove_page_footers <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  page_margin_ratio <span class="op">=</span> <span class="fl">0.08</span>,</span>
+<span>  remove_repeated_furniture <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  repeated_edge_n <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  repeated_edge_min_pages <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  remove_captions <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  caption_continuation_max <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  table_mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"keep"</span>, <span class="st">"remove"</span>, <span class="st">"only"</span><span class="op">)</span>,</span>
+<span>  table_min_numeric_tokens <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  table_min_digit_ratio <span class="op">=</span> <span class="fl">0.18</span>,</span>
+<span>  table_min_block_lines <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  table_block_max_gap <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  table_include_headers <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  table_header_lookback <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  table_include_notes <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  table_note_lookahead <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  concatenate_pages <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  full_names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  file_pattern <span class="op">=</span> <span class="st">".pdf"</span>,</span>
 <span>  recursive <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -157,6 +185,138 @@ Default pattern is to
 split based on three or more consecutive white space characters.</p></dd>
 
 
+<dt id="arg-split-method">split_method<a class="anchor" aria-label="anchor" href="#arg-split-method"></a></dt>
+<dd><p>Method used for splitting multicolumn PDF text.
+Defaults to "regex". Use "coordinates" to split with
+<code><a href="https://docs.ropensci.org/pdftools//reference/pdftools.html" class="external-link">pdftools::pdf_data()</a></code> token coordinates.</p></dd>
+
+
+<dt id="arg-column-count">column_count<a class="anchor" aria-label="anchor" href="#arg-column-count"></a></dt>
+<dd><p>Expected number of columns for coordinate splitting.
+Options are "auto", "1", or "2". Used when
+<code>split_method = "coordinates"</code>.</p></dd>
+
+
+<dt id="arg-mask-nonprose">mask_nonprose<a class="anchor" aria-label="anchor" href="#arg-mask-nonprose"></a></dt>
+<dd><p>TRUE/FALSE indicating if non-prose lines (likely
+equations, tables, figure/table captions) should be removed when
+using coordinate splitting.</p></dd>
+
+
+<dt id="arg-nonprose-digit-ratio">nonprose_digit_ratio<a class="anchor" aria-label="anchor" href="#arg-nonprose-digit-ratio"></a></dt>
+<dd><p>Numeric threshold for classifying a line as
+non-prose based on digit character ratio.</p></dd>
+
+
+<dt id="arg-nonprose-symbol-ratio">nonprose_symbol_ratio<a class="anchor" aria-label="anchor" href="#arg-nonprose-symbol-ratio"></a></dt>
+<dd><p>Numeric threshold for classifying a line as
+non-prose based on math-symbol character ratio.</p></dd>
+
+
+<dt id="arg-nonprose-short-token-max">nonprose_short_token_max<a class="anchor" aria-label="anchor" href="#arg-nonprose-short-token-max"></a></dt>
+<dd><p>Maximum token count for short symbolic
+lines to classify as non-prose.</p></dd>
+
+
+<dt id="arg-remove-section-headers">remove_section_headers<a class="anchor" aria-label="anchor" href="#arg-remove-section-headers"></a></dt>
+<dd><p>TRUE/FALSE indicating if section-header-like
+lines should be removed when using coordinate splitting.</p></dd>
+
+
+<dt id="arg-remove-page-headers">remove_page_headers<a class="anchor" aria-label="anchor" href="#arg-remove-page-headers"></a></dt>
+<dd><p>TRUE/FALSE indicating if page-header furniture
+(e.g., arXiv identifiers, emails, URLs) should be removed when using
+coordinate splitting.</p></dd>
+
+
+<dt id="arg-remove-page-footers">remove_page_footers<a class="anchor" aria-label="anchor" href="#arg-remove-page-footers"></a></dt>
+<dd><p>TRUE/FALSE indicating if page-footer furniture
+(e.g., page numbers, copyright markers) should be removed when using
+coordinate splitting.</p></dd>
+
+
+<dt id="arg-page-margin-ratio">page_margin_ratio<a class="anchor" aria-label="anchor" href="#arg-page-margin-ratio"></a></dt>
+<dd><p>Numeric ratio used to define top and bottom page
+bands for header/footer removal.</p></dd>
+
+
+<dt id="arg-remove-repeated-furniture">remove_repeated_furniture<a class="anchor" aria-label="anchor" href="#arg-remove-repeated-furniture"></a></dt>
+<dd><p>TRUE/FALSE indicating if repeated text
+found in the first/last lines across many pages should be removed.</p></dd>
+
+
+<dt id="arg-repeated-edge-n">repeated_edge_n<a class="anchor" aria-label="anchor" href="#arg-repeated-edge-n"></a></dt>
+<dd><p>Number of lines from top and bottom of each page to
+consider for repeated edge-line detection.</p></dd>
+
+
+<dt id="arg-repeated-edge-min-pages">repeated_edge_min_pages<a class="anchor" aria-label="anchor" href="#arg-repeated-edge-min-pages"></a></dt>
+<dd><p>Minimum number of pages an edge line must
+appear on before being removed.</p></dd>
+
+
+<dt id="arg-remove-captions">remove_captions<a class="anchor" aria-label="anchor" href="#arg-remove-captions"></a></dt>
+<dd><p>TRUE/FALSE indicating if figure/table caption lines
+should be removed.</p></dd>
+
+
+<dt id="arg-caption-continuation-max">caption_continuation_max<a class="anchor" aria-label="anchor" href="#arg-caption-continuation-max"></a></dt>
+<dd><p>Number of additional lines after a caption
+start line to remove when they appear to be caption continuations.</p></dd>
+
+
+<dt id="arg-table-mode">table_mode<a class="anchor" aria-label="anchor" href="#arg-table-mode"></a></dt>
+<dd><p>How to handle detected table blocks. "keep" keeps all
+lines, "remove" excludes table blocks, and "only" keeps only table
+blocks.</p></dd>
+
+
+<dt id="arg-table-min-numeric-tokens">table_min_numeric_tokens<a class="anchor" aria-label="anchor" href="#arg-table-min-numeric-tokens"></a></dt>
+<dd><p>Minimum numeric tokens used to classify a
+line as table-like.</p></dd>
+
+
+<dt id="arg-table-min-digit-ratio">table_min_digit_ratio<a class="anchor" aria-label="anchor" href="#arg-table-min-digit-ratio"></a></dt>
+<dd><p>Minimum digit-character ratio used to classify
+a line as table-like.</p></dd>
+
+
+<dt id="arg-table-min-block-lines">table_min_block_lines<a class="anchor" aria-label="anchor" href="#arg-table-min-block-lines"></a></dt>
+<dd><p>Minimum number of adjacent table-like lines for
+a block to be treated as a table block.</p></dd>
+
+
+<dt id="arg-table-block-max-gap">table_block_max_gap<a class="anchor" aria-label="anchor" href="#arg-table-block-max-gap"></a></dt>
+<dd><p>Maximum gap (in lines) allowed between
+table-like lines inside one table block.</p></dd>
+
+
+<dt id="arg-table-include-headers">table_include_headers<a class="anchor" aria-label="anchor" href="#arg-table-include-headers"></a></dt>
+<dd><p>TRUE/FALSE indicating if table header lines
+adjacent to detected table blocks should be included in table blocks.</p></dd>
+
+
+<dt id="arg-table-header-lookback">table_header_lookback<a class="anchor" aria-label="anchor" href="#arg-table-header-lookback"></a></dt>
+<dd><p>Number of lines above a detected table block to
+inspect for header rows.</p></dd>
+
+
+<dt id="arg-table-include-notes">table_include_notes<a class="anchor" aria-label="anchor" href="#arg-table-include-notes"></a></dt>
+<dd><p>TRUE/FALSE indicating if trailing note/source
+lines should be included with detected table blocks.</p></dd>
+
+
+<dt id="arg-table-note-lookahead">table_note_lookahead<a class="anchor" aria-label="anchor" href="#arg-table-note-lookahead"></a></dt>
+<dd><p>Number of lines after a detected table block to
+inspect for note/source rows.</p></dd>
+
+
+<dt id="arg-concatenate-pages">concatenate_pages<a class="anchor" aria-label="anchor" href="#arg-concatenate-pages"></a></dt>
+<dd><p>TRUE/FALSE indicating if page text should be
+concatenated after column rectification and cleaning, before sentence
+conversion. This is only used when <code>convert_sentence = TRUE</code>.</p></dd>
+
+
 <dt id="arg-full-names">full_names<a class="anchor" aria-label="anchor" href="#arg-full-names"></a></dt>
 <dd><p>TRUE/FALSE indicating if the full file path should be used.
 Default is TRUE, see <code><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></code> for more details.</p></dd>
@@ -201,52 +361,54 @@ function.</p></dd>
 <span class="r-in"><span><span class="fu">keyword_directory</span><span class="op">(</span><span class="va">directory</span>, </span></span>
 <span class="r-in"><span>       keyword <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'repeated measures'</span>, <span class="st">'measurement error'</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>       surround_lines <span class="op">=</span> <span class="fl">1</span>, full_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ID       pdf_name           keyword page_num line_num</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1 1501.00450.pdf repeated measures        1        9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1 1501.00450.pdf repeated measures        2       31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   1 1501.00450.pdf repeated measures        2       58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   1 1501.00450.pdf repeated measures        2       60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   1 1501.00450.pdf repeated measures        3       70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   1 1501.00450.pdf repeated measures        6      169</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   1 1501.00450.pdf repeated measures        6      180</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8   1 1501.00450.pdf repeated measures        6      185</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   1 1501.00450.pdf repeated measures        9      315</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2 1610.00147.pdf measurement error        1        2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2 1610.00147.pdf measurement error        1       10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2 1610.00147.pdf measurement error        1       12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13  2 1610.00147.pdf measurement error        2       16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14  2 1610.00147.pdf measurement error        2       18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15  2 1610.00147.pdf measurement error        2       19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16  2 1610.00147.pdf measurement error        2       20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17  2 1610.00147.pdf measurement error        3       35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18  2 1610.00147.pdf measurement error        4       42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19  2 1610.00147.pdf measurement error        4       43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20  2 1610.00147.pdf measurement error        4       45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21  2 1610.00147.pdf measurement error        4       51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22  2 1610.00147.pdf measurement error        5       60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23  2 1610.00147.pdf measurement error        6       76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24  2 1610.00147.pdf measurement error        7       98</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25  2 1610.00147.pdf measurement error        8      111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26  2 1610.00147.pdf measurement error       12      158</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27  2 1610.00147.pdf measurement error       12      163</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28  2 1610.00147.pdf measurement error       14      192</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29  2 1610.00147.pdf measurement error       14      194</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30  2 1610.00147.pdf measurement error       15      206</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31  2 1610.00147.pdf measurement error       17      228</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32  2 1610.00147.pdf measurement error       17      237</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33  2 1610.00147.pdf measurement error       18      248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34  2 1610.00147.pdf measurement error       20      272</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35  2 1610.00147.pdf measurement error       21      298</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36  2 1610.00147.pdf measurement error       22      310</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37  2 1610.00147.pdf measurement error       22      311</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38  2 1610.00147.pdf measurement error       23      322</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39  2 1610.00147.pdf measurement error       24      337</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40  2 1610.00147.pdf measurement error       24      338</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41  2 1610.00147.pdf measurement error       24      339</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42  2 1610.00147.pdf measurement error       24      340</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43  2 1610.00147.pdf measurement error       25      344</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44  2 1610.00147.pdf measurement error       25      346</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45  2 1610.00147.pdf measurement error       29      458</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ID               pdf_name           keyword page_num line_num</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1         1501.00450.pdf repeated measures        1        9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1         1501.00450.pdf repeated measures        2       31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   1         1501.00450.pdf repeated measures        2       58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   1         1501.00450.pdf repeated measures        2       60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   1         1501.00450.pdf repeated measures        2       70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   1         1501.00450.pdf repeated measures        6      169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   1         1501.00450.pdf repeated measures        6      180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   1         1501.00450.pdf repeated measures        6      185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   1         1501.00450.pdf repeated measures        9      315</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2         1610.00147.pdf measurement error        1        2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2         1610.00147.pdf measurement error        1       10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2         1610.00147.pdf measurement error        1       12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  2         1610.00147.pdf measurement error        2       16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  2         1610.00147.pdf measurement error        2       18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  2         1610.00147.pdf measurement error        2       19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  2         1610.00147.pdf measurement error        2       20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17  2         1610.00147.pdf measurement error        3       35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  2         1610.00147.pdf measurement error        4       42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19  2         1610.00147.pdf measurement error        4       43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  2         1610.00147.pdf measurement error        4       45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21  2         1610.00147.pdf measurement error        4       51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22  2         1610.00147.pdf measurement error        5       60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23  2         1610.00147.pdf measurement error        6       76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24  2         1610.00147.pdf measurement error        7       98</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25  2         1610.00147.pdf measurement error        8      111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  2         1610.00147.pdf measurement error       12      158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27  2         1610.00147.pdf measurement error       12      163</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28  2         1610.00147.pdf measurement error       14      192</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29  2         1610.00147.pdf measurement error       14      194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30  2         1610.00147.pdf measurement error       15      206</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31  2         1610.00147.pdf measurement error       17      228</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  2         1610.00147.pdf measurement error       17      237</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  2         1610.00147.pdf measurement error       18      248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34  2         1610.00147.pdf measurement error       20      272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35  2         1610.00147.pdf measurement error       21      298</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36  2         1610.00147.pdf measurement error       22      310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37  2         1610.00147.pdf measurement error       22      311</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38  2         1610.00147.pdf measurement error       23      322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39  2         1610.00147.pdf measurement error       24      337</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40  2         1610.00147.pdf measurement error       24      338</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41  2         1610.00147.pdf measurement error       24      339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  2         1610.00147.pdf measurement error       24      340</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43  2         1610.00147.pdf measurement error       25      344</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44  2         1610.00147.pdf measurement error       25      346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45  2         1610.00147.pdf measurement error       29      458</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46  3 LeBeauetal2020-gcq.pdf measurement error        3       39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47  3 LeBeauetal2020-gcq.pdf measurement error        3       60</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      line_text</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                                                                                                                                                                                                                                                                                                                                                                              We             Running under powered experiments have many perils. , Not introduce more sophisticated experimental designs, specifi-           only would we miss potentially beneficial effects, we may also cally the repeated measures design, including the crossover           get false confidence about lack of negative effects. , Statistical design and related variants, to increase KPI sensitivity with         power increases with larger effect size, and smaller variances. the same traffic size and duration of experiment. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                                                                                                                                                                                   a limitation to any online experimentation platform, where         within-subject variation. , We also discuss practical considfast iterations and testing many ideas can reap the most           erations to repeated measures design, with variants to the rewards.                                                           crossover design to study the carry over effect, including the “re-randomized” design (row 5 in table 1). , 1.1    Motivation To improve sensitivity of measurement, apart from accurate         1.2     Main Contributions implementation and increase sample size and duration, we           In this paper, we propose a framework called FORME (Flexcan employ statistical methods to reduce variance. </span>
@@ -293,6 +455,8 @@ function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 43                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   The ACS estimate is the survey-weighted estimate based on the reported education level in the 2010 ACS. , Besides survey sampling contexts like the one considered here involving the ACS and NSCG, the framework offers potential approaches for dealing with possible measurement errors in organic (big) data. , This is increasingly important, as data stewards and analysts consider replacing or supplementing high quality but expensive surveys with inexpensive and large-sample organic data. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 44                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 This is increasingly important, as data stewards and analysts consider replacing or supplementing high quality but expensive surveys with inexpensive and large-sample organic data. , Often, scant attention is paid to the potential impact of measurement errors on inferences from those data. , The framework could be used with high quality, validated surveys as the gold standard data, allowing for adjustments to the error-prone organic data. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 45                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                M. , (2005), “Imputation of binary treatment variables with measurement error in administrative data,” Journal of the American Statistical Association, 100, 1123–1132. , 29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46                                                                                                                                                                                                                                                                                                                                                                                                      Callahan et al. (2017) corroborated the programming.                                                    findings of Olszewski-Kubilius and Lee (2005) who, LeBeau et al.                                                                                                          221 determined that most school educators recognize the            and measurement error. , Because there are two latent or value of the results of above-level testing; however, the      unobservable variables, statistical assumptions are purpose for a model that is based on above-level testing       made. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47                                                                                                                                                                                                                                                                                                                                                                                                                  Practically, only the Above-Level Testing With Gifted Students observed score will be known; however, the true score is       The basic assumption with respect to high-achieving stuwhat is of interest to educators. , The true score is a latent   dents is that they are ready for advanced content because variable free from measurement error. , In theory, this          they have already mastered the content at a particular would be the individual’s score if they responded to an        grade level, as indicated by their achievement on a gradeinfinite number of items. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           token_text</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        we, running, under, powered, experiments, have, many, perils, not, introduce, more, sophisticated, experimental, designs, specifi, only, would, we, miss, potentially, beneficial, effects, we, may, also, cally, the, repeated, measures, design, including, the, crossover, get, false, confidence, about, lack, of, negative, effects, statistical, design, and, related, variants, to, increase, kpi, sensitivity, with, power, increases, with, larger, effect, size, and, smaller, variances, the, same, traffic, size, and, duration, of, experiment</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                                                                                                                                                                                                                                                         a, limitation, to, any, online, experimentation, platform, where, within, subject, variation, we, also, discuss, practical, considfast, iterations, and, testing, many, ideas, can, reap, the, most, erations, to, repeated, measures, design, with, variants, to, the, rewards, crossover, design, to, study, the, carry, over, effect, including, the, re, randomized, design, row, 5, in, table, 1, 1.1, motivation, to, improve, sensitivity, of, measurement, apart, from, accurate, 1.2, main, contributions, implementation, and, increase, sample, size, and, duration, we, in, this, paper, we, propose, a, framework, called, forme, flexcan, employ, statistical, methods, to, reduce, variance</span>
@@ -339,54 +503,58 @@ function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 43                                                                                                                                                                                                                                                                                                                                                                                                                                                                              the, acs, estimate, is, the, survey, weighted, estimate, based, on, the, reported, education, level, in, the, 2010, acs, besides, survey, sampling, contexts, like, the, one, considered, here, involving, the, acs, and, nscg, the, framework, offers, potential, approaches, for, dealing, with, possible, measurement, errors, in, organic, big, data, this, is, increasingly, important, as, data, stewards, and, analysts, consider, replacing, or, supplementing, high, quality, but, expensive, surveys, with, inexpensive, and, large, sample, organic, data</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 44                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  this, is, increasingly, important, as, data, stewards, and, analysts, consider, replacing, or, supplementing, high, quality, but, expensive, surveys, with, inexpensive, and, large, sample, organic, data, often, scant, attention, is, paid, to, the, potential, impact, of, measurement, errors, on, inferences, from, those, data, the, framework, could, be, used, with, high, quality, validated, surveys, as, the, gold, standard, data, allowing, for, adjustments, to, the, error, prone, organic, data</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 45                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              m, 2005, imputation, of, binary, treatment, variables, with, measurement, error, in, administrative, data, journal, of, the, american, statistical, association, 100, 1123, 1132, 29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 callahan, et, al, 2017, corroborated, the, programming, findings, of, olszewski, kubilius, and, lee, 2005, who, lebeau, et, al, 221, determined, that, most, school, educators, recognize, the, and, measurement, error, because, there, are, two, latent, or, value, of, the, results, of, above, level, testing, however, the, unobservable, variables, statistical, assumptions, are, purpose, for, a, model, that, is, based, on, above, level, testing, made</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47                                                                                                                                                                                                                                                                                                                                                                                                     practically, only, the, above, level, testing, with, gifted, students, observed, score, will, be, known, however, the, true, score, is, the, basic, assumption, with, respect, to, high, achieving, stuwhat, is, of, interest, to, educators, the, true, score, is, a, latent, dents, is, that, they, are, ready, for, advanced, content, because, variable, free, from, measurement, error, in, theory, this, they, have, already, mastered, the, content, at, a, particular, would, be, the, individual’s, score, if, they, responded, to, an, grade, level, as, indicated, by, their, achievement, on, a, gradeinfinite, number, of, items</span>
 <span class="r-in"><span>       </span></span>
 <span class="r-in"><span><span class="co"># can also split pdfs</span></span></span>
 <span class="r-in"><span><span class="fu">keyword_directory</span><span class="op">(</span><span class="va">directory</span>, </span></span>
 <span class="r-in"><span>       keyword <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'repeated measures'</span>, <span class="st">'measurement error'</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>       split_pdf <span class="op">=</span> <span class="cn">TRUE</span>, remove_hyphen <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
 <span class="r-in"><span>       surround_lines <span class="op">=</span> <span class="fl">1</span>, full_names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ID       pdf_name           keyword page_num line_num</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1 1501.00450.pdf repeated measures        1        5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1 1501.00450.pdf repeated measures        2       42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   1 1501.00450.pdf repeated measures        2       43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   1 1501.00450.pdf repeated measures        2       50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   1 1501.00450.pdf repeated measures        2       51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   1 1501.00450.pdf repeated measures        6      211</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   1 1501.00450.pdf repeated measures        6      219</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8   1 1501.00450.pdf repeated measures        7      225</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   1 1501.00450.pdf repeated measures        9      353</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2 1610.00147.pdf measurement error        1        2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2 1610.00147.pdf measurement error        1       10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2 1610.00147.pdf measurement error        1       12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13  2 1610.00147.pdf measurement error        2       15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14  2 1610.00147.pdf measurement error        2       17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15  2 1610.00147.pdf measurement error        2       18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16  2 1610.00147.pdf measurement error        3       34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17  2 1610.00147.pdf measurement error        4       41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18  2 1610.00147.pdf measurement error        4       42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19  2 1610.00147.pdf measurement error        4       44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20  2 1610.00147.pdf measurement error        4       50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21  2 1610.00147.pdf measurement error        5       59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22  2 1610.00147.pdf measurement error        6       75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23  2 1610.00147.pdf measurement error        7       94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24  2 1610.00147.pdf measurement error        8      106</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25  2 1610.00147.pdf measurement error       12      152</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26  2 1610.00147.pdf measurement error       12      157</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27  2 1610.00147.pdf measurement error       14      185</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28  2 1610.00147.pdf measurement error       14      187</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29  2 1610.00147.pdf measurement error       15      199</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30  2 1610.00147.pdf measurement error       17      219</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31  2 1610.00147.pdf measurement error       17      227</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32  2 1610.00147.pdf measurement error       18      239</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33  2 1610.00147.pdf measurement error       22      302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34  2 1610.00147.pdf measurement error       22      303</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35  2 1610.00147.pdf measurement error       23      314</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36  2 1610.00147.pdf measurement error       24      328</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37  2 1610.00147.pdf measurement error       24      329</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38  2 1610.00147.pdf measurement error       24      330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39  2 1610.00147.pdf measurement error       24      331</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40  2 1610.00147.pdf measurement error       25      337</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41  2 1610.00147.pdf measurement error       30      447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ID               pdf_name           keyword page_num line_num</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   1         1501.00450.pdf repeated measures        1        5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1         1501.00450.pdf repeated measures        2       42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   1         1501.00450.pdf repeated measures        2       43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   1         1501.00450.pdf repeated measures        2       50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   1         1501.00450.pdf repeated measures        2       51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   1         1501.00450.pdf repeated measures        6      211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   1         1501.00450.pdf repeated measures        6      219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   1         1501.00450.pdf repeated measures        6      225</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   1         1501.00450.pdf repeated measures        9      353</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2         1610.00147.pdf measurement error        1        2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2         1610.00147.pdf measurement error        1       10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2         1610.00147.pdf measurement error        1       12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  2         1610.00147.pdf measurement error        2       15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  2         1610.00147.pdf measurement error        2       17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  2         1610.00147.pdf measurement error        2       18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  2         1610.00147.pdf measurement error        3       34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17  2         1610.00147.pdf measurement error        4       41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  2         1610.00147.pdf measurement error        4       42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19  2         1610.00147.pdf measurement error        4       44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  2         1610.00147.pdf measurement error        4       50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21  2         1610.00147.pdf measurement error        5       59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22  2         1610.00147.pdf measurement error        6       75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23  2         1610.00147.pdf measurement error        7       94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24  2         1610.00147.pdf measurement error        8      106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25  2         1610.00147.pdf measurement error       12      152</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  2         1610.00147.pdf measurement error       12      157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27  2         1610.00147.pdf measurement error       14      185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28  2         1610.00147.pdf measurement error       14      187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29  2         1610.00147.pdf measurement error       15      199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30  2         1610.00147.pdf measurement error       17      219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31  2         1610.00147.pdf measurement error       17      227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  2         1610.00147.pdf measurement error       18      239</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  2         1610.00147.pdf measurement error       22      302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34  2         1610.00147.pdf measurement error       22      303</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35  2         1610.00147.pdf measurement error       23      314</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36  2         1610.00147.pdf measurement error       24      328</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37  2         1610.00147.pdf measurement error       24      329</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38  2         1610.00147.pdf measurement error       24      330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39  2         1610.00147.pdf measurement error       24      331</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40  2         1610.00147.pdf measurement error       25      337</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41  2         1610.00147.pdf measurement error       29      447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  3 LeBeauetal2020-gcq.pdf measurement error        3       58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43  3 LeBeauetal2020-gcq.pdf measurement error        3       60</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             line_text</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                                                       This limits the number of candidate variations to be evaluated, and the speed new feature iterations. , We introduce more sophisticated experimental designs, specifi- cally the repeated measures design, including the crossover design and related variants, to increase KPI sensitivity with the same traffic size and duration of experiment. , In this pa- per we present FORME (Flexible Online Repeated Measures Experiment), a flexible and scalable framework for these de- signs. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                           In particular, in the pre-experiment stage, all users received the default feature C (control) and none received the new feature T (treatment). , Groups A/B Test CUPED Parallel Crossover Re-Randomized Table 1: Repeated Measures Designs In this paper we extend the idea further by employing the repeated measures design in different stages of treatment assignment. , The traditional A/B test can be analyzed us- ing the repeated measures analysis, reporting a “per week” treatment effect, as show in row 3 “parallel” design in ta- ble 1. </span>
@@ -429,6 +597,8 @@ function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 39                                                                                                                                                                                                                                                                                                     This avoids sacrificing information and facilitates analysis of the sensitivity of conclusions to alternative measurement error specifications. , Analysts can use diagnostic tests to rule out some measurement error models, and perform sensibility tests on others to identify reasonable candidates. , Concluding Remarks</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 40                                                                                                This is increasingly important, as data stewards and analysts consider replacing or supplementing high quality but expensive surveys with inexpensive and large-sample organic data. , Often, scant attention is paid to the potential impact of measurement errors on inferences from those data. , The framework could be used with high quality, validated surveys as the gold standard data, allowing for adjustments to the error-prone organic data. x 10 CIA model model 4 model 5 model 6 model 7 Education level Prof none</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 41                                                                                                                                                                                                                                                                                                                                                                                       M. , (2005), “Imputation of binary treatment variables with measurement error in administrative data,” Journal of the American Statistical Association, 100, 1123–1132., Table 4: Error rate estimates from different model specifications. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42                                                                                                                                                                                                                                                                                                                                           Practically, only the observed score will be known; however, the true score is what is of interest to educators. , The true score is a latent variable free from measurement error. , In theory, this would be the individual’s score if they responded to an infinite number of items. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43                                                                                                                                                                                                                                                           In theory, this would be the individual’s score if they responded to an infinite number of items. , The observed score is based on that individual’s responses to a limited number of items and is a combination of two latent variables: true score and measurement error. , Because there are two latent or unobservable variables, statistical assumptions are made. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  token_text</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                                                                                           this, limits, the, number, of, candidate, variations, to, be, evaluated, and, the, speed, new, feature, iterations, we, introduce, more, sophisticated, experimental, designs, specifi, cally, the, repeated, measures, design, including, the, crossover, design, and, related, variants, to, increase, kpi, sensitivity, with, the, same, traffic, size, and, duration, of, experiment, in, this, pa, per, we, present, forme, flexible, online, repeated, measures, experiment, a, flexible, and, scalable, framework, for, these, de, signs</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                 in, particular, in, the, pre, experiment, stage, all, users, received, the, default, feature, c, control, and, none, received, the, new, feature, t, treatment, groups, a, b, test, cuped, parallel, crossover, re, randomized, table, 1, repeated, measures, designs, in, this, paper, we, extend, the, idea, further, by, employing, the, repeated, measures, design, in, different, stages, of, treatment, assignment, the, traditional, a, b, test, can, be, analyzed, us, ing, the, repeated, measures, analysis, reporting, a, per, week, treatment, effect, as, show, in, row, 3, parallel, design, in, ta, ble, 1</span>
@@ -471,6 +641,8 @@ function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 39                                                                                                                                                                                                                                                                                                                                                          this, avoids, sacrificing, information, and, facilitates, analysis, of, the, sensitivity, of, conclusions, to, alternative, measurement, error, specifications, analysts, can, use, diagnostic, tests, to, rule, out, some, measurement, error, models, and, perform, sensibility, tests, on, others, to, identify, reasonable, candidates, concluding, remarks</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 40                                                                                                                this, is, increasingly, important, as, data, stewards, and, analysts, consider, replacing, or, supplementing, high, quality, but, expensive, surveys, with, inexpensive, and, large, sample, organic, data, often, scant, attention, is, paid, to, the, potential, impact, of, measurement, errors, on, inferences, from, those, data, the, framework, could, be, used, with, high, quality, validated, surveys, as, the, gold, standard, data, allowing, for, adjustments, to, the, error, prone, organic, data, x, 10, cia, model, model, 4, model, 5, model, 6, model, 7, education, level, prof, none</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 41                                                                                                                                                                                                                                                                                                                                                                                                                                                               m, 2005, imputation, of, binary, treatment, variables, with, measurement, error, in, administrative, data, journal, of, the, american, statistical, association, 100, 1123, 1132, table, 4, error, rate, estimates, from, different, model, specifications</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42                                                                                                                                                                                                                                                                                                                                                                                               practically, only, the, observed, score, will, be, known, however, the, true, score, is, what, is, of, interest, to, educators, the, true, score, is, a, latent, variable, free, from, measurement, error, in, theory, this, would, be, the, individual’s, score, if, they, responded, to, an, infinite, number, of, items</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43                                                                                                                                                                                                                                                                                                    in, theory, this, would, be, the, individual’s, score, if, they, responded, to, an, infinite, number, of, items, the, observed, score, is, based, on, that, individual’s, responses, to, a, limited, number, of, items, and, is, a, combination, of, two, latent, variables, true, score, and, measurement, error, because, there, are, two, latent, or, unobservable, variables, statistical, assumptions, are, made</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -487,7 +659,7 @@ function.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>

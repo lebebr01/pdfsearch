@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pdfsearch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -39,6 +39,9 @@
   </a>
   <ul class="dropdown-menu" role="menu"><li>
       <a href="../articles/intro_to_pdfsearch.html">Getting Started with pdfsearch</a>
+    </li>
+    <li>
+      <a href="../articles/multicolumn_and_tables.html">Robust Multi-Column and Table Workflows</a>
     </li>
   </ul></li>
 <li>
@@ -126,71 +129,71 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "data"           "fusion"         "for"            "correcting"    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "measurement"    "errors"         "tracy"          "schifeling"    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "jerome"         "p"              "reiter"         "maria"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "deyoreo"        "arxiv"          "1610.00147v1"   "stat"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "me"             "1"              "oct"            "2016"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "abstract"       "often"          "in"             "surveys"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "key"            "items"          "are"            "subject"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "to"             "measurement"    "errors"         "given"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "just"           "the"            "data"           "it"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "can"            "be"             "difficult"      "to"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "determine"      "the"            "distribution"   "of"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "this"           "error"          "process"        "and"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "hence"          "to"             "obtain"         "accurate"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "inferences"     "that"           "involve"        "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "error"          "prone"          "variables"      "in"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "some"           "settings"       "however"        "analysts"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "have"           "access"         "to"             "a"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "data"           "source"         "on"             "different"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "in"             "dividuals"      "with"           "high"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "quality"        "measurements"   "of"             "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "error"          "prone"          "survey"         "items"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "we"             "present"        "a"              "data"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "fusion"         "framework"      "for"            "leveraging"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "this"           "information"    "to"             "improve"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "infer"          "ences"          "in"             "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "error"          "prone"          "survey"         "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "basic"          "idea"           "is"             "to"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "posit"          "models"         "about"          "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "rates"          "at"             "which"          "individuals"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "make"           "errors"         "coupled"        "with"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "models"         "for"            "the"            "values"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "reported"       "when"           "errors"         "are"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "made"           "this"           "can"            "avoid"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "the"            "unrealistic"    "assumption"     "of"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "conditional"    "independence"   "typically"      "used"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "in"             "data"           "fusion"         "we"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "apply"          "the"            "approach"       "on"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "the"            "re"             "ported"         "values"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "of"             "educational"    "attainments"    "in"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "the"            "american"       "community"      "survey"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "using"          "the"            "national"       "survey"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "of"             "college"        "graduates"      "as"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "the"            "high"           "quality"        "data"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "source"         "in"             "doing"          "so"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "we"             "account"        "for"            "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "informative"    "sampling"       "design"         "used"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "to"             "select"         "the"            "national"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "survey"         "of"             "college"        "graduates"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "we"             "also"           "present"        "a"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "process"        "for"            "assessing"      "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "sensitivity"    "of"             "various"        "analyses"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "to"             "different"      "choices"        "for"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "the"            "measurement"    "error"          "models"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "supplemental"   "material"       "is"             "available"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "online"         "key"            "words"          "fusion"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "imputation"     "measurement"    "error"          "missing"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "survey"         "this"           "research"       "was"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "supported"      "by"             "the"            "national"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "science"        "foundation"     "under"          "award"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "ses"            "11"             "31897"          "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "authors"        "wish"           "to"             "thank"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "seth"           "sanders"        "for"            "his"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "input"          "on"             "informative"    "prior"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "specifications" "and"            "mauricio"       "sadinle"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "for"            "discussion"     "that"           "improved"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "the"            "strategy"       "for"            "accounting"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "for"            "the"            "informative"    "sample"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "design"         "1"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "deyoreo"        "arxiv"          "1610.00147v1"   "stat.me"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "1"              "oct"            "2016"           "abstract"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "often"          "in"             "surveys"        "key"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "items"          "are"            "subject"        "to"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "measurement"    "errors"         "given"          "just"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "the"            "data"           "it"             "can"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "be"             "difficult"      "to"             "determine"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "the"            "distribution"   "of"             "this"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "error"          "process"        "and"            "hence"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "to"             "obtain"         "accurate"       "inferences"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "that"           "involve"        "the"            "error"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "prone"          "variables"      "in"             "some"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "settings"       "however"        "analysts"       "have"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "access"         "to"             "a"              "data"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "source"         "on"             "different"      "in"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "dividuals"      "with"           "high"           "quality"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "measurements"   "of"             "the"            "error"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "prone"          "survey"         "items"          "we"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "present"        "a"              "data"           "fusion"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "framework"      "for"            "leveraging"     "this"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "information"    "to"             "improve"        "infer"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "ences"          "in"             "the"            "error"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "prone"          "survey"         "the"            "basic"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "idea"           "is"             "to"             "posit"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "models"         "about"          "the"            "rates"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "at"             "which"          "individuals"    "make"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "errors"         "coupled"        "with"           "models"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "for"            "the"            "values"         "reported"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "when"           "errors"         "are"            "made"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "this"           "can"            "avoid"          "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "unrealistic"    "assumption"     "of"             "conditional"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "independence"   "typically"      "used"           "in"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "data"           "fusion"         "we"             "apply"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "the"            "approach"       "on"             "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "re"             "ported"         "values"         "of"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "educational"    "attainments"    "in"             "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "american"       "community"      "survey"         "using"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "the"            "national"       "survey"         "of"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "college"        "graduates"      "as"             "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "high"           "quality"        "data"           "source"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "in"             "doing"          "so"             "we"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "account"        "for"            "the"            "informative"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "sampling"       "design"         "used"           "to"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "select"         "the"            "national"       "survey"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "of"             "college"        "graduates"      "we"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "also"           "present"        "a"              "process"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "for"            "assessing"      "the"            "sensitivity"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "of"             "various"        "analyses"       "to"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "different"      "choices"        "for"            "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "measurement"    "error"          "models"         "supplemental"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "material"       "is"             "available"      "online"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "key"            "words"          "fusion"         "imputation"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "measurement"    "error"          "missing"        "survey"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "this"           "research"       "was"            "supported"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "by"             "the"            "national"       "science"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "foundation"     "under"          "award"          "ses"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "11"             "31897"          "the"            "authors"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "wish"           "to"             "thank"          "seth"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "sanders"        "for"            "his"            "input"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "on"             "informative"    "prior"          "specifications"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "and"            "mauricio"       "sadinle"        "for"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "discussion"     "that"           "improved"       "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "strategy"       "for"            "accounting"     "for"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "the"            "informative"    "sample"         "design"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "1"             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
@@ -214,65 +217,65 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "data"          "alone"         "one"           "either"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "needs"         "to"            "make"          "strong"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "assumptions"   "about"         "the"           "measure"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "ment"          "error"         "process"       "e"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "g"             "as"            "in"            "curran"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "and"           "hussong"       "2009"          "or"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "leverage"      "information"   "from"          "some"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "other"         "source"        "of"            "data"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "as"            "we"            "do"            "here"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "one"           "natural"       "source"        "of"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "information"   "is"            "a"             "validation"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "sample"        "i"             "e"             "a"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "dataset"       "with"          "both"          "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "reported"      "possibly"      "erroneous"     "values"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "and"           "the"           "true"          "values"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "measured"      "on"            "the"           "same"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "individuals"   "these"         "individuals"   "could"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "be"            "a"             "subset"        "of"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "the"           "original"      "survey"        "pepe"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "1992"          "yucel"         "and"           "zaslavsky"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "2005"          "or"            "a"             "completely"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "distinct"      "set"           "raghunathan"   "2006"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "schenker"      "and"           "raghunathan"   "2007"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "schenker"      "et"            "al"            "2010"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "carrig"        "et"            "al"            "2015"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "with"          "validation"    "data"          "one"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "can"           "model"         "the"           "relationship" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "between"       "the"           "error"         "prone"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "and"           "true"          "values"        "and"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "use"           "the"           "model"         "to"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "replace"       "the"           "error"         "prone"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "items"         "with"          "multiply"      "imputed"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "plausible"     "true"          "values"        "reiter"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "2008"          "siddique"      "et"            "al"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "2015"          "in"            "many"          "settings"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "however"       "it"            "is"            "not"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "possible"      "to"            "obtain"        "validation"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "samples"       "e"             "g"             "because"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "it"            "is"            "too"           "expensive"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "or"            "because"       "someone"       "other"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "than"          "the"           "analyst"       "collected"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "the"           "data"          "in"            "such"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "cases"         "another"       "potential"     "source"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "of"            "information"   "is"            "a"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "separate"      "gold"          "stan"          "dard"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "dataset"       "that"          "includes"      "true"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "or"            "at"            "least"         "very"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "high"          "quality"       "measurements"  "of"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "the"           "items"         "subject"       "to"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "error"         "but"           "not"           "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "error"         "prone"         "measurements"  "unlike"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "validation"    "sam"           "ples"          "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "gold"          "standard"      "dataset"       "alone"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "does"          "not"           "provide"       "enough"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "information"   "to"            "estimate"      "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "relationship"  "between"       "the"           "error"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "prone"         "and"           "true"          "values"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "it"            "only"          "provides"      "information"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "about"         "the"           "distribution"  "of"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "the"           "true"          "values"        "thus"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [305] "analysts"      "are"           "faced"         "with"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [309] "a"             "special"       "case"          "2"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "ment"          "error"         "process"       "e.g"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "as"            "in"            "curran"        "and"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "hussong"       "2009"          "or"            "leverage"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "information"   "from"          "some"          "other"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "source"        "of"            "data"          "as"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "we"            "do"            "here"          "one"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "natural"       "source"        "of"            "information"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "is"            "a"             "validation"    "sample"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "i.e"           "a"             "dataset"       "with"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "both"          "the"           "reported"      "possibly"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "erroneous"     "values"        "and"           "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "true"          "values"        "measured"      "on"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "the"           "same"          "individuals"   "these"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "individuals"   "could"         "be"            "a"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "subset"        "of"            "the"           "original"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "survey"        "pepe"          "1992"          "yucel"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "and"           "zaslavsky"     "2005"          "or"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "a"             "completely"    "distinct"      "set"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "raghunathan"   "2006"          "schenker"      "and"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "raghunathan"   "2007"          "schenker"      "et"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "al"            "2010"          "carrig"        "et"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "al"            "2015"          "with"          "validation"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "data"          "one"           "can"           "model"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "the"           "relationship"  "between"       "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "error"         "prone"         "and"           "true"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "values"        "and"           "use"           "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "model"         "to"            "replace"       "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "error"         "prone"         "items"         "with"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "multiply"      "imputed"       "plausible"     "true"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "values"        "reiter"        "2008"          "siddique"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "et"            "al"            "2015"          "in"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "many"          "settings"      "however"       "it"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "is"            "not"           "possible"      "to"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "obtain"        "validation"    "samples"       "e.g"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "because"       "it"            "is"            "too"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "expensive"     "or"            "because"       "someone"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "other"         "than"          "the"           "analyst"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "collected"     "the"           "data"          "in"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "such"          "cases"         "another"       "potential"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "source"        "of"            "information"   "is"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "a"             "separate"      "gold"          "stan"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "dard"          "dataset"       "that"          "includes"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "true"          "or"            "at"            "least"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "very"          "high"          "quality"       "measurements" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "of"            "the"           "items"         "subject"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "to"            "error"         "but"           "not"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "the"           "error"         "prone"         "measurements" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "unlike"        "validation"    "sam"           "ples"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "the"           "gold"          "standard"      "dataset"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "alone"         "does"          "not"           "provide"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "enough"        "information"   "to"            "estimate"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "the"           "relationship"  "between"       "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "error"         "prone"         "and"           "true"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "values"        "it"            "only"          "provides"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "information"   "about"         "the"           "distribution" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "of"            "the"           "true"          "values"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "thus"          "analysts"      "are"           "faced"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [305] "with"          "a"             "special"       "case"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [309] "2"            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
@@ -282,83 +285,82 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "2001"           "rassler"        "2002"           "d’orazio"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "et"             "al"             "2006"           "reiter"        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "2012"           "fosdick"        "et"             "al"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "2016"           "i"              "e"              "integrating"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "information"    "from"           "two"            "databases"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "with"           "disjoint"       "sets"           "of"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "individuals"    "and"            "distinct"       "variables"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "one"            "default"        "approach"       "common"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "in"             "other"          "data"           "fusion"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "contexts"       "is"             "to"             "assume"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "that"           "the"            "error"          "prone"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "and"            "true"           "values"         "are"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "conditionally"  "independent"    "given"          "some"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "set"            "of"             "variables"      "x"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "common"         "to"             "both"           "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "survey"         "and"            "gold"           "standard"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "data"           "effectively"    "this"           "involves"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "using"          "the"            "gold"           "standard"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "data"           "to"             "estimate"       "a"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "predictive"     "model"          "for"            "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "true"           "values"         "from"           "x"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "and"            "applying"       "the"            "estimated"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "model"          "to"             "impute"         "replacements"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "for"            "all"            "values"         "of"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "the"            "error"          "prone"          "items"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "in"             "the"            "survey"         "however"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "this"           "conditional"    "independence"   "assumption"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "completely"     "disregards"     "the"            "information"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "in"             "the"            "error"          "prone"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "values"         "which"          "sacrifices"     "potentially"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "useful"         "information"    "for"            "example"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "consider"       "national"       "surveys"        "that"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "ask"            "people"         "to"             "report"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "their"          "educational"    "attainment"     "we"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "might"          "expect"         "most"           "people"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "to"             "report"         "values"         "accurately"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "and"            "only"           "a"              "modest"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "fraction"       "to"             "make"           "errors"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "it"             "does"           "not"            "make"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "sense"          "to"             "alter"          "every"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "individual’s"   "reported"       "values"         "in"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "the"            "survey"         "as"             "would"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "be"             "done"           "using"          "a"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "conditional"    "independence"   "approach"       "in"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "this"           "article"        "we"             "develop"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "a"              "framework"      "for"            "leveraging"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "information"    "from"           "gold"           "stan"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "dard"           "data"           "to"             "improve"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "inferences"     "in"             "surveys"        "subject"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "to"             "measurement"    "errors"         "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "basic"          "idea"           "is"             "to"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "encode"         "plausible"      "assumptions"    "about"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "the"            "error"          "process"        "e"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "g"              "most"           "people"         "do"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "not"            "make"           "errors"         "when"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "reporting"      "educational"    "attainments"    "and"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "the"            "reporting"      "process"        "e"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "g"              "when"           "people"         "make"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "errors"         "they"           "are"            "more"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "likely"         "to"             "report"         "higher"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "attainments"    "than"           "actual"         "into"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "statistical"    "models"         "we"             "couple"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "those"          "models"         "with"           "distributions" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "for"            "the"            "un"             "derlying"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "true"           "data"           "values"         "and"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "use"            "multiple"       "imputation"     "to"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "create"         "plausible"      "corrections"    "to"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "the"            "error"          "prone"          "survey"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "values"         "which"          "then"           "can"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "be"             "analyzed"       "using"          "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "methods"        "from"           "ru"             "bin"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "1987"           "this"           "allows"         "us"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "to"             "avoid"          "unrealistic"    "conditional"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "independence"   "assumptions"    "in"             "lieu"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [305] "of"             "more"           "scientifically" "defensible"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [309] "models"         "the"            "remainder"      "of"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [313] "this"           "article"        "is"             "organized"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [317] "as"             "follows"        "in"             "section"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [321] "2"              "we"             "review"         "an"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [325] "3"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "2016"           "i.e"            "integrating"    "information"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "from"           "two"            "databases"      "with"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "disjoint"       "sets"           "of"             "individuals"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "and"            "distinct"       "variables"      "one"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "default"        "approach"       "common"         "in"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "other"          "data"           "fusion"         "contexts"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "is"             "to"             "assume"         "that"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "the"            "error"          "prone"          "and"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "true"           "values"         "are"            "conditionally" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "independent"    "given"          "some"           "set"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "of"             "variables"      "x"              "common"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "to"             "both"           "the"            "survey"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "and"            "gold"           "standard"       "data"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "effectively"    "this"           "involves"       "using"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "the"            "gold"           "standard"       "data"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "to"             "estimate"       "a"              "predictive"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "model"          "for"            "the"            "true"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "values"         "from"           "x"              "and"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "applying"       "the"            "estimated"      "model"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "to"             "impute"         "replacements"   "for"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "all"            "values"         "of"             "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "error"          "prone"          "items"          "in"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "the"            "survey"         "however"        "this"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "conditional"    "independence"   "assumption"     "completely"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "disregards"     "the"            "information"    "in"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "the"            "error"          "prone"          "values"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "which"          "sacrifices"     "potentially"    "useful"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "information"    "for"            "example"        "consider"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "national"       "surveys"        "that"           "ask"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "people"         "to"             "report"         "their"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "educational"    "attainment"     "we"             "might"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "expect"         "most"           "people"         "to"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "report"         "values"         "accurately"     "and"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "only"           "a"              "modest"         "fraction"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "to"             "make"           "errors"         "it"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "does"           "not"            "make"           "sense"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "to"             "alter"          "every"          "individual’s"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "reported"       "values"         "in"             "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "survey"         "as"             "would"          "be"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "done"           "using"          "a"              "conditional"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "independence"   "approach"       "in"             "this"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "article"        "we"             "develop"        "a"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "framework"      "for"            "leveraging"     "information"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "from"           "gold"           "stan"           "dard"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "data"           "to"             "improve"        "inferences"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "in"             "surveys"        "subject"        "to"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "measurement"    "errors"         "the"            "basic"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "idea"           "is"             "to"             "encode"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "plausible"      "assumptions"    "about"          "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "error"          "process"        "e.g"            "most"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "people"         "do"             "not"            "make"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "errors"         "when"           "reporting"      "educational"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "attainments"    "and"            "the"            "reporting"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "process"        "e.g"            "when"           "people"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "make"           "errors"         "they"           "are"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "more"           "likely"         "to"             "report"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "higher"         "attainments"    "than"           "actual"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "into"           "statistical"    "models"         "we"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "couple"         "those"          "models"         "with"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "distributions"  "for"            "the"            "un"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "derlying"       "true"           "data"           "values"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "and"            "use"            "multiple"       "imputation"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "to"             "create"         "plausible"      "corrections"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "to"             "the"            "error"          "prone"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "survey"         "values"         "which"          "then"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "can"            "be"             "analyzed"       "using"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "the"            "methods"        "from"           "ru"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "bin"            "1987"           "this"           "allows"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "us"             "to"             "avoid"          "unrealistic"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "conditional"    "independence"   "assumptions"    "in"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "lieu"           "of"             "more"           "scientifically"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [305] "defensible"     "models"         "the"            "remainder"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [309] "of"             "this"           "article"        "is"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [313] "organized"      "as"             "follows"        "in"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [317] "section"        "2"              "we"             "review"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [321] "an"             "3"             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[4]]</span>
@@ -519,66 +521,64 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "of"              "professionals"   "the"             "census"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "bureau"          "intended"        "the"             "category"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "to"              "capture"         "graduate"        "degrees"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "from"            "universities"    "e"               "g"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "j"               "d"               "m"               "b"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "a"               "m"               "d"               "whereas"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "black"           "et"              "al"              "2003"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "found"           "that"            "individuals"     "in"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "professions"     "such"            "as"              "cosmetology"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "nursing"         "and"             "health"          "services"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "which"           "require"         "certifications"  "but"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "not"             "graduate"        "degrees"         "selected"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "the"             "category"        "in"              "spite"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "of"              "the"             "nontrivial"      "reporting"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "error"           "the"             "overwhelming"    "majority"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "of"              "individuals"     "reported"        "education"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "levels"          "are"             "consistent"      "in"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "the"             "long"            "form"            "and"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "in"              "the"             "nscg"            "of"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "the"             "individuals"     "in"              "the"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "nscg"            "who"             "had"             "at"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "least"           "a"               "college"         "degree"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "at"              "the"             "time"            "of"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "the"             "1990"            "census"          "about"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "93.3"            "of"              "them"            "have"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "the"             "same"            "contemporaneous" "education"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "levels"          "in"              "both"            "files"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "this"            "suggests"        "that"            "most"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "people"          "report"          "correctly"       "an"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "observation"     "we"              "want"            "to"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "leverage"        "when"            "constructing"    "measurement"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "error"           "models"          "for"             "education"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "in"              "the"             "2010"            "acs"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "in"              "most"            "situations"      "we"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "do"              "not"             "have"            "the"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "good"            "fortune"         "of"              "observing"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "individuals"     "error"           "prone"           "and"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "true"            "values"          "simultaneously"  "instead"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "we"              "are"             "in"              "the"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "setting"         "represented"     "by"              "figure"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "1"               "this"            "is"              "also"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "the"             "case"            "in"              "our"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "analysis"        "of"              "educational"     "attainments"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "in"              "the"             "2010"            "acs"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "described"       "in"              "section"         "4"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "the"             "sampling"        "frame"           "for"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "the"             "2010"            "nscg"            "is"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "constructed"     "from"            "reported"        "education"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "levels"          "in"              "the"             "acs"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "which"           "replaced"        "the"             "long"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "form"            "after"           "the"             "2000"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "census"          "however"         "unlike"          "in"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "1993"            "linked"          "data"            "are"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "not"             "available"       "as"              "public"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "use"             "files"           "therefore"       "we"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "treat"           "the"             "2010"            "nscg"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "as"              "gold"            "standard"        "data"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "and"             "posit"           "measurement"     "models"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "that"            "connect"         "the"             "information"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "from"            "the"             "two"             "data"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "sources"         "using"           "the"             "framework"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "that"            "we"              "now"             "describe"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "6"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "from"            "universities"    "e.g"             "j.d"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "m.b.a"           "m.d"             "whereas"         "black"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "et"              "al"              "2003"            "found"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "that"            "individuals"     "in"              "professions"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "such"            "as"              "cosmetology"     "nursing"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "and"             "health"          "services"        "which"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "require"         "certifications"  "but"             "not"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "graduate"        "degrees"         "selected"        "the"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "category"        "in"              "spite"           "of"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "the"             "nontrivial"      "reporting"       "error"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "the"             "overwhelming"    "majority"        "of"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "individuals"     "reported"        "education"       "levels"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "are"             "consistent"      "in"              "the"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "long"            "form"            "and"             "in"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "the"             "nscg"            "of"              "the"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "individuals"     "in"              "the"             "nscg"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "who"             "had"             "at"              "least"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "a"               "college"         "degree"          "at"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "the"             "time"            "of"              "the"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "1990"            "census"          "about"           "93.3"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "of"              "them"            "have"            "the"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "same"            "contemporaneous" "education"       "levels"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "in"              "both"            "files"           "this"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "suggests"        "that"            "most"            "people"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "report"          "correctly"       "an"              "observation"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "we"              "want"            "to"              "leverage"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "when"            "constructing"    "measurement"     "error"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "models"          "for"             "education"       "in"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "the"             "2010"            "acs"             "in"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "most"            "situations"      "we"              "do"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "not"             "have"            "the"             "good"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "fortune"         "of"              "observing"       "individuals"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "error"           "prone"           "and"             "true"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "values"          "simultaneously"  "instead"         "we"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "are"             "in"              "the"             "setting"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "represented"     "by"              "figure"          "1"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "this"            "is"              "also"            "the"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "case"            "in"              "our"             "analysis"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "of"              "educational"     "attainments"     "in"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "the"             "2010"            "acs"             "described"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "in"              "section"         "4"               "the"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "sampling"        "frame"           "for"             "the"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "2010"            "nscg"            "is"              "constructed"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "from"            "reported"        "education"       "levels"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "in"              "the"             "acs"             "which"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "replaced"        "the"             "long"            "form"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "after"           "the"             "2000"            "census"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "however"         "unlike"          "in"              "1993"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "linked"          "data"            "are"             "not"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "available"       "as"              "public"          "use"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "files"           "therefore"       "we"              "treat"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "the"             "2010"            "nscg"            "as"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "gold"            "standard"        "data"            "and"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "posit"           "measurement"     "models"          "that"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "connect"         "the"             "information"     "from"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "the"             "two"             "data"            "sources"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "using"           "the"             "framework"       "that"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "we"              "now"             "describe"        "6"              </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[7]]</span>
@@ -873,41 +873,41 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [177] "probability"   "of"            "error"         "to"           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [181] "depend"        "on"            "some"          "variables"    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [185] "in"            "xi"            "but"           "not"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "on"            "yi"            "e"             "g"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "men"           "misreport"     "education"     "at"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "different"     "rates"         "than"          "women"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "this"          "could"         "be"            "encoded"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "by"            "including"     "an"            "intercept"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "for"           "one"           "of"            "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "sexes"         "in"            "mi"            "finally"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "one"           "can"           "allow"         "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "probability"   "of"            "error"         "to"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "depend"        "on"            "yi"            "itself"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "for"           "example"       "people"        "who"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "truly"         "do"            "not"           "have"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "at"            "least"         "a"             "college"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "degree"        "are"           "more"          "likely"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "to"            "misreport"     "by"            "including"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "some"          "function"      "of"            "it"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "in"            "mi"            "in"            "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "case"          "where"         "dz"            "6"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "dy"            "as"            "in"            "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "nscg"          "acs"           "application"   "we"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "automatically" "set"           "ei"            "1"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "for"           "any"           "individual"    "with"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "yi"            "1"             "dz"            "for"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "example"       "we"            "set"           "ei"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "1"             "for"           "all"           "individuals"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "who"           "are"           "determined"    "in"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "the"           "nscg"          "not"           "to"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "have"          "a"             "college"       "degree"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "but"           "report"        "so"            "in"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [305] "the"           "acs"           "the"           "stochastic"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [309] "part"          "of"            "the"           "error"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [313] "model"         "only"          "applies"       "to"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [317] "individuals"   "who"           "truly"         "have"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [321] "at"            "least"         "a"             "bachelor’s"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [325] "degree"        "10"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "on"            "yi"            "e.g"           "men"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "misreport"     "education"     "at"            "different"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "rates"         "than"          "women"         "this"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "could"         "be"            "encoded"       "by"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "including"     "an"            "intercept"     "for"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "one"           "of"            "the"           "sexes"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "in"            "mi"            "finally"       "one"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "can"           "allow"         "the"           "probability"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "of"            "error"         "to"            "depend"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "on"            "yi"            "itself"        "for"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "example"       "people"        "who"           "truly"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "do"            "not"           "have"          "at"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "least"         "a"             "college"       "degree"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "are"           "more"          "likely"        "to"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "misreport"     "by"            "including"     "some"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "function"      "of"            "it"            "in"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "mi"            "in"            "the"           "case"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "where"         "dz"            "6"             "dy"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "as"            "in"            "the"           "nscg"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "acs"           "application"   "we"            "automatically"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "set"           "ei"            "1"             "for"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "any"           "individual"    "with"          "yi"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "1"             "dz"            "for"           "example"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "we"            "set"           "ei"            "1"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "for"           "all"           "individuals"   "who"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "are"           "determined"    "in"            "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "nscg"          "not"           "to"            "have"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "a"             "college"       "degree"        "but"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "report"        "so"            "in"            "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [305] "acs"           "the"           "stochastic"    "part"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [309] "of"            "the"           "error"         "model"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [313] "only"          "applies"       "to"            "individuals"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [317] "who"           "truly"         "have"          "at"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [321] "least"         "a"             "bachelor’s"    "degree"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [325] "10"           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[11]]</span>
@@ -916,63 +916,63 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "zi"            "ei"            "1"             "yi"           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "xi"            "when"          "there"         "is"           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "no"            "reporting"     "error"         "for"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "individual"    "i"             "i"             "e"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "ei"            "0"             "we"            "know"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "that"          "zi"            "yi"            "when"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "there"         "is"            "a"             "reporting"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "error"         "we"            "must"          "model"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "the"           "reported"      "value"         "zi"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "as"            "with"          "2"             "one"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "can"           "posit"         "a"             "variety"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "of"            "distributions" "for"           "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "reporting"     "error"         "which"         "is"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "some"          "function"      "h"             "xi"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "yi"            "α"             "with"          "parameters"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "α"             "we"            "now"           "describe"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "a"             "few"           "reporting"     "error"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "models"        "for"           "illustration"  "one"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "could"         "use"           "more"          "complicated"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "models"        "e"             "g"             "based"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "on"            "multinomial"   "logistic"      "regression"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "as"            "well"          "a"             "simple"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "model"         "assumes"       "that"          "values"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "of"            "zi"            "are"           "equally"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "likely"        "as"            "in"            "manrique"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "vallier"       "and"           "reiter"        "2016"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "we"            "have"          "1"             "dz"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "1"             "if"            "l"             "6"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "k"             "k"             "1"             "dz"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "pr"            "zi"            "l"             "xi"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "yi"            "k"             "ei"            "1"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "1"             "dz"            "if"            "k"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "1"             "dz"            "3"             "0"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "otherwise"     "such"          "a"             "reporting"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "model"         "could"         "be"            "reasonable"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "when"          "reporting"     "errors"        "are"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "due"           "to"            "clerical"      "errors"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "we"            "note"          "that"          "this"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "model"         "does"          "not"           "accurately"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "characterize"  "the"           "reporting"     "errors"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "in"            "the"           "1993"          "linked"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "nscg"          "data"          "per"           "table"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "1"             "alternatively" "one"           "can"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "allow"         "the"           "probabilities" "to"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "depend"        "on"            "yi"            "so"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "that"          "zi"            "xi"            "yi"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "k"             "ei"            "1"             "categorical"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "pk"            "1"             "pk"            "dz"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "4"             "where"         "each"          "pk"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "l"             "is"            "the"           "probability"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "of"            "reporting"     "z"             "l"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "given"         "that"          "y"             "k"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "and"           "pk"            "k"             "0"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "one"           "can"           "further"       "parameterize" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "the"           "reporting"     "model"         "so"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "that"          "the"           "reporting"     "probabilities"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "vary"          "with"          "x"             "for"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "example"       "to"            "make"          "the"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "probabilities" "vary"          "with"          "sex"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "and"           "true"          "education"     "11"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "individual"    "i"             "i.e"           "ei"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "0"             "we"            "know"          "that"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "zi"            "yi"            "when"          "there"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "is"            "a"             "reporting"     "error"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "we"            "must"          "model"         "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "reported"      "value"         "zi"            "as"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "with"          "2"             "one"           "can"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "posit"         "a"             "variety"       "of"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "distributions" "for"           "the"           "reporting"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "error"         "which"         "is"            "some"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "function"      "h"             "xi"            "yi"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "α"             "with"          "parameters"    "α"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "we"            "now"           "describe"      "a"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "few"           "reporting"     "error"         "models"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "for"           "illustration"  "one"           "could"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "use"           "more"          "complicated"   "models"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "e.g"           "based"         "on"            "multinomial"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "logistic"      "regression"    "as"            "well"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "a"             "simple"        "model"         "assumes"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "that"          "values"        "of"            "zi"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "are"           "equally"       "likely"        "as"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "in"            "manrique"      "vallier"       "and"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "reiter"        "2016"          "we"            "have"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "1"             "dz"            "1"             "if"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "l"             "6"             "k"             "k"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "1"             "dz"            "pr"            "zi"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "l"             "xi"            "yi"            "k"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "ei"            "1"             "1"             "dz"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "if"            "k"             "1"             "dz"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "3"             "0"             "otherwise"     "such"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "a"             "reporting"     "model"         "could"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "be"            "reasonable"    "when"          "reporting"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "errors"        "are"           "due"           "to"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "clerical"      "errors"        "we"            "note"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "that"          "this"          "model"         "does"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "not"           "accurately"    "characterize"  "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "reporting"     "errors"        "in"            "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "1993"          "linked"        "nscg"          "data"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "per"           "table"         "1"             "alternatively"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "one"           "can"           "allow"         "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "probabilities" "to"            "depend"        "on"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "yi"            "so"            "that"          "zi"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "xi"            "yi"            "k"             "ei"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "1"             "categorical"   "pk"            "1"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "pk"            "dz"            "4"             "where"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "each"          "pk"            "l"             "is"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "the"           "probability"   "of"            "reporting"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "z"             "l"             "given"         "that"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "y"             "k"             "and"           "pk"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "k"             "0"             "one"           "can"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "further"       "parameterize"  "the"           "reporting"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "model"         "so"            "that"          "the"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "reporting"     "probabilities" "vary"          "with"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "x"             "for"           "example"       "to"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "make"          "the"           "probabilities" "vary"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "with"          "sex"           "and"           "true"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "education"     "11"           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[12]]</span>
@@ -1042,16 +1042,16 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [249] "ei"             "zi"             "xi"             "generally"     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [253] "for"            "ease"           "of"             "specification" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [257] "and"            "interpretation" "we"             "favor"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "rich"           "error"          "models"         "e"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "g"              "with"           "mi"             "including"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "variables"      "in"             "xi"             "and"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "yi"             "coupled"        "with"           "simple"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "reporting"      "models"         "like"           "those"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "in"             "section"        "3.3"            "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "exact"          "strategy"       "for"            "estimating"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "the"            "model"          "depends"        "on"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "the"            "features"       "of"             "dg"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "and"            "de"             "12"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "rich"           "error"          "models"         "e.g"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "with"           "mi"             "including"      "variables"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "in"             "xi"             "and"            "yi"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "coupled"        "with"           "simple"         "reporting"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "models"         "like"           "those"          "in"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "section"        "3.3"            "the"            "exact"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "strategy"       "for"            "estimating"     "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "model"          "depends"        "on"             "the"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "features"       "of"             "dg"             "and"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "de"             "12"            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[13]]</span>
@@ -1930,75 +1930,97 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[24]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[24]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "and"            "5"              "again"          "giving"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "similar"        "results"        "the"            "estimated"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "average"        "income"         "for"            "professionals" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "differs"        "noticeably"     "across"         "models"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "with"           "model"          "4"              "and"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "model"          "5"              "suggesting"     "lower"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "averages"       "than"           "the"            "unadjusted"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "acs"            "estimates"      "or"             "than"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "models"         "6"              "and"            "7"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "we"             "note"           "that"           "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "cia"            "model"          "estimates"      "are"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "clearly"        "implausible"    "as"             "an"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "independent"    "check"          "on"             "these"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "estimates"      "we"             "considered"     "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "estimated"      "average"        "earnings"       "in"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "the"            "2010"           "current"        "population"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "survey"         "they"           "are"            "83,720"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "for"            "professional"   "80,600"         "for"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "ph"             "d"              "degree"         "66,144"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "for"            "master’s"       "degree"         "and"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "53,976"         "for"            "bachelor’s"     "degree"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "http"           "www"            "collegequest"   "com"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "bls"            "research"       "education"      "pays"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "2010"           "aspx"           "these"          "line"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "up"             "more"           "closely"        "with"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "the"            "estimates"      "from"           "model"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "5"              "than"           "any"            "other"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "model"          "especially"     "for"            "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "professional"   "degree"         "category"       "where"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "the"            "estimates"      "most"           "differ"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "figure"         "4"              "displays"       "inferences"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "for"            "the"            "average"        "income"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "for"            "men"            "and"            "women"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "all"            "models"         "support"        "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "conclusion"     "that"           "men"            "make"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "more"           "than"           "women"          "apparently"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "misreporting"   "in"             "education"      "does"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "not"            "account"        "for"            "that"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "gap"            "at"             "least"          "for"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "the"            "models"         "considered"     "here"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "we"             "note"           "that"           "model"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "4"              "suggests"       "potentially"    "larger"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "income"         "gaps"           "between"        "male"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "and"            "female"         "ph"             "d"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "recipients"     "than"           "the"            "other"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "models"         "5"              "concluding"     "remarks"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "the"            "framework"      "presented"      "in"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "this"           "article"        "offers"         "analysts"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "tools"          "for"            "using"          "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "information"    "in"             "a"              "high"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "quality"        "separate"       "data"           "source"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "to"             "adjust"         "for"            "measurement"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "errors"         "in"             "the"            "database"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "of"             "interest"       "key"            "to"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "the"            "framework"      "is"             "to"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "replace"        "conditional"    "independence"   "assumptions"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "typically"      "used"           "in"             "data"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "fusion"         "with"           "carefully"      "considered"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "measurement"    "error"          "models"         "this"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "avoids"         "sacrificing"    "information"    "and"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "facilitates"    "analysis"       "of"             "the"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "sensitivity"    "of"             "conclusions"    "to"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "alternative"    "measurement"    "error"          "specifications"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "analysts"       "can"            "use"            "diagnostic"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "tests"          "to"             "rule"           "out"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "some"           "measurement"    "error"          "models"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "and"            "perform"        "sensibility"    "tests"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "on"             "others"         "to"             "identify"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "reasonable"     "candidates"     "24"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "and"                  "5"                    "again"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [4] "giving"               "similar"              "results"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [7] "the"                  "estimated"            "average"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [10] "income"               "for"                  "professionals"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "differs"              "noticeably"           "across"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [16] "models"               "with"                 "model"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "4"                    "and"                  "model"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] "5"                    "suggesting"           "lower"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "averages"             "than"                 "the"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [28] "unadjusted"           "acs"                  "estimates"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "or"                   "than"                 "models"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] "6"                    "and"                  "7"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "we"                   "note"                 "that"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [40] "the"                  "cia"                  "model"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "estimates"            "are"                  "clearly"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [46] "implausible"          "as"                   "an"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "independent"          "check"                "on"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [52] "these"                "estimates"            "we"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "considered"           "the"                  "estimated"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [58] "average"              "earnings"             "in"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "the"                  "2010"                 "current"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] "population"           "survey"               "they"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "are"                  "83,720"               "for"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [70] "professional"         "80,600"               "for"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "ph"                   "d"                    "degree"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76] "66,144"               "for"                  "master’s"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "degree"               "and"                  "53,976"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [82] "for"                  "bachelor’s"           "degree"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "http"                 "www.collegequest.com" "bls"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [88] "research"             "education"            "pays"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "2010"                 "aspx"                 "these"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [94] "line"                 "up"                   "more"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "closely"              "with"                 "the"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [100] "estimates"            "from"                 "model"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "5"                    "than"                 "any"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [106] "other"                "model"                "especially"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "for"                  "the"                  "professional"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [112] "degree"               "category"             "where"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "the"                  "estimates"            "most"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [118] "differ"               "figure"               "4"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "displays"             "inferences"           "for"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [124] "the"                  "average"              "income"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "for"                  "men"                  "and"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [130] "women"                "all"                  "models"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "support"              "the"                  "conclusion"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [136] "that"                 "men"                  "make"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [139] "more"                 "than"                 "women"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [142] "apparently"           "misreporting"         "in"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "education"            "does"                 "not"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [148] "account"              "for"                  "that"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [151] "gap"                  "at"                   "least"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [154] "for"                  "the"                  "models"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "considered"           "here"                 "we"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [160] "note"                 "that"                 "model"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [163] "4"                    "suggests"             "potentially"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [166] "larger"               "income"               "gaps"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "between"              "male"                 "and"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [172] "female"               "ph"                   "d"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [175] "recipients"           "than"                 "the"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [178] "other"                "models"               "5"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "concluding"           "remarks"              "the"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [184] "framework"            "presented"            "in"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [187] "this"                 "article"              "offers"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [190] "analysts"             "tools"                "for"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "using"                "the"                  "information"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [196] "in"                   "a"                    "high"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [199] "quality"              "separate"             "data"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [202] "source"               "to"                   "adjust"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "for"                  "measurement"          "errors"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [208] "in"                   "the"                  "database"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [211] "of"                   "interest"             "key"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [214] "to"                   "the"                  "framework"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "is"                   "to"                   "replace"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [220] "conditional"          "independence"         "assumptions"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [223] "typically"            "used"                 "in"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [226] "data"                 "fusion"               "with"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "carefully"            "considered"           "measurement"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [232] "error"                "models"               "this"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [235] "avoids"               "sacrificing"          "information"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [238] "and"                  "facilitates"          "analysis"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "of"                   "the"                  "sensitivity"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [244] "of"                   "conclusions"          "to"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [247] "alternative"          "measurement"          "error"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [250] "specifications"       "analysts"             "can"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "use"                  "diagnostic"           "tests"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [256] "to"                   "rule"                 "out"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [259] "some"                 "measurement"          "error"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [262] "models"               "and"                  "perform"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "sensibility"          "tests"                "on"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [268] "others"               "to"                   "identify"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [271] "reasonable"           "candidates"           "24"                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[25]]</span>
@@ -2049,75 +2071,107 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[26]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[26]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "4"                "x"                "10"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [4] "bachelors"        "degree"           "4"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [7] "x"                "10"               "masters"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [10] "degree"           "7"                "8"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "male"             "small"            "marker"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [16] "female"           "large"            "marker"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "6.5"              "7.5"              "7"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] "estimated"        "average"          "income"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "by"               "gender"           "estimated"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [28] "average"          "income"           "by"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "gender"           "6"                "6.5"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] "5.5"              "6"                "5"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "5.5"              "4.5"              "5"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [40] "4"                "4.5"              "3.5"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "4"                "3"                "3.5"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [46] "acs"              "cia"              "m4"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "m5"               "m6"               "m7"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [52] "acs"              "cia"              "m4"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "m5"               "m6"               "m7"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [58] "model"            "specification"    "model"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "specification"    "4"                "x"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] "10"               "professional"     "degree"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "x"                "10"               "4"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [70] "phd"              "degree"           "12"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "10"               "11"               "9"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [76] "10"               "estimated"        "average"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "income"           "by"               "gender"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [82] "estimated"        "average"          "income"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "by"               "gender"           "8"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [88] "9"                "8"                "7"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "7"                "6"                "6"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [94] "5"                "5"                "4"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "4"                "3"                "3"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [100] "acs"              "cia"              "m4"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "m5"               "m6"               "m7"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [106] "acs"              "cia"              "m4"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "m5"               "m6"               "m7"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [112] "model"            "specification"    "model"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "specification"    "figure"           "4"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [118] "multiple"         "imputation"       "point"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "and"              "95"               "confidence"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [124] "interval"         "estimates"        "for"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "the"              "average"          "income"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [130] "for"              "men"              "and"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "women"            "within"           "each"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [136] "education"        "level"            "the"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [139] "acs"              "estimate"         "is"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [142] "the"              "survey"           "weighted"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "estimate"         "based"            "on"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [148] "the"              "reported"         "education"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [151] "level"            "in"               "the"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [154] "2010"             "acs"              "supplementary"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "materials"        "all"              "supplemental"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [160] "files"            "listed"           "below"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [163] "are"              "contained"        "in"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [166] "a"                "single"           "zip"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "file"             "supplementary"    "zip"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [172] "and"              "can"              "be"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [175] "obtained"         "via"              "a"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [178] "single"           "download"         "supplementary"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "results"          "supplementary"    "details"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [184] "and"              "additional"       "results"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [187] "for"              "paper"            "supp"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [190] "material"         "final"            "pdf"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "acs"              "data"             "2010"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [196] "acs"              "data"             "used"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [199] "in"               "the"              "paper"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [202] "acsdata"          "2010standardized" "csv"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "zip"              "26"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "4"                        "x"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [3] "10"                       "bachelors"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "degree"                   "4"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [7] "x"                        "10"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "masters"                  "degree"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [11] "7"                        "8"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "male"                     "small"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] "marker"                   "female"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "large"                    "marker"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "6.5"                      "7.5"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "7"                        "estimated"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] "average"                  "income"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "by"                       "gender"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [27] "estimated"                "average"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "income"                   "by"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "gender"                   "6"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "6.5"                      "5.5"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [35] "6"                        "5"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "5.5"                      "4.5"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [39] "5"                        "4"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "4.5"                      "3.5"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "4"                        "3"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "3.5"                      "acs"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [47] "cia"                      "m4"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "m5"                       "m6"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [51] "m7"                       "acs"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "cia"                      "m4"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "m5"                       "m6"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "m7"                       "model"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [59] "specification"            "model"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "specification"            "4"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [63] "x"                        "10"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "professional"             "degree"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "x"                        "10"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "4"                        "phd"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] "degree"                   "12"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "10"                       "11"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [75] "9"                        "10"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "estimated"                "average"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "income"                   "by"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "gender"                   "estimated"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [83] "average"                  "income"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "by"                       "gender"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [87] "8"                        "9"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "8"                        "7"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "7"                        "6"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "6"                        "5"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [95] "5"                        "4"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "4"                        "3"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] "3"                        "acs"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "cia"                      "m4"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "m5"                       "m6"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "m7"                       "acs"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [107] "cia"                      "m4"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "m5"                       "m6"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [111] "m7"                       "model"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "specification"            "model"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "specification"            "figure"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "4"                        "multiple"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [119] "imputation"               "point"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "and"                      "95"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [123] "confidence"               "interval"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "estimates"                "for"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "the"                      "average"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "income"                   "for"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [131] "men"                      "and"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "women"                    "within"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [135] "each"                     "education"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "level"                    "the"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [139] "acs"                      "estimate"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "is"                       "the"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [143] "survey"                   "weighted"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "estimate"                 "based"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [147] "on"                       "the"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "reported"                 "education"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [151] "level"                    "in"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "the"                      "2010"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [155] "acs"                      "supplementary"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "materials"                "all"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [159] "supplemental"             "files"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "listed"                   "below"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [163] "are"                      "contained"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "in"                       "a"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [167] "single"                   "zip"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "file"                     "supplementary.zip"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [171] "and"                      "can"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "be"                       "obtained"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [175] "via"                      "a"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "single"                   "download"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [179] "supplementary"            "results"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "supplementary"            "details"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [183] "and"                      "additional"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "results"                  "for"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [187] "paper"                    "supp"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "material"                 "final.pdf"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [191] "acs"                      "data"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "2010"                     "acs"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [195] "data"                     "used"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "in"                       "the"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [199] "paper"                    "acsdata"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "2010standardized.csv.zip" "26"                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[27]]</span>
@@ -2127,108 +2181,106 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [7] "code"                  "maincode"              "edu"                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [10] "2010app"               "report1993"            "m"                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "and"                   "helper"                "functions"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [16] "design"                "m"                     "and"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "dirsamp"               "m"                     "as"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] "well"                  "as"                    "parameter"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "files"                 "mu"                    "mat"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [28] "and"                   "tauspd"                "mat"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "code"                  "zip"                   "prior"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] "distributions"         "csv"                   "files"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "are"                   "provided"              "for"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [40] "priors"                "used"                  "in"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "model"                 "5"                     "and"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [46] "read"                  "in"                    "by"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "main"                  "matlab"                "code"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [52] "referred"              "to"                    "as"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "femalereportprior1993" "csv"                   "malereport"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [58] "prior1993"             "csv"                   "betareportprior"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "csv"                   "priors"                "zip"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] "references"            "abayomi"               "k"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "gelman"                "a"                     "and"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [70] "levy"                  "m"                     "2008"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "diagnostics"           "for"                   "multivariate"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [76] "impu"                  "tations"               "journal"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "of"                    "the"                   "royal"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [82] "statistical"           "society"               "series"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "c"                     "applied"               "statistics"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [88] "57"                    "273"                   "291"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "black"                 "d"                     "haviland"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [94] "a"                     "sanders"               "s"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "and"                   "taylor"                "l"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [100] "2006"                  "why"                   "do"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "minority"              "men"                   "earn"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [106] "less"                  "a"                     "study"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "of"                    "wage"                  "differentials"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [112] "among"                 "the"                   "highly"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "educated"              "the"                   "review"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [118] "of"                    "economics"             "and"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "statistics"            "88"                    "300"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [124] "313"                   "black"                 "d"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "sanders"               "s"                     "and"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [130] "taylor"                "l"                     "2003"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "measurement"           "of"                    "higher"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [136] "education"             "in"                    "the"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [139] "census"                "and"                   "current"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [142] "population"            "survey"                "journal"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "of"                    "the"                   "american"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [148] "statistical"           "association"           "98"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [151] "545"                   "554"                   "black"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [154] "d"                     "a"                     "haviland"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "a"                     "m"                     "sanders"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [160] "s"                     "g"                     "and"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [163] "taylor"                "l"                     "j"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [166] "2008"                  "gender"                "wage"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "disparities"           "among"                 "the"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [172] "highly"                "educated"              "journal"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [175] "of"                    "human"                 "resources"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [178] "43"                    "630"                   "659"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "carrig"                "m"                     "manrique"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [184] "vallier"               "d"                     "ranby"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [187] "k"                     "reiter"                "j"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [190] "p"                     "and"                   "hoyle"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "r"                     "2015"                  "a"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [196] "multiple"              "imputation"            "based"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [199] "method"                "for"                   "the"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [202] "retrospective"         "harmonization"         "of"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "data"                  "sets"                  "multivariate"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [208] "behavioral"            "research"              "50"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [211] "383"                   "397"                   "curran"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [214] "p"                     "j"                     "and"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "hussong"               "a"                     "m"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [220] "2009"                  "integrative"           "data"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [223] "analysis"              "the"                   "simultaneous"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [226] "analysis"              "of"                    "multiple"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "data"                  "sets"                  "psychological"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [232] "methods"               "14"                    "81"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [235] "100"                   "d’orazio"              "m"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [238] "di"                    "zio"                   "m"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "and"                   "scanu"                 "m"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [244] "2006"                  "statistical"           "matching"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [247] "theory"                "and"                   "practice"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [250] "hoboken"               "nj"                    "wiley"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "dunson"                "d"                     "b"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [256] "and"                   "xing"                  "c"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [259] "2009"                  "nonparametric"         "bayes"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [262] "modeling"              "of"                    "multivariate"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "categorical"           "data"                  "journal"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [268] "of"                    "the"                   "american"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [271] "statistical"           "association"           "104"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [274] "1042"                  "1051"                  "fesco"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "r"                     "s"                     "frase"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [280] "m"                     "j"                     "and"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [283] "kannankutty"           "n"                     "2012"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [286] "using"                 "the"                   "american"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "commu"                 "nity"                  "survey"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [292] "as"                    "the"                   "sampling"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [295] "frame"                 "for"                   "the"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [298] "national"              "survey"                "of"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "college"               "graduates"             "working"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [304] "paper"                 "ncses"                 "12"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [307] "201"                   "national"              "science"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [310] "foundation"            "national"              "center"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [313] "for"                   "science"               "and"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [316] "engineering"           "statistics"            "arlington"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [319] "va"                    "27"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [16] "design.m"              "and"                   "dirsamp.m"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "as"                    "well"                  "as"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] "parameter"             "files"                 "mu.mat"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "and"                   "tauspd.mat"            "code.zip"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [28] "prior"                 "distributions"         "csv"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "files"                 "are"                   "provided"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] "for"                   "priors"                "used"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "in"                    "model"                 "5"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [40] "and"                   "read"                  "in"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "by"                    "main"                  "matlab"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [46] "code"                  "referred"              "to"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "as"                    "femalereportprior1993" "csv"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [52] "malereport"            "prior1993"             "csv"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "betareportprior.csv"   "priors.zip"            "references"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [58] "abayomi"               "k"                     "gelman"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "a"                     "and"                   "levy"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] "m"                     "2008"                  "diagnostics"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "for"                   "multivariate"          "impu"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [70] "tations"               "journal"               "of"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "the"                   "royal"                 "statistical"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76] "society"               "series"                "c"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "applied"               "statistics"            "57"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [82] "273"                   "291"                   "black"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "d"                     "haviland"              "a"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [88] "sanders"               "s"                     "and"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "taylor"                "l"                     "2006"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [94] "why"                   "do"                    "minority"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "men"                   "earn"                  "less"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [100] "a"                     "study"                 "of"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "wage"                  "differentials"         "among"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [106] "the"                   "highly"                "educated"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "the"                   "review"                "of"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [112] "economics"             "and"                   "statistics"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "88"                    "300"                   "313"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [118] "black"                 "d"                     "sanders"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "s"                     "and"                   "taylor"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [124] "l"                     "2003"                  "measurement"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "of"                    "higher"                "education"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [130] "in"                    "the"                   "census"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "and"                   "current"               "population"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [136] "survey"                "journal"               "of"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [139] "the"                   "american"              "statistical"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [142] "association"           "98"                    "545"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "554"                   "black"                 "d"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [148] "a"                     "haviland"              "a"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [151] "m"                     "sanders"               "s"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [154] "g"                     "and"                   "taylor"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "l"                     "j"                     "2008"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [160] "gender"                "wage"                  "disparities"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [163] "among"                 "the"                   "highly"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [166] "educated"              "journal"               "of"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "human"                 "resources"             "43"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [172] "630"                   "659"                   "carrig"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [175] "m"                     "manrique"              "vallier"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [178] "d"                     "ranby"                 "k"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "reiter"                "j"                     "p"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [184] "and"                   "hoyle"                 "r"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [187] "2015"                  "a"                     "multiple"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [190] "imputation"            "based"                 "method"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "for"                   "the"                   "retrospective"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [196] "harmonization"         "of"                    "data"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [199] "sets"                  "multivariate"          "behavioral"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [202] "research"              "50"                    "383"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "397"                   "curran"                "p"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [208] "j"                     "and"                   "hussong"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [211] "a"                     "m"                     "2009"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [214] "integrative"           "data"                  "analysis"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "the"                   "simultaneous"          "analysis"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [220] "of"                    "multiple"              "data"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [223] "sets"                  "psychological"         "methods"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [226] "14"                    "81"                    "100"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "d’orazio"              "m"                     "di"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [232] "zio"                   "m"                     "and"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [235] "scanu"                 "m"                     "2006"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [238] "statistical"           "matching"              "theory"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "and"                   "practice"              "hoboken"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [244] "nj"                    "wiley"                 "dunson"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [247] "d"                     "b"                     "and"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [250] "xing"                  "c"                     "2009"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "nonparametric"         "bayes"                 "modeling"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [256] "of"                    "multivariate"          "categorical"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [259] "data"                  "journal"               "of"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [262] "the"                   "american"              "statistical"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "association"           "104"                   "1042"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [268] "1051"                  "fesco"                 "r"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [271] "s"                     "frase"                 "m"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [274] "j"                     "and"                   "kannankutty"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "n"                     "2012"                  "using"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [280] "the"                   "american"              "commu"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [283] "nity"                  "survey"                "as"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [286] "the"                   "sampling"              "frame"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "for"                   "the"                   "national"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [292] "survey"                "of"                    "college"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [295] "graduates"             "working"               "paper"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [298] "ncses"                 "12"                    "201"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "national"              "science"               "foundation"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [304] "national"              "center"                "for"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [307] "science"               "and"                   "engineering"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [310] "statistics"            "arlington"             "va"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [313] "27"                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[28]]</span>
@@ -2285,39 +2337,38 @@ is the tokenize_words function.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [197] "407"            "422"            "national"       "science"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [201] "foundation"     "1993"           "national"       "survey"        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [205] "of"             "college"        "graduates"      "1993"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "http"           "doi"            "org"            "10.3886"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "icpsr06880"     "v1"             "icpsr06880"     "v1"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "ann"            "arbor"          "mi"             "inter"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "university"     "consortium"     "for"            "political"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "and"            "social"         "research"       "distributor"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "2014"           "10"             "02"             "pepe"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "m"              "s"              "1992"           "inference"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "using"          "surrogate"      "outcome"        "data"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "and"            "a"              "validation"     "sample"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "biometrika"     "79"             "355"            "365"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "raghunathan"    "t"              "e"              "2006"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "combining"      "information"    "from"           "multiple"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "surveys"        "for"            "assess"         "ing"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "health"         "disparities"    "allgemeines"    "statistisches" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "archiv"         "90"             "515"            "526"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "rassler"        "s"              "2002"           "statistical"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "matching"       "new"            "york"           "springer"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "reiter"         "j"              "2008"           "multiple"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "imputation"     "when"           "records"        "used"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "for"            "imputation"     "are"            "not"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "used"           "or"             "disseminated"   "for"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "analysis"       "biometrika"     "95"             "933"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "946"            "reiter"         "j"              "p"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "2012"           "bayesian"       "finite"         "population"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [305] "imputation"     "for"            "data"           "fusion"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [309] "statistica"     "sinica"         "22"             "795"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [313] "811"            "rubin"          "d"              "b"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [317] "1986"           "statistical"    "matching"       "using"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [321] "file"           "concatenation"  "with"           "adjusted"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [325] "weights"        "and"            "multiple"       "imputations"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [329] "journal"        "of"             "business"       "economic"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [333] "statistics"     "4"              "87"             "94"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [337] "28"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "http"           "doi.org"        "10.3886"        "icpsr06880"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "v1"             "icpsr06880"     "v1"             "ann"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "arbor"          "mi"             "inter"          "university"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "consortium"     "for"            "political"      "and"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "social"         "research"       "distributor"    "2014"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "10"             "02"             "pepe"           "m"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "s"              "1992"           "inference"      "using"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "surrogate"      "outcome"        "data"           "and"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "a"              "validation"     "sample"         "biometrika"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "79"             "355"            "365"            "raghunathan"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "t"              "e"              "2006"           "combining"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "information"    "from"           "multiple"       "surveys"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "for"            "assess"         "ing"            "health"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "disparities"    "allgemeines"    "statistisches"  "archiv"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "90"             "515"            "526"            "rassler"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "s"              "2002"           "statistical"    "matching"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [273] "new"            "york"           "springer"       "reiter"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [277] "j"              "2008"           "multiple"       "imputation"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [281] "when"           "records"        "used"           "for"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [285] "imputation"     "are"            "not"            "used"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [289] "or"             "disseminated"   "for"            "analysis"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [293] "biometrika"     "95"             "933"            "946"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [297] "reiter"         "j"              "p"              "2012"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [301] "bayesian"       "finite"         "population"     "imputation"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [305] "for"            "data"           "fusion"         "statistica"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [309] "sinica"         "22"             "795"            "811"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [313] "rubin"          "d"              "b"              "1986"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [317] "statistical"    "matching"       "using"          "file"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [321] "concatenation"  "with"           "adjusted"       "weights"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [325] "and"            "multiple"       "imputations"    "journal"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [329] "of"             "business"       "economic"       "statistics"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [333] "4"              "87"             "94"             "28"            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[29]]</span>
@@ -2546,7 +2597,7 @@ is the tokenize_words function.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>

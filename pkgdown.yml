@@ -1,9 +1,10 @@
 pandoc: 3.1.11
-pkgdown: 2.1.3
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   intro_to_pdfsearch: intro_to_pdfsearch.html
-last_built: 2025-05-28T14:52Z
+  multicolumn_and_tables: multicolumn_and_tables.html
+last_built: 2026-02-12T20:38Z
 urls:
   reference: https://pdfsearch.brandonlebeau.org/reference
   article: https://pdfsearch.brandonlebeau.org/articles
