@@ -2,7 +2,7 @@ Package: pdfsearch
 Type: Package
 Authors@R: person("Brandon", "LeBeau", email = "lebebr01+pdfsearch@gmail.com",
                role = c("aut", "cre"))
-Version: 0.4.3
+Version: 0.5.0
 License: MIT + file LICENSE
 Title: Search Tools for PDF Files
 Description: Includes functions for keyword search of pdf files. There is
@@ -23,7 +23,7 @@ Suggests:
     rmarkdown,
     covr
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 URL: https://github.com/lebebr01/pdfsearch
 BugReports: https://github.com/lebebr01/pdfsearch/issues
 VignetteBuilder: knitr
