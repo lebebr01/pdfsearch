@@ -4,3 +4,23 @@
 .Ruserdata
 inst/doc
 docs
+
+# R package build/check artifacts
+*.Rcheck/
+*.tar.gz
+check/
+revdep/
+.Rbuildignore~
+
+# R Markdown / knitr intermediates
+*.utf8.md
+*.knit.md
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
