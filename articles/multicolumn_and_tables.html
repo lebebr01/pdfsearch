@@ -90,7 +90,7 @@
                         <h4 data-toc-skip class="author">Brandon
 LeBeau</h4>
             
-            <h4 data-toc-skip class="date">2026-02-13</h4>
+            <h4 data-toc-skip class="date">2026-02-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lebebr01/pdfsearch/blob/main/vignettes/multicolumn_and_tables.Rmd" class="external-link"><code>vignettes/multicolumn_and_tables.Rmd</code></a></small>
       <div class="hidden name"><code>multicolumn_and_tables.Rmd</code></div>
@@ -136,7 +136,7 @@ handled:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res_coord</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/keyword_search.html">keyword_search</a></span><span class="op">(</span></span>
 <span>  <span class="va">file</span>,</span>
-<span>  keyword <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"repeated measures"</span>, <span class="st">"mixed effect"</span><span class="op">)</span>,</span>
+<span>  keyword <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"test theory"</span>, <span class="st">"above-level"</span><span class="op">)</span>,</span>
 <span>  path <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  split_pdf <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  split_method <span class="op">=</span> <span class="st">"coordinates"</span>,</span>
@@ -145,9 +145,15 @@ handled:</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">res_coord</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 5</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5 variables: keyword &lt;chr&gt;, page_num &lt;int&gt;, line_num &lt;int&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   line_text &lt;list&gt;, token_text &lt;list&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
+<span><span class="co">#&gt;   keyword     page_num line_num line_text token_text</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> test theory        1        2 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> test theory        3       53 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> test theory        9      247 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> test theory       14      353 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> test theory       17      502 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> above-level        1       12 <span style="color: #949494;">&lt;chr [1]&gt;</span> <span style="color: #949494;">&lt;list [1]&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="cleaning-page-artifacts-and-section-headings">Cleaning Page Artifacts and Section Headings<a class="anchor" aria-label="anchor" href="#cleaning-page-artifacts-and-section-headings"></a>
