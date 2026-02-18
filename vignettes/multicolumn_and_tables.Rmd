@@ -45,7 +45,7 @@ Use `column_count` to control how column order is handled:
 ```{r coord-search}
 res_coord <- keyword_search(
   file,
-  keyword = c("repeated measures", "mixed effect"),
+  keyword = c("test theory", "above-level"),
   path = TRUE,
   split_pdf = TRUE,
   split_method = "coordinates",
