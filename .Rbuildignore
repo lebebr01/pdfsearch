@@ -3,6 +3,7 @@
 .yml
 ^README\.Rmd$
 ^docs$
+^pkgdown$
 ^cran-comments\.md$
 ^contributing\.md$
 ^conduct\.md$

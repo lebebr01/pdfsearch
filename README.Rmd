@@ -1,4 +1,4 @@
-# pdfsearch
+# pdfsearch <img src="man/figures/logo.png" align="right" width="160" alt="pdfsearch hex logo" />
 
 [![R build status](https://github.com/lebebr01/pdfsearch/workflows/R-CMD-check/badge.svg)](https://github.com/lebebr01/pdfsearch/actions?workflow=R-CMD-check)
 [![Build status](https://ci.appveyor.com/api/projects/status/kjptcw7m8tlajmix?svg=true)](https://ci.appveyor.com/project/lebebr01/pdfsearch)
