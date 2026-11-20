@@ -1,0 +1,4 @@
+# License
+
+    YEAR: 2016 - 2022
+    COPYRIGHT HOLDER: Brandon LeBeau
