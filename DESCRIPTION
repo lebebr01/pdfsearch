@@ -24,7 +24,7 @@ Suggests:
     covr
 Maintainer: Brandon LeBeau <lebebr01+pdfsearch@gmail.com>
 RoxygenNote: 7.3.3
-URL: https://github.com/lebebr01/pdfsearch
+URL: https://pdfsearch.brandonlebeau.org/, https://github.com/lebebr01/pdfsearch
 BugReports: https://github.com/lebebr01/pdfsearch/issues
 VignetteBuilder: knitr
 Encoding: UTF-8

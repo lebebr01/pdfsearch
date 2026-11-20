@@ -5,7 +5,15 @@ authors:
   Brandon LeBeau: 
     href: https://brandonlebeau.org
     
-template: 
-  params: 
-    bootswatch: flatly
-    ganalytics: G-T9Z68BV7P4
+template:
+  bootstrap: 5
+  math-rendering: katex
+  includes:
+    in_header: |
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9Z68BV7P4"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T9Z68BV7P4');
+      </script>
